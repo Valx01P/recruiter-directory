@@ -78,6 +78,18 @@ export default function RecruiterDirectory() {
     });
   }, []);
 
+  // Clicking a recruiter's name/Message link opens their LinkedIn to connect, so
+  // auto-mark them connected (idempotent — never un-marks). Stored locally.
+  const markConnected = useCallback((key: string) => {
+    setConnected(prev => {
+      if (prev.has(key)) return prev;
+      const next = new Set(prev);
+      next.add(key);
+      persist(next);
+      return next;
+    });
+  }, []);
+
   // Debounce the search input (180ms). Clearing is applied immediately.
   useEffect(() => {
     if (searchInput === "") { setSearchQuery(""); return; }
@@ -219,13 +231,14 @@ export default function RecruiterDirectory() {
   const recruitersVisible = filteredCompanies.reduce((s, c) => s + (c.recruiters?.length || 0), 0);
 
   // --- Semantic fallback -----------------------------------------------------
-  // When a typed query yields zero keyword/sector hits, ask the vector index
-  // (/api/semantic-search) for the closest companies — "did you mean these?".
-  // Only fires on a real text query with no results; results are resolved to
-  // full company records via companyById. Soft-fails (Supabase not set up → []).
+  // When a typed query yields zero keyword/sector hits, ask gte-server for the
+  // closest companies — "did you mean these?". Only fires on a real text query
+  // with no results; results are resolved to full records via companyById.
+  // `semanticError` distinguishes "server unreachable" from "found nothing".
   type Suggestion = { company: Company; similarity: number };
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [suggesting, setSuggesting] = useState(false);
+  const [semanticError, setSemanticError] = useState(false);
   const noKeywordResults = filteredCompanies.length === 0 && searchQuery.trim().length >= 2;
 
   // User-tunable similarity cutoff for the semantic results (persisted).
@@ -245,12 +258,13 @@ export default function RecruiterDirectory() {
     if (!noKeywordResults) {
       setSuggestions([]);
       setSuggesting(false);
+      setSemanticError(false);
       return;
     }
     let cancelled = false;
     setSuggesting(true);
-    // Lazy-load the client embedder (keeps the model lib out of the main bundle),
-    // pull the full ranked set once (threshold 0); the slider filters it locally.
+    setSemanticError(false);
+    // Ask gte-server for the full ranked set (threshold 0); the slider filters it locally.
     import("../lib/semantic-client")
       .then(({ semanticSearch }) => semanticSearch(searchQuery.trim(), 100))
       .then((matches) => {
@@ -264,7 +278,7 @@ export default function RecruiterDirectory() {
         }
         setSuggestions(out);
       })
-      .catch(() => { if (!cancelled) setSuggestions([]); /* failed — show nothing extra */ })
+      .catch(() => { if (!cancelled) { setSuggestions([]); setSemanticError(true); } })
       .finally(() => { if (!cancelled) setSuggesting(false); });
     return () => { cancelled = true; };
   }, [noKeywordResults, searchQuery, companyById]);
@@ -639,6 +653,7 @@ export default function RecruiterDirectory() {
                                 total={cc.total}
                                 hideConnected={false}
                                 onToggleRecruiter={toggleRecruiter}
+                                onMarkConnected={markConnected}
                                 onOpen={openNewTab}
                               />
                             </div>
@@ -652,7 +667,12 @@ export default function RecruiterDirectory() {
                     )}
                   </div>
                 )}
-                {!suggesting && suggestions.length === 0 && (
+                {!suggesting && semanticError && (
+                  <div className="max-w-md mx-auto text-center text-sm text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 rounded-xl px-4 py-3">
+                    Smart “did you mean” search is offline right now. Keyword &amp; industry search still work — try a company name, an industry (e.g. “fintech”), or <button onClick={clearFilters} className="underline">reset filters</button>.
+                  </div>
+                )}
+                {!suggesting && !semanticError && suggestions.length === 0 && (
                   <div className="text-center text-sm text-zinc-500">
                     No close matches either. <button onClick={clearFilters} className="underline">Reset filters</button>
                   </div>
@@ -679,6 +699,7 @@ export default function RecruiterDirectory() {
                   total={cc.total}
                   hideConnected={hideConnected}
                   onToggleRecruiter={toggleRecruiter}
+                  onMarkConnected={markConnected}
                   onOpen={openNewTab}
                 />
               );
@@ -699,6 +720,7 @@ export default function RecruiterDirectory() {
                   hideConnected={hideConnected}
                   onToggleCard={toggleCard}
                   onToggleRecruiter={toggleRecruiter}
+                  onMarkConnected={markConnected}
                   onCopy={copyToClipboard}
                   onOpen={openNewTab}
                 />
@@ -811,13 +833,14 @@ interface CardProps {
   hideConnected: boolean;
   onToggleCard: (id: string) => void;
   onToggleRecruiter: (key: string) => void;
+  onMarkConnected: (key: string) => void;
   onCopy: (text: string, label: string) => void;
   onOpen: (url: string) => void;
 }
 
 const CompanyCard = React.memo(function CompanyCard({
   company, sig, count, total, isExpanded, hideConnected,
-  onToggleCard, onToggleRecruiter, onCopy, onOpen,
+  onToggleCard, onToggleRecruiter, onMarkConnected, onCopy, onOpen,
 }: CardProps) {
   const recCount = total;
   const allConnected = total > 0 && count === total;
@@ -899,6 +922,7 @@ const CompanyCard = React.memo(function CompanyCard({
                         href={rec.linkedin_url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => onMarkConnected(key)}
                         className="font-medium hover:underline flex items-center gap-1"
                       >
                         {rec.name}
@@ -928,6 +952,7 @@ const CompanyCard = React.memo(function CompanyCard({
                     href={rec.linkedin_url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => onMarkConnected(key)}
                     className="text-xs px-3 h-7 rounded bg-black text-white dark:bg-white dark:text-black inline-flex items-center gap-1 hover:opacity-90"
                   >
                     Message <ExternalLink className="h-3 w-3" />
@@ -960,11 +985,12 @@ interface CompactProps {
   total: number;
   hideConnected: boolean;
   onToggleRecruiter: (key: string) => void;
+  onMarkConnected: (key: string) => void;
   onOpen: (url: string) => void;
 }
 
 const CompactRow = React.memo(function CompactRow({
-  company, sig, count, total, hideConnected, onToggleRecruiter, onOpen,
+  company, sig, count, total, hideConnected, onToggleRecruiter, onMarkConnected, onOpen,
 }: CompactProps) {
   const allConnected = total > 0 && count === total;
 
@@ -1007,6 +1033,7 @@ const CompactRow = React.memo(function CompactRow({
                   href={rec.linkedin_url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => onMarkConnected(recKey(company.id, idx))}
                   className={`inline-flex items-center gap-0.5 hover:underline truncate ${on ? "text-emerald-600 dark:text-emerald-400" : "text-zinc-700 dark:text-zinc-300"}`}
                   title={`${rec.name} — ${rec.title}`}
                 >

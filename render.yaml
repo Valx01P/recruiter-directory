@@ -1,0 +1,26 @@
+# Render Blueprint for the gte-server embedding service.
+# Deploy: Render Dashboard → New → Blueprint → pick this repo.
+# Set the two `sync: false` secrets in the dashboard after it creates the service.
+services:
+  - type: web
+    name: gte-server
+    runtime: node
+    rootDir: gte-server
+    # gte-small + onnxruntime is light, but free instances still spin down when idle
+    # (cold model reload on the next request). Use a paid plan for genuinely "always on".
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: EMBEDDING_MODEL
+        value: Supabase/gte-small
+      - key: EMBEDDING_DIM
+        value: "384"
+      - key: ALLOWED_ORIGINS
+        value: https://recruiter-directory.vercel.app
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SECRET_KEY
+        sync: false

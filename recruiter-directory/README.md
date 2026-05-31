@@ -7,7 +7,7 @@ Fast, searchable directory of US tech company recruiters (focus: university / ea
 - **Three-tier search**
   1. Keyword match across companies + every recruiter field (name, title, location, notes, focus).
   2. **Industry/sector synonyms** — type `defense`, `big tech`, `fintech`, `machine learning`, `ecommerce`… and it matches even when that exact word isn't in the company name or category.
-  3. **Semantic "did you mean"** — when a query gets zero keyword hits, it falls back to a vector search (Supabase + pgvector) and shows the closest companies *by meaning* ("company that makes rockets" → SpaceX/Astra; "self driving cars" → Cruise/Lucid). A **Min-match slider** lets you tune how strict/loose the matches are.
+  3. **Semantic "did you mean"** — when a query gets zero keyword hits, the browser calls the **gte-server** service (see `../gte-server`), which embeds the query (gte-small, 384-dim) and runs a Supabase pgvector search, returning the closest companies *by meaning* ("company that makes rockets" → SpaceX/Astra; "self driving cars" → Cruise/Lucid). A **Min-match slider** lets you tune how strict/loose the matches are.
 - **Industry sector chips** fold 130+ raw categories into ~16 searchable industries, each with a live count.
 - Priority filters (P1 = top targets), connection-status filters, "only unconnected people" toggle.
 - Per-recruiter: open LinkedIn profile, one-click **Copy URL**, **Message** button; per-company **Find more recruiters** LinkedIn People search.
@@ -23,7 +23,7 @@ cp .env.example .env.local     # then fill in your Supabase values (see below)
 npm run dev                    # http://localhost:3000
 ```
 
-The keyword + sector search works with **no setup**. The semantic fallback needs the one-time Supabase setup below.
+The keyword + sector search works with **no setup**. The semantic fallback needs the Supabase index + the running **gte-server** (see below and `../gte-server`).
 
 ## Environment variables
 
@@ -35,33 +35,34 @@ Config lives in `.env.local`, which is **gitignored** — your real secrets neve
 
 | Variable | Used by | Notes |
 |---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | app + scripts | Project URL. Safe for the browser. |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | app (browser) | Browser-safe publishable key — used for the semantic `match_companies` RPC. |
-| `SUPABASE_SECRET_KEY` | indexing scripts only | **Server/local only.** Writes embeddings (`npm run embed`). Not needed at runtime. |
+| `NEXT_PUBLIC_GTE_SERVER_URL` | app (browser) + indexing script | URL of the gte-server service. The **only** var the deployed frontend needs at runtime. |
+| `NEXT_PUBLIC_SUPABASE_URL` | indexing scripts | Project URL. |
+| `SUPABASE_SECRET_KEY` | indexing scripts | **Local only.** Upserts embeddings (`npm run embed`). (gte-server has its own copy for `/search`.) |
 | `SUPABASE_SERVICE_ROLE_KEY` | fallback for the above | Legacy service-role JWT. |
 | `SUPABASE_DB_URL` | `npm run db:setup` | **Session-pooler** URI (IPv4). The direct `db.<ref>` host is IPv6-only. |
-| `EMBEDDING_MODEL` / `EMBEDDING_DIM` | scripts + route | `Supabase/gte-small` / `384` (fast). Must match `vector(N)` in `supabase/schema.sql`. |
+| `EMBEDDING_DIM` | `npm run db:setup` | pgvector column size; must match the gte-server model (gte-small = `384`). |
+
+> The Supabase publishable/anon key is no longer needed by the frontend — the browser talks only to gte-server now, and gte-server holds the Supabase secret key server-side.
 
 ## Semantic search setup (one time)
 
-Embeddings use **gte-small (384-dim)** via `@huggingface/transformers`, run **locally** — no embedding API key. The model auto-downloads (~30MB) and caches on first run.
+Embedding now lives in the **gte-server** service (gte-small, 384-dim) — see `../gte-server/README.md`. Start it first (`cd ../gte-server && npm install && npm run dev`), then:
 
 1. **Create the schema.** Either:
    - Run `npm run db:setup` (applies `supabase/schema.sql` over `SUPABASE_DB_URL`), **or**
    - Paste `supabase/schema.sql` into Supabase Dashboard → **SQL Editor** and run it.
-2. **Embed + upload the companies:**
+2. **Embed + upload the companies** (calls gte-server `/embed`, upserts to Supabase):
    ```bash
    npm run embed
    ```
-   This embeds the ~874 populated companies and upserts them into `company_embeddings` (over HTTPS, so it works even when the Postgres port doesn't).
 
-Re-run both after the dataset changes:
+Re-run after the dataset changes (gte-server must be running):
 
 ```bash
 npm run semantic:reindex   # = db:setup && embed
 ```
 
-> **Swapping the embedding model:** set `EMBEDDING_MODEL` to another sentence-transformer. If its dimension differs, update `vector(N)` in `supabase/schema.sql` and `EMBEDDING_DIM`, then re-run `semantic:reindex` (`db:setup` auto-drops/recreates the table when the dimension changes). `Xenova/gte-base` (768-dim) gives stronger conceptual matching at the cost of speed/size. Abstract sentiment queries (e.g. "evil") are inherently fuzzy for any local model unless the embedded text carries reputation/description data.
+> **Swapping the model:** change `EMBEDDING_MODEL`/`EMBEDDING_DIM` in `../gte-server/.env` and `EMBEDDING_DIM` here, then re-run `semantic:reindex` (`db:setup` auto-drops/recreates the table when the dimension changes). Abstract sentiment queries (e.g. "evil") stay fuzzy for any model unless the embedded text carries reputation/description data.
 
 ## Keeping data in sync
 
@@ -76,17 +77,19 @@ The merge script writes `recruiter-directory/data/recruiter.json` (what the UI i
 
 ## Deployment
 
-**Fully static / client-side** — there is no server function. The semantic fallback embeds the
-query *in the browser* (Transformers.js + gte-small via WASM) and calls the Supabase
-`match_companies` RPC directly with the publishable key. Deploy anywhere:
+Two pieces:
 
-- **Vercel**: `vercel --prod`. Set `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` in the project env (those are the only vars the runtime needs; the secret key and DB URL are only for the local indexing scripts).
-- Any static/Node host via `npm run build`.
+1. **This frontend** — fully static. Deploy to Vercel (`vercel --prod`) or any static host. The
+   only runtime env var it needs is `NEXT_PUBLIC_GTE_SERVER_URL` pointing at your deployed
+   gte-server. Keyword/sector search is instant and offline; only the semantic fallback calls
+   the server.
+2. **gte-server** — an always-on Node process (model + Supabase query). Host it somewhere that
+   keeps a persistent process (Render/Railway/Fly/VM), **not** a serverless platform. See
+   `../gte-server/README.md`. Set its `ALLOWED_ORIGINS` to this frontend's origin.
 
-> Why browser-side: `@huggingface/transformers` uses native onnxruntime, which can't load in a
-> Vercel serverless function (`libonnxruntime.so` missing). Embedding in the browser (WASM)
-> sidesteps that entirely. First semantic search downloads the ~30MB model to the browser
-> (cached thereafter); keyword/sector search is instant and needs no network.
+> Why a separate server: `@huggingface/transformers` uses native onnxruntime, which can't load
+> in a Vercel serverless function (`libonnxruntime.so` missing), and a warm always-on process
+> answers in ~0.2s vs multi-second cold model loads in the browser.
 
 ## Notes
 

@@ -1,0 +1,18 @@
+{
+  "name": "gte-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Always-on embedding service: gte-base (768d) over @huggingface/transformers, plus a /search endpoint that queries the Supabase pgvector index.",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.2.0",
+    "@supabase/supabase-js": "^2.106.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^5.1.0"
+  }
+}
