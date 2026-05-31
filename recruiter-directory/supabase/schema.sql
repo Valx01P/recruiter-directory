@@ -54,3 +54,29 @@ create policy "public read company_embeddings"
   using (true);
 
 grant execute on function public.match_companies(vector, float, int) to anon, authenticated;
+
+create extension if not exists pgcrypto;
+
+create table if not exists public.app_users (
+  id uuid primary key default gen_random_uuid(),
+  email text unique not null,
+  name text,
+  picture text,
+  password_hash text,
+  google_sub text unique,
+  created_at timestamptz not null default now(),
+  last_seen_at timestamptz not null default now()
+);
+
+create table if not exists public.connections (
+  user_id uuid not null references public.app_users(id) on delete cascade,
+  rec_key text not null,
+  created_at timestamptz not null default now(),
+  primary key (user_id, rec_key)
+);
+
+create index if not exists connections_user_idx on public.connections(user_id);
+
+alter table public.app_users enable row level security;
+alter table public.connections enable row level security;
+

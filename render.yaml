@@ -24,3 +24,7 @@ services:
         sync: false
       - key: SUPABASE_SECRET_KEY
         sync: false
+      - key: AUTH_JWT_SECRET
+        generateValue: true
+      - key: GOOGLE_CLIENT_ID
+        sync: false

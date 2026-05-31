@@ -10,6 +10,9 @@ import { gsap } from 'gsap';
 
 import type { Company, JsonData } from '../lib/types';
 import { SECTORS, sectorsForCompany } from '../lib/sectors';
+import { useAuth } from '../lib/auth';
+import { api } from '../lib/api';
+import { AuthControls } from '../components/AuthControls';
 
 // Load the data (bundled at build)
 import rawData from '../data/recruiter.json';
@@ -56,7 +59,10 @@ export default function RecruiterDirectory() {
     try { localStorage.setItem(VIEW_KEY, v); } catch {}
   };
 
-  // Connection tracking — set of `${companyId}#${idx}` keys, persisted locally.
+  // Connection tracking — set of `${companyId}#${idx}` keys. Persisted to
+  // localStorage always (works signed-out), and mirrored to the DB per-user
+  // (via gte-server) when signed in. Signing in merges local marks into the DB.
+  const { user } = useAuth();
   const [connected, setConnected] = useState<Set<string>>(new Set());
   useEffect(() => {
     try {
@@ -68,26 +74,49 @@ export default function RecruiterDirectory() {
     try { localStorage.setItem(CONNECTED_KEY, JSON.stringify([...s])); } catch {}
   };
 
+  // Refs so the (stable) toggle callbacks can read current state/user without deps.
+  const connectedRef = useRef(connected);
+  useEffect(() => { connectedRef.current = connected; }, [connected]);
+  const userRef = useRef(user);
+  useEffect(() => { userRef.current = user; }, [user]);
+
+  // On sign-in, merge any local marks into the DB and adopt the union as truth.
+  useEffect(() => {
+    if (!user) return; // signed out → keep localStorage state as-is
+    let cancelled = false;
+    api.mergeConnections([...connectedRef.current])
+      .then(({ keys }) => {
+        if (cancelled) return;
+        const s = new Set(keys);
+        setConnected(s);
+        persist(s);
+      })
+      .catch(() => { /* server unreachable → stay on local state */ });
+    return () => { cancelled = true; };
+  }, [user?.id]);
+
   const toggleRecruiter = useCallback((key: string) => {
+    const nowOn = !connectedRef.current.has(key);
     setConnected(prev => {
       const next = new Set(prev);
-      if (next.has(key)) next.delete(key);
-      else next.add(key);
+      if (nowOn) next.add(key); else next.delete(key);
       persist(next);
       return next;
     });
+    if (userRef.current) api.setConnection(key, nowOn).catch(() => {});
   }, []);
 
   // Clicking a recruiter's name/Message link opens their LinkedIn to connect, so
-  // auto-mark them connected (idempotent — never un-marks). Stored locally.
+  // auto-mark them connected (idempotent — never un-marks).
   const markConnected = useCallback((key: string) => {
+    if (connectedRef.current.has(key)) return;
     setConnected(prev => {
-      if (prev.has(key)) return prev;
       const next = new Set(prev);
       next.add(key);
       persist(next);
       return next;
     });
+    if (userRef.current) api.setConnection(key, true).catch(() => {});
   }, []);
 
   // Debounce the search input (180ms). Clearing is applied immediately.
@@ -456,6 +485,7 @@ export default function RecruiterDirectory() {
               </button>
 
               <ThemeToggle />
+              <AuthControls />
             </div>
           </div>
 

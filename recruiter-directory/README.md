@@ -12,7 +12,8 @@ Fast, searchable directory of US tech company recruiters (focus: university / ea
 - Priority filters (P1 = top targets), connection-status filters, "only unconnected people" toggle.
 - Per-recruiter: open LinkedIn profile, one-click **Copy URL**, **Message** button; per-company **Find more recruiters** LinkedIn People search.
 - **Export CSV** of every populated recruiter.
-- Connection tracking saved per-browser (localStorage); dark mode; mobile responsive.
+- **Accounts** (optional): sign in with Google or email/password (handled by gte-server, JWT in an HttpOnly cookie). Signed out, connection checkmarks save to localStorage; on sign-in they merge into the DB and sync across devices.
+- Dark mode; mobile responsive.
 
 ## Quick start (local)
 
@@ -35,7 +36,8 @@ Config lives in `.env.local`, which is **gitignored** — your real secrets neve
 
 | Variable | Used by | Notes |
 |---|---|---|
-| `NEXT_PUBLIC_GTE_SERVER_URL` | app (browser) + indexing script | URL of the gte-server service. The **only** var the deployed frontend needs at runtime. |
+| `NEXT_PUBLIC_GTE_SERVER_URL` | app (browser) + indexing script | URL of the gte-server service (search + auth + connections). |
+| `NEXT_PUBLIC_GOOGLE_CLIENT_ID` | app (browser) | Google OAuth client ID for the "Sign in with Google" button (optional — email/password works without it). |
 | `NEXT_PUBLIC_SUPABASE_URL` | indexing scripts | Project URL. |
 | `SUPABASE_SECRET_KEY` | indexing scripts | **Local only.** Upserts embeddings (`npm run embed`). (gte-server has its own copy for `/search`.) |
 | `SUPABASE_SERVICE_ROLE_KEY` | fallback for the above | Legacy service-role JWT. |
