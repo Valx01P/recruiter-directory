@@ -32,6 +32,44 @@ const PART_FILES = [
   "recruiter-theta.json"
 ];
 
+// Canonical schemas. The UI (recruiter-directory/app/page.tsx) reads exactly
+// these fields, so the merge normalizes every record to them: stray keys an
+// agent leaked (e.g. a per-company `meta`) are dropped, and missing recruiter
+// tracking fields are backfilled with defaults. Keeps the bundled JSON uniform.
+const COMPANY_FIELDS = [
+  "id", "name", "category", "hq_location", "priority", "size_estimate",
+  "has_intern_program", "linkedin_company_url", "linkedin_url_verified",
+  "recruiter_search_url", "careers_url", "recruiters"
+];
+const RECRUITER_DEFAULTS = {
+  name: "", title: "", linkedin_url: "", email: "", location: "",
+  focus_area: "", connected: false, messaged: false, responded: false,
+  date_contacted: "", notes: ""
+};
+
+const droppedKeys = new Map(); // unexpected key -> count, for a single summary line
+
+function normalizeRecruiter(r) {
+  const out = {};
+  for (const [k, def] of Object.entries(RECRUITER_DEFAULTS)) {
+    out[k] = r[k] !== undefined ? r[k] : def;
+  }
+  return out;
+}
+
+function normalizeCompany(c) {
+  const out = {};
+  for (const f of COMPANY_FIELDS) {
+    if (f === "recruiters") continue;
+    out[f] = c[f];
+  }
+  out.recruiters = (c.recruiters || []).map(normalizeRecruiter);
+  for (const k of Object.keys(c)) {
+    if (!COMPANY_FIELDS.includes(k)) droppedKeys.set(k, (droppedKeys.get(k) || 0) + 1);
+  }
+  return out;
+}
+
 console.log("Merging 8 recruiter partitions (Alpha–Theta) → canonical recruiter.json\n");
 
 let allCompanies = [];
@@ -72,8 +110,13 @@ allCompanies.forEach(c => {
     return;
   }
   seen.add(c.id);
-  deduped.push(c);
+  deduped.push(normalizeCompany(c));
 });
+
+if (droppedKeys.size) {
+  const summary = [...droppedKeys.entries()].map(([k, n]) => `${k} (${n})`).join(", ");
+  console.log(`  Normalized: dropped non-schema company keys → ${summary}`);
+}
 
 const totalPop = deduped.filter(c => c.recruiters && c.recruiters.length > 0).length;
 const totalRecs = deduped.reduce((s,c)=>s+(c.recruiters||[]).length,0);

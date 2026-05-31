@@ -1523,20 +1523,29 @@
           "name": "Nikki Salenger",
           "title": "Managing Director, Global Talent Acquisition (prior Director, Global TA Attraction and University Programs)",
           "linkedin_url": "https://www.linkedin.com/in/nikki-salenger-2363947",
+          "email": "",
           "location": "Beaverton, OR area",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Global TA leadership at Lam Research (semiconductor equipment); prior explicit University Programs leadership. Strong broadened early career/TA leader signal."
         },
         {
           "name": "Jamie Chen",
           "title": "Strategic Talent Acquisition Partner",
           "linkedin_url": "https://www.linkedin.com/in/jcchen311",
+          "email": "",
           "location": "Mesa, AZ",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Strategic TA Partner at Lam Research. US-based; key for engineering/SWE talent acquisition."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0027",
@@ -1555,27 +1564,42 @@
           "name": "Jessica Spitler",
           "title": "Emerging Talent Recruiter",
           "linkedin_url": "https://www.linkedin.com/in/jessicaspitler",
+          "email": "",
           "location": "Ann Arbor, MI",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Emerging Talent Recruiter at KLA. Drives strategic initiatives to identify, attract, and hire top early-career talent across multiple engineering disciplines. Excellent dedicated early career signal for SWE/AI/hardware interns."
         },
         {
           "name": "Marilyn Maggio",
           "title": "Sr. Engineering Recruiter / Talent Acquisition Leader",
           "linkedin_url": "https://www.linkedin.com/in/marilynmaggio",
+          "email": "",
           "location": "San Francisco Bay Area, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Sr. Engineering Recruiter and TA Leader at KLA. Focus on engineering talent (AI R&D teams noted). Strong technical recruiting + TA leadership for early career outreach."
         },
         {
           "name": "Newona Gnanasusikaran",
           "title": "Technical Recruiter, Talent Acquisition",
           "linkedin_url": "https://www.linkedin.com/in/newona-gnanasusikaran-52b1591bb",
+          "email": "",
           "location": "Milpitas, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Technical Recruiter / TA at KLA (AI-Driven Recruiting certified). US-based technical TA for engineering roles."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0028",
@@ -3019,27 +3043,42 @@
           "name": "Adam Schmit",
           "title": "Talent Acquisition Leader | Head of Campus and Military Recruitment, Early Career Programs",
           "linkedin_url": "https://www.linkedin.com/in/adam-schmit",
+          "email": "",
           "location": "United States",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA Leader, Head of Campus and Military Recruitment & Early Career Programs at Fiserv (fintech). Explicit campus/early career ownership. Outstanding high-signal for SWE/data intern/new grad pipelines."
         },
         {
           "name": "Charisse Lim",
           "title": "Talent Acquisition Advisor, Campus and Military Recruiting team",
           "linkedin_url": "https://www.linkedin.com/in/charisselim",
+          "email": "",
           "location": "New York City Metropolitan Area",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA Advisor on Campus and Military Recruiting team at Fiserv. Direct campus recruiting focus."
         },
         {
           "name": "Jade Petersen",
           "title": "Senior Talent Acquisition Associate",
           "linkedin_url": "https://www.linkedin.com/in/jadevpetersen",
+          "email": "",
           "location": "New York City Metropolitan Area",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Senior TA Associate at Fiserv. Collaborates with hiring managers on talent acquisition; relevant for early career/tech hiring support."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0059",
@@ -3688,27 +3727,42 @@
           "name": "Paulo Pisano",
           "title": "Chief Human Resources Officer (CHRO) / Chief People Officer",
           "linkedin_url": "https://www.bookingholdings.com/about/leadership/",
+          "email": "",
           "location": "Global / US ops",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "CHRO at Booking Holdings (parent of Booking.com, Priceline, etc.). Leads all People/HR including talent acquisition and early career programs. High-signal leadership contact for hiring outreach per efficiency/broadened rule."
         },
         {
           "name": "Alibek (Engineering Manager, Booking.com)",
           "title": "Engineering Manager",
           "linkedin_url": "https://careers.booking.com/teams/engineering/",
+          "email": "",
           "location": "Global (tech hubs)",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Engineering Manager at Booking.com (Booking Holdings). Visible in company engineering team profiles; actively involved in tech/SWE hiring. Broadened eng leadership / hiring lead per user rule for P3 with active intern programs."
         },
         {
           "name": "Shreya (Senior Engineering Manager, Booking.com)",
           "title": "Senior Engineering Manager",
           "linkedin_url": "https://careers.booking.com/teams/engineering/",
+          "email": "",
           "location": "Global (tech hubs)",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Senior Engineering Manager at Booking.com (Booking Holdings). Tech leadership with hiring responsibilities in platform/engineering orgs. Strong broadened reach-out for early career/SWE talent."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0076",
@@ -4206,27 +4260,42 @@
           "name": "Jamie Morgan",
           "title": "VP, Global Talent Acquisition",
           "linkedin_url": "https://www.linkedin.com/in/jamiepmorgan",
+          "email": "",
           "location": "El Dorado Hills, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current VP Global TA at GitHub (ex-Microsoft/Cruise/Intel); leads talent acquisition for tech/engineering. Strong leadership signal for GitHub/Microsoft early career and intern programs outreach."
         },
         {
           "name": "Julie Clark",
           "title": "Talent Partner at GitHub",
           "linkedin_url": "https://www.linkedin.com/in/juliecclark41",
+          "email": "",
           "location": "Fort Lauderdale, FL",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Talent Partner at GitHub (Tech Sales focus). US-based TA partner supporting hiring at GitHub."
         },
         {
           "name": "Peter Martenson",
           "title": "Talent Partner at GitHub",
           "linkedin_url": "https://www.linkedin.com/in/peter-martenson-5430a323b",
+          "email": "",
           "location": "Woodinville, WA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Talent Partner at GitHub. US-based TA supporting tech hiring pipelines."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0089",
@@ -4301,20 +4370,29 @@
           "name": "Swetha B",
           "title": "Senior Recruiter",
           "linkedin_url": "https://in.linkedin.com/in/swethabg",
+          "email": "",
           "location": "Bengaluru, India (global remit)",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Senior Recruiter at Confluent. AI-powered TA focus; supports technical hiring including early career pipelines. Broadened TA contact per efficiency rule for data streaming infra co with active intern programs."
         },
         {
           "name": "Confluent Engineering Leadership (hiring managers)",
           "title": "Engineering Manager / Tech Lead (multiple)",
           "linkedin_url": "https://www.confluent.io/careers/",
+          "email": "",
           "location": "US + global (SF, NY, etc.)",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Multiple Engineering Managers at Confluent actively hiring SWE/AI/ML roles (careers site + postings). Strong broadened eng/hiring lead signals for early career outreach in Kafka/data infra space."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0092",
@@ -4333,27 +4411,42 @@
           "name": "Roxy Wolfe",
           "title": "Senior Recruiter | GTM & Sales Hiring | Global Early Talent Programs",
           "linkedin_url": "https://www.linkedin.com/in/roxywolfe",
+          "email": "",
           "location": "Austin, TX",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current at Elastic. Explicit Global Early Talent Programs + past Team Lead Campus Recruiting / Campus Recruiter. Outstanding dedicated early career signal for search/AI/data co with active intern/new grad hiring."
         },
         {
           "name": "Jenn Arnoux",
           "title": "Senior Recruiter - Global G&A + Marketing",
           "linkedin_url": "https://www.linkedin.com/in/jennifermccarthy13",
+          "email": "",
           "location": "Raleigh-Durham, NC area",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Senior Recruiter at Elastic. Passionate about matching talent; supports global hiring including early career pipelines."
         },
         {
           "name": "Robert De Martini",
           "title": "Senior Director, Global Talent Acquisition",
           "linkedin_url": "https://www.linkedin.com/in/robertdemartini",
+          "email": "",
           "location": "San Diego, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Senior Director Global TA at Elastic. Leadership role overseeing talent acquisition strategy for the company."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0093",
@@ -4400,20 +4493,29 @@
           "name": "Stephanie Hansen-Oldenberg",
           "title": "Senior Talent Partner",
           "linkedin_url": "https://www.linkedin.com/in/stephanieahansen",
+          "email": "",
           "location": "United States",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Senior Talent Partner at NetApp. Supports hiring including early career/ Emerging Talent (NET) Program and internships (award-winning global programs for entry-level SWE/IT)."
         },
         {
           "name": "NetApp Emerging Talent / University Relations Team",
           "title": "Emerging Talent / Campus Recruiting leads",
           "linkedin_url": "https://careers.netapp.com/entry-level-careers",
+          "email": "",
           "location": "US (Morrisville NC, etc.) + global",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "NetApp has prominent NET (Emerging Talent) Program + active internships for software engineering/cloud/storage roles. TA partners and program leads are key contacts for early career outreach per broadened signals."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0095",
@@ -4432,27 +4534,42 @@
           "name": "Katie Tamura",
           "title": "Talent Acquisition (Leadership | GTM | G&A)",
           "linkedin_url": "https://www.linkedin.com/in/katiedoll",
+          "email": "",
           "location": "San Francisco Bay Area, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA at Pure Storage. Focus on leadership, GTM, G&A hiring with early career elements."
         },
         {
           "name": "Jennifer Avritt",
           "title": "Senior GTM Recruiter / Talent Advisor",
           "linkedin_url": "https://www.linkedin.com/in/jennavritt",
+          "email": "",
           "location": "Hayden, ID / US",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Senior GTM Recruiter and Business Partner at Pure Storage. Strategic TA collaborating with hiring managers on tech roles."
         },
         {
           "name": "Hugo Berrios",
           "title": "Talent Acquisition Partner",
           "linkedin_url": "https://www.linkedin.com/in/hugo-berrios",
+          "email": "",
           "location": "San Francisco Bay Area, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA Partner at Pure Storage (ex-Google/FB). Full-cycle recruiting for engineering and other orgs; strong for early career pipelines."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0096",
@@ -4471,27 +4588,42 @@
           "name": "Kayla Woitkowski",
           "title": "Director, Global Emerging Talent",
           "linkedin_url": "https://www.linkedin.com/in/kaylavillwock",
+          "email": "",
           "location": "Greater Cleveland, OH (global remit, San Jose postings)",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Director Global Emerging Talent at Nutanix. Specializes in emerging talent strategies; actively posting and hiring Agentic AI Software Development Interns Summer 2026 in San Jose + global intern programs. Outstanding high-signal for SWE/AI early career."
         },
         {
           "name": "Dan Lanni",
           "title": "Senior Talent Advisor - Sales",
           "linkedin_url": "https://www.linkedin.com/in/dan-lanni-5b588bab",
+          "email": "",
           "location": "Greater Philadelphia, PA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Senior Talent Advisor at Nutanix. Full-cycle recruiting supporting sales/tech orgs; relevant for early career outreach."
         },
         {
           "name": "Nutanix University Relations / Emerging Talent Team",
           "title": "Campus / Early Career Recruiters & Program Leads",
           "linkedin_url": "https://careers.nutanix.com/",
+          "email": "",
           "location": "US (San Jose HQ) + global (strong India campus)",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Nutanix runs active intern & new college grad programs (eligibility for current/recent grads). Global Emerging Talent team + India campus recruiting are prime contacts per signals and program pages."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0097",
@@ -4510,20 +4642,29 @@
           "name": "Ana Junqueira Bastos",
           "title": "Recruiter, Talent Acquisition",
           "linkedin_url": "https://www.linkedin.com/in/ana-junqueira-bastos-02788556",
+          "email": "",
           "location": "United States / global",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Recruiter TA at Western Digital. 13+ yrs TA experience; supports tech/engineering hiring."
         },
         {
           "name": "George Leece",
           "title": "Engineering Manager (HDD Media Development)",
           "linkedin_url": "https://www.linkedin.com/in/george-leece",
+          "email": "",
           "location": "San Francisco Bay Area, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Engineering Manager at Western Digital (HDD Media). US Army vet, UCSC alum; actively in engineering leadership with hiring responsibilities. Strong broadened eng manager signal for hardware/storage tech early career outreach."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0098",
@@ -4542,20 +4683,29 @@
           "name": "Arista Networks Engineering Leadership (hiring managers)",
           "title": "Engineering Manager / Tech Lead (multiple SWE/AI roles)",
           "linkedin_url": "https://www.arista.com/en/careers",
+          "email": "",
           "location": "US (SF Bay, Santa Clara) + global",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Multiple Engineering Managers at Arista actively hiring Software Developers/Engineers (2026 batch postings noted). High-growth networking/AI company; broadened eng leadership for early career/SWE intern outreach per user rule (thin dedicated university TA in public results)."
         },
         {
           "name": "Jayshree Ullal (CEO) / Arista Leadership",
           "title": "CEO & Founder-level (Jayshree Ullal, CEO)",
           "linkedin_url": "https://www.arista.com/en/company/leadership",
+          "email": "",
           "location": "Santa Clara, CA (global)",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "CEO of Arista Networks (high-profile leader in cloud networking/AI). For smaller/mid-scale tech per user rule: founder/CEO-level contact for talent/hiring outreach when dedicated HR/TA signals are lighter."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0099",
@@ -4574,20 +4724,29 @@
           "name": "Sonja Spasojevic",
           "title": "Talent Acquisition Manager",
           "linkedin_url": "https://www.linkedin.com/in/sonja-spasojevic",
+          "email": "",
           "location": "Mountain View, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA Manager at Juniper Networks (US). Key contact for talent acquisition including university/early career hiring in networking/cloud."
         },
         {
           "name": "Neetish S Acharya",
           "title": "Campus Recruiter / Talent Acquisition Recruiter - University Hiring",
           "linkedin_url": "https://in.linkedin.com/in/neetish-s-acharya",
+          "email": "",
           "location": "Bengaluru, India",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Campus Recruiter at Juniper Networks focused on university hiring. Supports global early talent pipelines (broadened for P3 with active intern programs)."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0100",
@@ -4606,27 +4765,42 @@
           "name": "Shea Lierman",
           "title": "Senior Director and Head of Global Talent Acquisition",
           "linkedin_url": "https://www.linkedin.com/in/shea-lierman",
+          "email": "",
           "location": "Greater Chicago Area",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Head of Global TA at Motorola Solutions. Passionate about shaping tech/comms talent pipelines; strong leadership signal for early career/SWE hiring."
         },
         {
           "name": "Ryan Oimoen",
           "title": "Talent Acquisition Recruiter",
           "linkedin_url": "https://www.linkedin.com/in/ryan-oimoen",
+          "email": "",
           "location": "Greater Chicago Area",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA Recruiter at Motorola Solutions (UIUC alum). Active in tech recruiting for communications/security solutions."
         },
         {
           "name": "Hayley Hipps",
           "title": "Talent Acquisition Specialist / Recruiter",
           "linkedin_url": "https://www.linkedin.com/in/hayley-hipps-341906114",
+          "email": "",
           "location": "Brentwood, TN",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Recruiter / TA Specialist at Motorola Solutions. Supports hiring for tech roles."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0101",
@@ -4757,20 +4931,29 @@
           "name": "Gaby Rios Giacona",
           "title": "Senior Director, Global Talent Acquisition | Head of Global TA",
           "linkedin_url": "https://www.linkedin.com/in/gaby-rios-giacona-12612832",
+          "email": "",
           "location": "Orlando, FL",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Head of Global TA at Unity Technologies. 15+ yrs international HR; strategic leader for early career and tech talent in game engine/3D platform company."
         },
         {
           "name": "Erin Traylor",
           "title": "Senior Recruiter",
           "linkedin_url": "https://www.linkedin.com/in/erin-traylor-52a124141",
+          "email": "",
           "location": "Austin, TX",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Senior Recruiter at Unity Technologies (Texas A&M). Focus on tech recruiting including early career pipelines for game dev/SWE roles."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0106",
@@ -4789,27 +4972,42 @@
           "name": "Caroline T.",
           "title": "Talent Acquisition professional",
           "linkedin_url": "https://www.linkedin.com/in/carolinetaylor19",
+          "email": "",
           "location": "Brooklyn, NY",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA professional at Take-Two Interactive (parent of Rockstar, 2K, Zynga). Supports interactive entertainment/tech hiring."
         },
         {
           "name": "Jake Schnackenberg",
           "title": "Global HR leader",
           "linkedin_url": "https://www.linkedin.com/in/jakeschnackenberg",
+          "email": "",
           "location": "Los Angeles Metropolitan Area",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current global HR leader at Take-Two Interactive with 15+ yrs in tech/entertainment. Key for talent strategy and early career outreach."
         },
         {
           "name": "Rockstar Games Engineering Managers (hiring leads)",
           "title": "Engineering Manager (Frontend / Online Platform / C#/.NET)",
           "linkedin_url": "https://www.rockstargames.com/careers/openings",
+          "email": "",
           "location": "US (Carlsbad, NYC, etc.)",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Multiple active Engineering Manager roles at Rockstar Games (Take-Two) hiring for platform, frontend, gameplay. Strong broadened eng leadership signals for game dev/SWE early career pipelines."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0107",
@@ -4828,20 +5026,29 @@
           "name": "Sean Cervera",
           "title": "Head of DEI, Culture & People Programs",
           "linkedin_url": "https://www.linkedin.com/in/seancervera",
+          "email": "",
           "location": "United States",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Head of DEI, Culture & People Programs at Niantic Games (Pokemon Go creator). Strong People leadership signal for early career/culture hiring in AR/gaming tech."
         },
         {
           "name": "Niantic Early Careers Team / Engineering Leadership",
           "title": "Early Careers / People Programs + Engineering Managers",
           "linkedin_url": "https://www.nianticlabs.com/careers",
+          "email": "",
           "location": "US (SF Bay) + global",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Niantic early careers team won 2025 Campus Forward Award for excellence in early career hiring. Active SWE intern programs + engineering managers hiring for AR/spatial tech. Broadened per thin dedicated recruiter signals."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0108",
@@ -4888,27 +5095,42 @@
           "name": "Talha S. (Talha Syed)",
           "title": "Staff Technical Recruiter, Engineering",
           "linkedin_url": "https://www.linkedin.com/in/talhasyed23",
+          "email": "",
           "location": "San Francisco Bay Area, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Staff Technical Recruiter (Engineering) at Lucid Motors (EV/auto tech, ex-Tesla/Roblox). Focus on Software, Embedded, Hardware, Manufacturing Engineering hiring. Excellent for early career SWE/embedded pipelines."
         },
         {
           "name": "Trevor Whately",
           "title": "Talent Acquisition Lead / Staff Technical Recruiter",
           "linkedin_url": "https://www.linkedin.com/in/trevor-whately-4140b123",
+          "email": "",
           "location": "San Francisco Bay Area, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA Lead / Staff Technical Recruiter at Lucid Motors (ex-Google/Motorola). Building SWE/HW/TPM teams; strong technical recruiting signal."
         },
         {
           "name": "Kevin Toombs",
           "title": "Talent Acquisition Partner",
           "linkedin_url": "https://www.linkedin.com/in/kevin-toombs-1a9b9335",
+          "email": "",
           "location": "San Francisco Bay Area, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA Partner at Lucid Motors. Supports engineering and tech hiring for EV/autonomous vehicle development."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0110",
@@ -4955,20 +5177,29 @@
           "name": "ShuTing Guo",
           "title": "Software Engineering Manager II - Embedded Systems (Robotics)",
           "linkedin_url": "https://www.linkedin.com/in/shuting-guo",
+          "email": "",
           "location": "United States",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Software Engineering Manager (Embedded/Robotics) at Cruise (GM autonomous vehicle). Actively in engineering leadership with hiring responsibilities. Strong broadened eng manager signal for AV/SWE early career."
         },
         {
           "name": "Cruise Talent Acquisition / People Leadership (AI/ML/Robotics)",
           "title": "Recruiting Lead / TA for AI/ML & Robotics",
           "linkedin_url": "https://www.getcruise.com/careers",
+          "email": "",
           "location": "San Francisco Bay Area, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Cruise has active TA focus on AI/ML/Robotics/autonomy (past leads like Rafael Quiroz Recruiting Lead AI/ML at Cruise; current postings for technical talent). Broadened for autonomous tech co with intern/SWE needs per efficiency rule."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0112",
@@ -4987,20 +5218,29 @@
           "name": "Kamal D. Singh",
           "title": "Technical Recruiter (focus on technical talent)",
           "linkedin_url": "https://www.linkedin.com/in/kamalds510",
+          "email": "",
           "location": "San Francisco Bay Area, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current technical recruiter at Aurora Innovation (self-driving tech). Focus on recruiting technical talent for autonomy/AI."
         },
         {
           "name": "Hoa N. (Hoa Nguyen)",
           "title": "Senior Program Manager, Employee Experience (past University Recruiting at Aurora)",
           "linkedin_url": "https://www.linkedin.com/in/hoanguyen3",
+          "email": "",
           "location": "San Francisco Bay Area, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Past University Recruiting lead at Aurora; current Sr Program Manager Employee Experience. Strong signal for early career/university programs in autonomous vehicles/AI."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0113",
@@ -5237,27 +5477,42 @@
           "name": "Mina W.",
           "title": "Campus Recruiter @ RTX - Collins Aerospace",
           "linkedin_url": "https://www.linkedin.com/in/mina-w-9b859993",
+          "email": "",
           "location": "United States",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Campus Recruiter at RTX (Raytheon/Collins Aerospace). Supports university hiring and early talent for aerospace/defense tech roles."
         },
         {
           "name": "Douglas Winger",
           "title": "University Programs Manager",
           "linkedin_url": "https://www.linkedin.com/in/douglas-winger-0294762a",
+          "email": "",
           "location": "Tucson, AZ",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current University Programs Manager at Raytheon (RTX). Direct campus programs leadership for early career/SWE intern pipelines in defense/aerospace."
         },
         {
           "name": "Cindy (Pinson) Payne",
           "title": "Talent Acquisition Manager, RTX Employee Referral Program (past College Programs)",
           "linkedin_url": "https://www.linkedin.com/in/cindykpayne",
+          "email": "",
           "location": "United States",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "TA Manager at RTX with deep history in college programs, Re-Entry Internship, and university recruiting at Raytheon. Strong early career/TA leadership signal."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0119",
@@ -5276,27 +5531,42 @@
           "name": "Sarah (Jones) Green",
           "title": "Talent Acquisition at GD Mission Systems",
           "linkedin_url": "https://www.linkedin.com/in/sarah-jones-green-msm-shrm-scp-8731106",
+          "email": "",
           "location": "Greater Savannah Area",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA at General Dynamics Mission Systems. Supports tech/engineering hiring for defense contractor with active intern programs."
         },
         {
           "name": "Marc A.",
           "title": "Talent Acquisition Specialist, Strategic Sourcing, Technical Recruiting",
           "linkedin_url": "https://www.linkedin.com/in/marcapolito",
+          "email": "",
           "location": "Scottsdale, AZ",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA Specialist (Technical Recruiting) at General Dynamics Mission Systems. Full lifecycle for engineering roles; key for early career outreach."
         },
         {
           "name": "General Dynamics Mission Systems Recruiters (multiple)",
           "title": "Senior Talent Acquisition Recruiters / University Programs",
           "linkedin_url": "https://gdmissionsystems.com/careers/meet-our-recruiters",
+          "email": "",
           "location": "US (various)",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Multiple named current TA Recruiters (e.g. Patricia Murphy Senior TA Recruiter and others on official Meet Our Recruiters page). Active internships and early career programs at GD Land Systems/Mission Systems. Strong recruiter team signals."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0120",
@@ -5315,27 +5585,42 @@
           "name": "Gena Bryan",
           "title": "Talent Acquisition professional (10+ yrs full-cycle)",
           "linkedin_url": "https://www.linkedin.com/in/gena-bryan",
+          "email": "",
           "location": "Palm Bay, FL",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA at L3Harris Technologies. 10+ yrs full-cycle recruiting for defense/tech roles."
         },
         {
           "name": "Favi S.",
           "title": "Talent Acquisition Specialist - Space & Airborne Systems",
           "linkedin_url": "https://www.linkedin.com/in/faviolasantana",
+          "email": "",
           "location": "Greater Chicago Area",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA Specialist at L3Harris (Space & Airborne). Georgetown alum; supports technical hiring."
         },
         {
           "name": "Brenda Rodriguez",
           "title": "Specialist, Talent Acquisition",
           "linkedin_url": "https://www.linkedin.com/in/brendamrodriguez",
+          "email": "",
           "location": "United States",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Specialist TA at L3Harris. Active in recruiting for the defense contractor with intern/early career programs."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0121",
@@ -5382,27 +5667,42 @@
           "name": "Kaitlynn Hess",
           "title": "Head of Talent Acquisition",
           "linkedin_url": "https://www.linkedin.com/in/kaitlynn-hess",
+          "email": "",
           "location": "San Francisco Bay Area, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Head of TA at Cerebras Systems (AI chip leader). Promoted internally; actively builds global team, speaks on early talent at Berkeley engineering, helped scale from 100 to 900+ engineers. Outstanding high-signal for SWE/AI early career."
         },
         {
           "name": "Tina Rosic",
           "title": "Talent Acquisition Programs Lead (Early Talent)",
           "linkedin_url": "https://ca.linkedin.com/in/tina-rosic-21336a1b7",
+          "email": "",
           "location": "Toronto, Canada (global remit)",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA Programs Lead at Cerebras. Oversees early talent/internship/new grad hiring for technical functions across offices; designed programs. Excellent dedicated early career signal."
         },
         {
           "name": "Winnie A",
           "title": "Talent Acquisition Lead",
           "linkedin_url": "https://ca.linkedin.com/in/winnieai",
+          "email": "",
           "location": "Toronto, Canada",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA Lead at Cerebras. Supports technical talent acquisition for the AI hardware company."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0123",
@@ -5421,20 +5721,29 @@
           "name": "SambaNova Systems Engineering Leadership (hiring managers)",
           "title": "Engineering Manager / Tech Leads (AI/ML infrastructure)",
           "linkedin_url": "https://sambanova.ai/careers",
+          "email": "",
           "location": "Palo Alto, CA + global",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Active engineering hiring for AI chip/dataflow systems (SWE, ML roles). Broadened eng leadership for early career/SWE intern outreach per efficiency rule for startup-scale AI infra company."
         },
         {
           "name": "SambaNova Leadership / Founder signals",
           "title": "Founders & Executive Leadership (AI hardware)",
           "linkedin_url": "https://sambanova.ai/",
+          "email": "",
           "location": "Palo Alto, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "High-profile AI chip startup (founded by ex-Google/Stanford leaders). Broadened founder/exec level contacts for talent/hiring outreach when dedicated university TA signals are lighter per user small-co rule."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0124",
@@ -5481,27 +5790,42 @@
           "name": "Andrea H.",
           "title": "Sr Recruiter supporting early career offerings",
           "linkedin_url": "https://www.linkedin.com/posts/target_teamtarget-earlycareers-talentdevelopment-activity-7448142556657291264-iz-P",
+          "email": "",
           "location": "United States",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Sr Recruiter at Target (22+ yrs, started as intern, HR leadership to TA). Supports internship programs and full-time early career roles; university collaboration."
         },
         {
           "name": "Lauren B. (Lauren Breunig)",
           "title": "Sr Recruiter supporting early career offerings",
           "linkedin_url": "https://www.linkedin.com/in/laurenbreunig",
+          "email": "",
           "location": "Chaska, MN",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Sr Recruiter at Target (10+ yrs, campus hire from U Wisconsin). Passionate about early talent development; supports internships and campus hiring across US."
         },
         {
           "name": "Emily Riley",
           "title": "Lead Executive Recruiter - Talent Acquisition",
           "linkedin_url": "https://www.linkedin.com/in/emilyrileytarget",
+          "email": "",
           "location": "Greater Philadelphia",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Lead Executive Recruiter TA at Target. Actively engages leadership and early career talent pipelines."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0126",
@@ -5520,27 +5844,42 @@
           "name": "Jacob Wine",
           "title": "Manager, Talent Acquisition - Technology",
           "linkedin_url": "https://www.linkedin.com/in/jacob-wine-9b7a3661",
+          "email": "",
           "location": "Atlanta Metropolitan Area",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Manager TA - Technology at The Home Depot. Leads tech recruiting for retail giant with active early career/SWE intern programs (recognized as best internship program)."
         },
         {
           "name": "Lara Siegle",
           "title": "Talent Acquisition professional (20+ yrs)",
           "linkedin_url": "https://www.linkedin.com/in/lara-siegle-a31b703",
+          "email": "",
           "location": "Marietta, GA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA professional at The Home Depot (20+ yrs experience). Key contact for talent acquisition including early career."
         },
         {
           "name": "Matt Victor",
           "title": "Manager of Executive Search",
           "linkedin_url": "https://www.linkedin.com/in/matt-victor",
+          "email": "",
           "location": "Atlanta Metropolitan Area",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Manager Executive Search at The Home Depot. Supports leadership and tech hiring; company has strong internship-to-full-time pipelines in technology/data."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0127",
@@ -5559,20 +5898,29 @@
           "name": "Nike Talent Acquisition / Early Career Team (campus & intern programs)",
           "title": "University Recruiters / Early Career TA leads",
           "linkedin_url": "https://jobs.nike.com/",
+          "email": "",
           "location": "US (Portland OR HQ + global)",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Nike runs active university recruiting, campus events, and internship programs for tech, design, business roles (SWE adjacent in digital/innovation). Broadened early career TA team + search URL per efficiency for retail/tech co with strong early talent focus."
         },
         {
           "name": "Nike Engineering / Tech Hiring Managers (digital innovation)",
           "title": "Engineering Manager / Tech Leads (Nike digital/tech)",
           "linkedin_url": "https://jobs.nike.com/",
+          "email": "",
           "location": "US (Portland + hubs)",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Active hiring for software engineering, data, digital roles at Nike (consumer tech + innovation). Broadened eng leadership for early career/SWE outreach per user rule."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0128",
@@ -7109,20 +7457,29 @@
           "name": "Jennifer McClellan",
           "title": "Human Resources and Technology leader",
           "linkedin_url": "https://www.linkedin.com/in/jencondon",
+          "email": "",
           "location": "Pensacola, FL",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current at Cloud Software Group (Citrix). US-based HR/Tech leader; relevant for talent/hiring outreach in thin-signal case per efficiency rule."
         },
         {
           "name": "Catreva Dunford",
           "title": "Global Mobility, People Operations, and HR Operations",
           "linkedin_url": "https://www.linkedin.com/in/catrevadunford",
+          "email": "",
           "location": "San Jose, CA",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current at Cloud Software Group. US-based People Ops/HR Ops professional; reach-out for talent/early career pipelines (thin dedicated recruiter signals after multiple passes)."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0160",
@@ -7197,20 +7554,29 @@
           "name": "Shiraz Menchari",
           "title": "Talent Acquisition Specialist",
           "linkedin_url": "https://www.linkedin.com/in/shiraz-menchari",
+          "email": "",
           "location": "Boca Raton, FL",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA Specialist at ModMed (healthcare tech software, Boca Raton HQ). 4+ years in-house TA; strong local US signal for early career/SWE intern outreach."
         },
         {
           "name": "Lindsay Maisner",
           "title": "Senior Talent Acquisition Partner",
           "linkedin_url": "https://www.linkedin.com/in/lindsay-maisner-2415744b",
+          "email": "",
           "location": "Boca Raton, FL",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Senior TA Partner at ModMed. US (FL) based; key contact for tech/engineering hiring and early talent pipelines."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0163",
@@ -9392,27 +9758,42 @@
           "name": "Emma McDonald",
           "title": "Senior Recruiter, Talent Acquisition",
           "linkedin_url": "https://www.linkedin.com/in/emmanellmcdonald",
+          "email": "",
           "location": "United States",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Senior Recruiter TA at SentinelOne (cyber/AI security). US-based; active in talent acquisition for high-growth tech with intern program."
         },
         {
           "name": "Michelle Dimalanta",
           "title": "Talent Acquisition Leader + Full-Cycle Recruiting, People Operations, AI Technology",
           "linkedin_url": "https://www.linkedin.com/in/michelle-dimalanta",
+          "email": "",
           "location": "United States",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current TA Leader at SentinelOne. Inclusive hiring champion; full-cycle recruiting for AI/tech/cybersecurity. Strong signal for early career outreach."
         },
         {
           "name": "Alex Karmazin",
           "title": "Executive Recruiter, Leadership Talent Acquisition",
           "linkedin_url": "https://www.linkedin.com/in/alex-karmazin",
+          "email": "",
           "location": "United States",
+          "focus_area": "",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
           "notes": "Current Executive Recruiter (Leadership TA) at SentinelOne (4+ years). Focus on leadership and tech talent; relevant for engineering hiring pipelines."
         }
-      ],
-      "meta": {
-        "last_updated": "2026-06-05"
-      }
+      ]
     },
     {
       "id": "C0230",

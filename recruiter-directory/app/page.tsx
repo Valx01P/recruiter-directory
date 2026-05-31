@@ -8,46 +8,8 @@ import {
 import { toast } from 'sonner';
 import { gsap } from 'gsap';
 
-// Types matching recruiter.json schema
-interface Recruiter {
-  name: string;
-  title: string;
-  linkedin_url: string;
-  email: string;
-  location: string;
-  focus_area: string;
-  connected: boolean;
-  messaged: boolean;
-  responded: boolean;
-  date_contacted: string;
-  notes: string;
-}
-
-interface Company {
-  id: string;
-  name: string;
-  category: string;
-  hq_location: string;
-  priority: 1 | 2 | 3;
-  size_estimate: string;
-  has_intern_program: boolean;
-  linkedin_company_url: string;
-  linkedin_url_verified: boolean;
-  recruiter_search_url: string;
-  careers_url: string;
-  recruiters: Recruiter[];
-}
-
-interface Meta {
-  last_updated: string;
-  total_companies: number;
-  description?: string;
-}
-
-interface JsonData {
-  meta: Meta;
-  companies: Company[];
-}
+import type { Company, JsonData } from '../lib/types';
+import { SECTORS, sectorsForCompany } from '../lib/sectors';
 
 // Load the data (bundled at build)
 import rawData from '../data/recruiter.json';
@@ -64,6 +26,7 @@ const PRIORITY_LABELS = {
 
 const CONNECTED_KEY = "rd-connected-v1";
 const VIEW_KEY = "rd-view-v2";
+const SIM_KEY = "rd-sim-threshold-v1";
 const recKey = (companyId: string, idx: number) => `${companyId}#${idx}`;
 
 type ConnectionFilter = "all" | "incomplete" | "complete" | "untouched";
@@ -78,7 +41,7 @@ export default function RecruiterDirectory() {
   const [sortMode, setSortMode] = useState<"recruiters" | "priority" | "name">("recruiters");
   const [sortReversed, setSortReversed] = useState(false);
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
-  const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set());
+  const [selectedSectors, setSelectedSectors] = useState<Set<string>>(new Set());
   const [connectionFilter, setConnectionFilter] = useState<ConnectionFilter>("all");
   const [hideConnected, setHideConnected] = useState(false);
   const [view, setView] = useState<ViewMode>("compact");
@@ -128,11 +91,18 @@ export default function RecruiterDirectory() {
   const indexed = useMemo(
     () =>
       allCompanies.map((c) => {
+        const sectors = sectorsForCompany(c);
         const parts = [c.name, c.category, c.hq_location || ""];
         for (const r of c.recruiters || []) {
           parts.push(r.name, r.title, r.location || "", r.focus_area || "", r.notes || "");
         }
-        return { company: c, hay: parts.join(" ⁣ ").toLowerCase() };
+        // Inject this company's sectors' aliases so industry-term searches
+        // ("defence", "finance", "machine learning", "ecommerce"…) hit even
+        // when the literal word isn't in the name/category/recruiter text.
+        for (const s of SECTORS) {
+          if (sectors.has(s.key)) parts.push(...s.aliases);
+        }
+        return { company: c, sectors, hay: parts.join(" ⁣ ").toLowerCase() };
       }),
     [],
   );
@@ -155,17 +125,19 @@ export default function RecruiterDirectory() {
     return m;
   }, [connected]);
 
-  // Get unique categories for filter (top ones + others grouped)
-  const topCategories = useMemo(() => {
+  // Sector chips: count how many *populated* companies fall in each sector,
+  // drop empty sectors, sort by count desc.
+  const sectorChips = useMemo(() => {
     const counts = new Map<string, number>();
-    allCompanies.forEach(c => {
-      counts.set(c.category, (counts.get(c.category) || 0) + 1);
-    });
-    return Array.from(counts.entries())
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 12)
-      .map(([cat]) => cat);
-  }, []);
+    for (const { company, sectors } of indexed) {
+      if (!(company.recruiters?.length)) continue;
+      for (const k of sectors) counts.set(k, (counts.get(k) || 0) + 1);
+    }
+    return SECTORS
+      .map((s) => ({ ...s, count: counts.get(s.key) || 0 }))
+      .filter((s) => s.count > 0)
+      .sort((a, b) => b.count - a.count);
+  }, [indexed]);
 
   // Stats
   const totalRecruiters = useMemo(() =>
@@ -178,12 +150,19 @@ export default function RecruiterDirectory() {
 
   const connectedCount = connected.size;
 
+  // id → company, for resolving semantic-search matches back to full records.
+  const companyById = useMemo(() => {
+    const m = new Map<string, Company>();
+    for (const c of allCompanies) m.set(c.id, c);
+    return m;
+  }, []);
+
   // Filtered + sorted companies
   const filteredCompanies = useMemo(() => {
     const tokens = searchQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
 
     let result = indexed
-      .filter(({ company, hay }) => {
+      .filter(({ company, hay, sectors }) => {
         if (!selectedPriorities.has(company.priority)) return false;
 
         const cc = connByCompany.get(company.id)!;
@@ -191,7 +170,8 @@ export default function RecruiterDirectory() {
         // Always restrict to companies that have recruiters.
         if (!hasRecs) return false;
 
-        if (selectedCategories.size > 0 && !selectedCategories.has(company.category)) {
+        // Sector chips are OR'd: keep a company if it's in any selected sector.
+        if (selectedSectors.size > 0 && ![...sectors].some((k) => selectedSectors.has(k))) {
           return false;
         }
 
@@ -226,17 +206,72 @@ export default function RecruiterDirectory() {
     if (sortReversed) result.reverse();
 
     return result;
-  }, [indexed, connByCompany, searchQuery, selectedPriorities, sortMode, sortReversed, selectedCategories, connectionFilter, hideConnected]);
+  }, [indexed, connByCompany, searchQuery, selectedPriorities, sortMode, sortReversed, selectedSectors, connectionFilter, hideConnected]);
 
   // Cap how many cards render at once; "Show more" reveals additional pages.
   const PAGE = 60;
   const [visibleCount, setVisibleCount] = useState(PAGE);
   useEffect(() => {
     setVisibleCount(PAGE);
-  }, [searchQuery, selectedPriorities, sortMode, sortReversed, selectedCategories, connectionFilter, hideConnected]);
+  }, [searchQuery, selectedPriorities, sortMode, sortReversed, selectedSectors, connectionFilter, hideConnected]);
 
   const visibleCompanies = filteredCompanies.slice(0, visibleCount);
   const recruitersVisible = filteredCompanies.reduce((s, c) => s + (c.recruiters?.length || 0), 0);
+
+  // --- Semantic fallback -----------------------------------------------------
+  // When a typed query yields zero keyword/sector hits, ask the vector index
+  // (/api/semantic-search) for the closest companies — "did you mean these?".
+  // Only fires on a real text query with no results; results are resolved to
+  // full company records via companyById. Soft-fails (Supabase not set up → []).
+  type Suggestion = { company: Company; similarity: number };
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+  const [suggesting, setSuggesting] = useState(false);
+  const noKeywordResults = filteredCompanies.length === 0 && searchQuery.trim().length >= 2;
+
+  // User-tunable similarity cutoff for the semantic results (persisted).
+  const [simThreshold, setSimThreshold] = useState(0.74);
+  useEffect(() => {
+    try {
+      const v = parseFloat(localStorage.getItem(SIM_KEY) || "");
+      if (v >= 0.5 && v <= 0.95) setSimThreshold(v);
+    } catch {}
+  }, []);
+  const changeSimThreshold = (v: number) => {
+    setSimThreshold(v);
+    try { localStorage.setItem(SIM_KEY, String(v)); } catch {}
+  };
+
+  useEffect(() => {
+    if (!noKeywordResults) {
+      setSuggestions([]);
+      setSuggesting(false);
+      return;
+    }
+    const ctrl = new AbortController();
+    setSuggesting(true);
+    // Pull the full ranked set once (threshold 0); the slider filters it locally.
+    fetch(`/api/semantic-search?q=${encodeURIComponent(searchQuery.trim())}&limit=100&threshold=0`, { signal: ctrl.signal })
+      .then((r) => r.json())
+      .then((data: { matches?: { id: string; similarity: number }[] }) => {
+        const out: Suggestion[] = [];
+        for (const m of data.matches || []) {
+          const company = companyById.get(m.id);
+          if (company && (company.recruiters?.length || 0) > 0) {
+            out.push({ company, similarity: m.similarity });
+          }
+        }
+        setSuggestions(out);
+      })
+      .catch(() => { /* aborted or failed — show nothing extra */ })
+      .finally(() => setSuggesting(false));
+    return () => ctrl.abort();
+  }, [noKeywordResults, searchQuery, companyById]);
+
+  // Slider-filtered view of the semantic matches.
+  const shownSuggestions = useMemo(
+    () => suggestions.filter((s) => s.similarity >= simThreshold),
+    [suggestions, simThreshold],
+  );
 
   const togglePriority = (p: number) => {
     const next = new Set(selectedPriorities);
@@ -246,18 +281,18 @@ export default function RecruiterDirectory() {
     setSelectedPriorities(next);
   };
 
-  const toggleCategory = (cat: string) => {
-    const next = new Set(selectedCategories);
-    if (next.has(cat)) next.delete(cat);
-    else next.add(cat);
-    setSelectedCategories(next);
+  const toggleSector = (key: string) => {
+    const next = new Set(selectedSectors);
+    if (next.has(key)) next.delete(key);
+    else next.add(key);
+    setSelectedSectors(next);
   };
 
   const clearFilters = () => {
     setSearchInput("");
     setSearchQuery("");
     setSelectedPriorities(new Set([1, 2, 3]));
-    setSelectedCategories(new Set());
+    setSelectedSectors(new Set());
     setSortMode("recruiters");
     setSortReversed(false);
     setExpandedCards(new Set());
@@ -425,7 +460,7 @@ export default function RecruiterDirectory() {
               type="text"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
-              placeholder="Search companies, recruiters, titles, locations, notes…"
+              placeholder="Search by company, recruiter, or industry — “insurance”, “defense”, “big tech”, “fintech”…"
               className="w-full pl-9 pr-9 h-8 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-sm placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-black/5 dark:focus:ring-white/10"
             />
             {searchInput && (
@@ -505,22 +540,25 @@ export default function RecruiterDirectory() {
             </button>
           </div>
 
-          {/* Category quick filters (condensed) */}
+          {/* Sector quick filters — fold 130+ raw categories into industries
+              people actually search by. Multiple selections are OR'd. */}
           <div className="flex flex-wrap gap-1.5 items-center">
-            <span className="text-xs uppercase tracking-widest text-zinc-500 mr-1">Categories</span>
-            {topCategories.map(cat => (
+            <span className="text-xs uppercase tracking-widest text-zinc-500 mr-1">Industry</span>
+            {sectorChips.map(s => (
               <button
-                key={cat}
-                onClick={() => toggleCategory(cat)}
-                className={`text-[10px] px-2.5 py-0.5 rounded-full border ${selectedCategories.has(cat)
+                key={s.key}
+                onClick={() => toggleSector(s.key)}
+                title={`${s.count} companies`}
+                className={`text-[10px] px-2.5 py-0.5 rounded-full border inline-flex items-center gap-1 ${selectedSectors.has(s.key)
                   ? 'bg-zinc-900 text-white dark:bg-white dark:text-black border-transparent'
                   : 'border-zinc-200 dark:border-zinc-800'}`}
               >
-                {cat}
+                {s.label}
+                <span className={selectedSectors.has(s.key) ? 'opacity-70' : 'text-zinc-400'}>{s.count}</span>
               </button>
             ))}
-            {selectedCategories.size > 0 && (
-              <button onClick={() => setSelectedCategories(new Set())} className="text-[10px] px-2 py-0.5 text-zinc-500 hover:text-red-500">clear cats</button>
+            {selectedSectors.size > 0 && (
+              <button onClick={() => setSelectedSectors(new Set())} className="text-[10px] px-2 py-0.5 text-zinc-500 hover:text-red-500">clear</button>
             )}
           </div>
         </div>
@@ -554,12 +592,79 @@ export default function RecruiterDirectory() {
       {/* Company List */}
       <main className="max-w-7xl mx-auto w-full px-6 pb-16 flex-1">
         {filteredCompanies.length === 0 && (
-          <div className="text-center py-16 text-zinc-500">
-            No companies match your filters. <button onClick={clearFilters} className="underline">Clear filters</button>
+          <div className="py-12">
+            {noKeywordResults ? (
+              <div className="space-y-5">
+                <div className="text-center text-zinc-500">
+                  No exact matches for <span className="font-medium text-zinc-700 dark:text-zinc-300">“{searchQuery.trim()}”</span>.
+                  {suggesting && <span className="ml-2 text-xs text-zinc-400">finding closest companies…</span>}
+                </div>
+                {suggestions.length > 0 && (
+                  <div className="max-w-3xl mx-auto">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                      <div className="text-xs uppercase tracking-widest text-zinc-500">
+                        Closest companies by meaning — <span className="text-zinc-700 dark:text-zinc-300">{shownSuggestions.length}</span> match{shownSuggestions.length === 1 ? "" : "es"}
+                      </div>
+                      {/* Similarity threshold slider — filters the ranked set locally */}
+                      <label className="flex items-center gap-2 text-xs text-zinc-500">
+                        <span className="whitespace-nowrap">Min match</span>
+                        <input
+                          type="range"
+                          min={50}
+                          max={95}
+                          step={1}
+                          value={Math.round(simThreshold * 100)}
+                          onChange={(e) => changeSimThreshold(Number(e.target.value) / 100)}
+                          className="w-32 accent-zinc-900 dark:accent-white"
+                          aria-label="Minimum similarity threshold"
+                        />
+                        <span className="font-mono tabular-nums text-zinc-700 dark:text-zinc-300 w-9 text-right">{Math.round(simThreshold * 100)}%</span>
+                      </label>
+                    </div>
+                    {shownSuggestions.length > 0 ? (
+                      <div className="divide-y divide-zinc-100 dark:divide-zinc-800 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden">
+                        {shownSuggestions.map(({ company, similarity }) => {
+                          const cc = connByCompany.get(company.id)!;
+                          return (
+                            <div key={company.id} className="relative">
+                              <span className="absolute right-3 top-2 z-10 text-[10px] font-mono tabular-nums text-zinc-400">
+                                {Math.round(similarity * 100)}%
+                              </span>
+                              <CompactRow
+                                company={company}
+                                sig={cc.sig}
+                                count={cc.count}
+                                total={cc.total}
+                                hideConnected={false}
+                                onToggleRecruiter={toggleRecruiter}
+                                onOpen={openNewTab}
+                              />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <div className="text-center text-sm text-zinc-500 py-6 border border-dashed border-zinc-200 dark:border-zinc-800 rounded-xl">
+                        Nothing above {Math.round(simThreshold * 100)}%. Lower the “Min match” slider to see looser matches.
+                      </div>
+                    )}
+                  </div>
+                )}
+                {!suggesting && suggestions.length === 0 && (
+                  <div className="text-center text-sm text-zinc-500">
+                    No close matches either. <button onClick={clearFilters} className="underline">Reset filters</button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="text-center text-zinc-500">
+                No companies match your filters. <button onClick={clearFilters} className="underline">Clear filters</button>
+              </div>
+            )}
           </div>
         )}
 
-        {view === "compact" ? (
+        {filteredCompanies.length > 0 && (view === "compact" ? (
           <div ref={listRef} className="divide-y divide-zinc-100 dark:divide-zinc-800 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden">
             {visibleCompanies.map((company) => {
               const cc = connByCompany.get(company.id)!;
@@ -598,7 +703,7 @@ export default function RecruiterDirectory() {
               );
             })}
           </div>
-        )}
+        ))}
 
         {filteredCompanies.length > visibleCount && (
           <div className="text-center mt-8">
@@ -760,15 +865,10 @@ const CompanyCard = React.memo(function CompanyCard({
           >
             Find more recruiters <ExternalLink className="h-3.5 w-3.5" />
           </button>
-          {recCount > 0 && (
-            <button onClick={() => onToggleCard(company.id)} className="link-btn text-xs">
-              {isExpanded ? "Collapse" : `Show all ${recCount}`}
-              {isExpanded ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
-            </button>
-          )}
-          {recCount === 0 && (
-            <span className="text-xs px-3 py-1 text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950 rounded">No recruiters yet — use search link above</span>
-          )}
+          <button onClick={() => onToggleCard(company.id)} className="link-btn text-xs">
+            {isExpanded ? "Collapse" : `Show all ${recCount}`}
+            {isExpanded ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
+          </button>
         </div>
       </div>
 
@@ -883,19 +983,9 @@ const CompactRow = React.memo(function CompactRow({
           <ExternalLink className="h-3 w-3 opacity-50 shrink-0" />
         </button>
         <span className="text-[11px] text-zinc-400 shrink-0">{company.category}</span>
-        {total > 0 ? (
-          <span className={`text-[10px] shrink-0 ${allConnected ? "text-emerald-600 dark:text-emerald-400" : "text-zinc-400"}`}>
-            {count}/{total}
-          </span>
-        ) : (
-          <button
-            onClick={() => onOpen(company.recruiter_search_url)}
-            className="text-[10px] text-blue-600 dark:text-blue-400 hover:underline shrink-0 inline-flex items-center gap-0.5"
-            title="Find recruiters on LinkedIn"
-          >
-            find recruiters <ExternalLink className="h-2.5 w-2.5" />
-          </button>
-        )}
+        <span className={`text-[10px] shrink-0 ${allConnected ? "text-emerald-600 dark:text-emerald-400" : "text-zinc-400"}`}>
+          {count}/{total}
+        </span>
       </div>
 
       {/* Line 2 — recruiters inline */}
