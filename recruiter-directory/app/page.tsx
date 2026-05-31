@@ -247,14 +247,16 @@ export default function RecruiterDirectory() {
       setSuggesting(false);
       return;
     }
-    const ctrl = new AbortController();
+    let cancelled = false;
     setSuggesting(true);
-    // Pull the full ranked set once (threshold 0); the slider filters it locally.
-    fetch(`/api/semantic-search?q=${encodeURIComponent(searchQuery.trim())}&limit=100&threshold=0`, { signal: ctrl.signal })
-      .then((r) => r.json())
-      .then((data: { matches?: { id: string; similarity: number }[] }) => {
+    // Lazy-load the client embedder (keeps the model lib out of the main bundle),
+    // pull the full ranked set once (threshold 0); the slider filters it locally.
+    import("../lib/semantic-client")
+      .then(({ semanticSearch }) => semanticSearch(searchQuery.trim(), 100))
+      .then((matches) => {
+        if (cancelled) return;
         const out: Suggestion[] = [];
-        for (const m of data.matches || []) {
+        for (const m of matches) {
           const company = companyById.get(m.id);
           if (company && (company.recruiters?.length || 0) > 0) {
             out.push({ company, similarity: m.similarity });
@@ -262,9 +264,9 @@ export default function RecruiterDirectory() {
         }
         setSuggestions(out);
       })
-      .catch(() => { /* aborted or failed — show nothing extra */ })
-      .finally(() => setSuggesting(false));
-    return () => ctrl.abort();
+      .catch(() => { if (!cancelled) setSuggestions([]); /* failed — show nothing extra */ })
+      .finally(() => { if (!cancelled) setSuggesting(false); });
+    return () => { cancelled = true; };
   }, [noKeywordResults, searchQuery, companyById]);
 
   // Slider-filtered view of the semantic matches.

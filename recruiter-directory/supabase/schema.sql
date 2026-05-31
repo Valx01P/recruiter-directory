@@ -52,3 +52,5 @@ create policy "public read company_embeddings"
   for select
   to anon, authenticated
   using (true);
+
+grant execute on function public.match_companies(vector, float, int) to anon, authenticated;

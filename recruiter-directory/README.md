@@ -36,8 +36,8 @@ Config lives in `.env.local`, which is **gitignored** — your real secrets neve
 | Variable | Used by | Notes |
 |---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | app + scripts | Project URL. Safe for the browser. |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | app | Browser-safe publishable key. |
-| `SUPABASE_SECRET_KEY` | route handler + scripts | **Server only.** Used to write embeddings and run the match RPC. |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | app (browser) | Browser-safe publishable key — used for the semantic `match_companies` RPC. |
+| `SUPABASE_SECRET_KEY` | indexing scripts only | **Server/local only.** Writes embeddings (`npm run embed`). Not needed at runtime. |
 | `SUPABASE_SERVICE_ROLE_KEY` | fallback for the above | Legacy service-role JWT. |
 | `SUPABASE_DB_URL` | `npm run db:setup` | **Session-pooler** URI (IPv4). The direct `db.<ref>` host is IPv6-only. |
 | `EMBEDDING_MODEL` / `EMBEDDING_DIM` | scripts + route | `Supabase/gte-small` / `384` (fast). Must match `vector(N)` in `supabase/schema.sql`. |
@@ -76,12 +76,17 @@ The merge script writes `recruiter-directory/data/recruiter.json` (what the UI i
 
 ## Deployment
 
-Mostly static, **plus one server route** (`/api/semantic-search`) that runs the embedding model in the Node runtime — so this is **not** a pure static export. Deploy to a platform that runs Next.js server functions:
+**Fully static / client-side** — there is no server function. The semantic fallback embeds the
+query *in the browser* (Transformers.js + gte-small via WASM) and calls the Supabase
+`match_companies` RPC directly with the publishable key. Deploy anywhere:
 
-- **Vercel** (easiest): `vercel --prod`. Set the env vars in the project settings.
-- Any Node host via `npm run build && npm start`.
+- **Vercel**: `vercel --prod`. Set `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` in the project env (those are the only vars the runtime needs; the secret key and DB URL are only for the local indexing scripts).
+- Any static/Node host via `npm run build`.
 
-The keyword/sector search is fully client-side; only the semantic fallback calls the server.
+> Why browser-side: `@huggingface/transformers` uses native onnxruntime, which can't load in a
+> Vercel serverless function (`libonnxruntime.so` missing). Embedding in the browser (WASM)
+> sidesteps that entirely. First semantic search downloads the ~30MB model to the browser
+> (cached thereafter); keyword/sector search is instant and needs no network.
 
 ## Notes
 
