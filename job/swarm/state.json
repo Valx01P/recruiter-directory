@@ -1,0 +1,84 @@
+{
+  "agents": {
+    "alpha": {
+      "sessionId": "swarm-alpha",
+      "pid": null,
+      "launchedAt": "2026-05-31T18:34:06.420Z",
+      "mode": "bolster",
+      "lastBatchMarker": null,
+      "unpopWhenLaunched": 0,
+      "lastInjected": 1780252681730,
+      "currentUnpop": 0
+    },
+    "beta": {
+      "sessionId": "swarm-beta",
+      "pid": null,
+      "launchedAt": "2026-05-31T18:34:07.922Z",
+      "mode": "coverage",
+      "lastBatchMarker": null,
+      "unpopWhenLaunched": 95,
+      "lastInjected": 1780252686431,
+      "currentUnpop": 95
+    },
+    "gamma": {
+      "sessionId": "swarm-gamma",
+      "pid": null,
+      "launchedAt": "2026-05-31T18:34:09.615Z",
+      "mode": "bolster",
+      "lastBatchMarker": null,
+      "unpopWhenLaunched": 0,
+      "lastInjected": 1780252695680,
+      "currentUnpop": 0
+    },
+    "delta": {
+      "sessionId": "swarm-delta",
+      "pid": null,
+      "launchedAt": "2026-05-31T18:34:11.123Z",
+      "mode": "coverage",
+      "lastBatchMarker": null,
+      "unpopWhenLaunched": 93,
+      "lastInjected": 1780252700596,
+      "currentUnpop": 93
+    },
+    "epsilon": {
+      "sessionId": "swarm-epsilon",
+      "pid": null,
+      "launchedAt": "2026-05-31T18:34:12.380Z",
+      "mode": "coverage",
+      "lastBatchMarker": null,
+      "unpopWhenLaunched": 73,
+      "lastInjected": 1780252705413,
+      "currentUnpop": 73
+    },
+    "zeta": {
+      "sessionId": "swarm-zeta",
+      "pid": null,
+      "launchedAt": "2026-05-31T18:34:13.825Z",
+      "mode": "bolster",
+      "lastBatchMarker": null,
+      "unpopWhenLaunched": 0,
+      "lastInjected": 1780252714806,
+      "currentUnpop": 0
+    },
+    "eta": {
+      "sessionId": "swarm-eta",
+      "pid": null,
+      "launchedAt": "2026-05-31T18:34:15.552Z",
+      "mode": "coverage",
+      "lastBatchMarker": null,
+      "unpopWhenLaunched": 20,
+      "lastInjected": 1780252719416,
+      "currentUnpop": 20
+    },
+    "theta": {
+      "sessionId": "swarm-theta",
+      "pid": null,
+      "launchedAt": "2026-05-31T18:34:17.296Z",
+      "mode": "coverage",
+      "lastBatchMarker": null,
+      "unpopWhenLaunched": 96,
+      "lastInjected": 1780252724097,
+      "currentUnpop": 96
+    }
+  }
+}

@@ -154,8 +154,10 @@ See `recruiter-directory/README.md` for details.
 - This is for personal outreach, not commercial scraping.
 - LinkedIn ToS: manual research is generally fine; bulk automation is not.
 
-Last workflow update: 2026-05-30
+Last workflow update: 2026-06-05
 Owner: Pablo Valdes
+
+**Current operating mode (see job/AGENT.md)**: 8-agent parallel with dedicated partition files (`job/recruiter-alpha.json` through `job/recruiter-theta.json`). After edits to a partition file, run `node job/scripts/merge-recruiter-partitions.js` to update the canonical `job/recruiter.json` + UI copies. All agent work now happens exclusively in the per-agent partition files. Minimum batch size is 10 companies.
 ```
 
 Now, update the todo and start populating some using tools.

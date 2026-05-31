@@ -1,14 +1,44 @@
 # Recruiter Population Plan — Full 1251 Companies
 
-**Goal**: Systematically populate high-quality university / early-career / SWE & AI intern recruiters for every company in `job/recruiter.json` that has (or is likely to have) structured internship programs.
+**Goal**: Systematically populate high-quality university / early-career / SWE & AI intern recruiters for every company in `job/recruiter.json` (and its 6 partition files) that has (or is likely to have) structured internship programs.
 
-**Current Status (as of 2026-06-02)**:
+**Current Status (as of 2026-06-05)**:
 - Total companies: 1,251
-- Priority 1: 39 / 39 complete (112 recruiters)
-- Priority 2: 17+ populated (out of 93)
-- Priority 3: 22+ populated (out of 1,119)
-- Total recruiters: 218
-- Operating mode: **4-agent parallel split** (see `job/GROK.md` for partition details and agent instructions). One agent per ID quadrant (Alpha C0001–C0313, Beta C0314–C0626, Gamma C0627–C0939, Delta C0940–C1251).
+- Populated: 647 with 1,258 total recruiters
+- Operating mode: **8-agent parallel split with dedicated files** (see `job/AGENT.md` for full partition details + agent instructions).
+  - Agents edit **only** their partition file: `job/recruiter-alpha.json` through `job/recruiter-theta.json`
+  - After batches they run `node job/scripts/merge-recruiter-partitions.js` to update canonical + UI
+  - Minimum batch size: **at least 10 companies** per session (no more tiny "keep going" check-ins)
+  - Partitions:
+    - Alpha: C0001–C0157 (157 cos, 130 pop, 299 recs) — NVIDIA → Kaseya
+    - Beta: C0158–C0314 (157 cos, 38 pop, 53 recs) — UKG → IMC Trading
+    - Gamma: C0315–C0471 (157 cos, 157 pop, 257 recs) — Optiver → Tractor Supply
+    - Delta: C0472–C0627 (156 cos, 36 pop, 72 recs) — AutoZone → Proofpoint
+    - Epsilon: C0628–C0783 (156 cos, 52 pop, 84 recs) — Mimecast → Prefect
+    - Zeta: C0784–C0939 (156 cos, 123 pop, 256 recs) — Dagster Labs → Scopely
+    - Eta: C0940–C1095 (156 cos, 96 pop, 185 recs) — Jam City → Better.com
+    - Theta: C1096–C1251 (156 cos, 15 pop, 52 recs) — Blend → Insight Global
+
+**Note on history**: Below this point are the detailed logs from the prior 4-agent and 6-agent phases. Those logs are preserved for audit. New session logs should be added under the current "8-Agent Phase" heading. All future work uses the 8 dedicated partition files + the ≥10 company batch rule.
+
+---
+
+## 8-Agent Phase (Current — 2026-06-05 onward)
+
+**Operating mode**: 8 parallel research agents on dedicated non-conflicting partition files (see `job/HUMAN_START.md` for the current one-command workflow, plus `job/AGENT.md` for background).
+
+- Agents edit **only** their assigned `job/recruiter-*.json` file (Alpha through Theta).
+- Status + edits always target the agent's partition file.
+- **Minimum batch size**: at least 10 companies per batch (complete the batch + merge before reporting).
+- After every batch: `node job/scripts/merge-recruiter-partitions.js`
+- Add new session logs under this heading (newest first preferred).
+- When a partition is complete, announce + offer help on remaining ones.
+
+**8-agent split executed**: 2026-06-05. 8 partition files + updated merge script + generic AGENT.md created. All agents now work independently with zero file conflicts and larger autonomous batches.
+
+Add your 8-agent session logs below this line.
+
+---
 
 **Realistic Pace**:
 - 5–8 companies per focused session (using parallel web_search + editing).
@@ -155,9 +185,9 @@ Example groups:
 
 **For solo / small-team work**: Follow the batch lists below.
 
-**For 4-agent parallel work (recommended now)**: See `job/GROK.md`. Each agent is assigned a fixed ID range (Alpha/Beta/Gamma/Delta) and works independently on unpopulated companies inside that range using the exact same search + edit protocol. No coordination needed beyond occasional sync of the shared JSON + plan log.
+**For 8-agent parallel work (current mode)**: See `job/AGENT.md`. Each agent is assigned a fixed ID range (Alpha through Theta) and a dedicated partition file. They work independently with a minimum batch of 10 companies. No coordination needed beyond the merge script after batches.
 
-1. **Pick the next batch** from this plan (never skip around) **or your assigned range in GROK.md**.
+1. **Pick the next batch** from this plan (never skip around) **or your assigned range in AGENT.md** (minimum 10 companies).
 2. **Run parallel web_search calls** (4–6 companies at a time, 2–3 queries each).
 3. **Review results** quickly — open promising profile URLs with `open_page` or `browse_page` when needed (accept that many will be paywalled).
 4. **Edit the JSON** using the safe node one-liner pattern (see Workflow doc).
@@ -3029,4 +3059,37 @@ Ready for the next batch on the remaining empty ones (Kimberly-Clark C0499, Clor
 **Notable observations**: Strong yield on auto/tech (Lucid Motors delivered multiple current technical TA/Recruiters; Motorola had excellent global TA head + Chicago team). Gaming (Unity, Take-Two/Rockstar, Niantic) yielded good TA/People leads + active eng manager hiring (broadened where dedicated university titles were lighter). Networking (Juniper) and autonomous (Cruise, Aurora) used min broadened per rules (eng managers, People leadership, technical recruiters). All min 2-3, current US/real signals prioritized, then move on for volume. No over-research. 8 more companies filled in the P3 tail.
 
 Full node -e (+19) + 2x cp + log. Meta.last_updated: 2026-06-05.
+
+**2026-06-07 — Agent 1 (Alpha) Final Coverage Batch (C0145–C0156, 12 P3 companies)**: Per user speed rule (min 2–3 solid LinkedIn reach-outs per company, dedicated university/early-career first then broadened TA/eng managers for thin signals — then move on immediately; 5–8 min avg per co via 2–3 parallel web_search + recruiter_search_url + generate-search-batch.js). Completed the last 12 unpopulated in Alpha range (C0145 Garmin through C0156 GE Aerospace). All P3 industrial/hardware/EdTech/Fintech/semicon/aerospace cluster.
+
+**Added +32 recruiters** (12 companies, 2–4 per):
+- Garmin (C0145 P3): +3 — Jen Larson (Team Leader University Recruitment / Sr UR, embedded SWE focus, Olathe), Samantha Zupko (UR Recruiter), Anna Dixon (UR Recruiter). Strong dedicated team for large 300+ intern program.
+- Zebra Technologies (C0146 P3): +2 — Matthew Geyer (Global Early Careers TA Manager, ex-AWS, Campus Forward), Deanna Molinelli (Sr Lead TA Partner supporting early career).
+- Honeywell (C0147 P3): +3 — Sherry Karr (UR, Dallas, Aerospace SWE interns/new grads), Alyson Davis (UR Leader w/ Korn Ferry, Apex NC), Sherley Rodriguez (TA Mgr – UR, Atlanta).
+- Rockwell Automation (C0148 P3): +3 — Jaimie Thomas (Early Career Workforce Mgr, Milwaukee), Liz Harbour (Early Careers Recruiter, Bay Area), Nina Unger (Early Careers Recruiter, technical/embedded SWE co-ops).
+- Keysight Technologies (C0149 P3): +2 — Maria O'Neill (UR Program Mgr, Bay Area, posts intern welcomes), MaryEllen Dickerson (Sr Technical Recruiter / TA Lead, campus events).
+- Dolby Laboratories (C0150 P3): +2 — Sana Teramoto (Sr UR Recruiter, SF Bay, SWE/tech interns, Brown alum), Mariela Vargas-Delvas (Sr Recruiter w/ prior UR role, eng student events).
+- Coursera (C0151 P3): +3 — Monica Kirst (Head Global Recruiting Ops & Programs, ex-Google/ Gusto), Rozalin Pirnejad (Dir TA NAMER/LATAM, ex-LinkedIn Campus, engineering focus), Carole Popkins (Principal Recruiter, Boston).
+- Duolingo (C0152 P3): +2 — Jaylyn Jones (UR, Pittsburgh, highly active on SWE Thrive interns/new grads, events, conversion stats), Ciara Boeltz (Sr UR Recruiter, Pittsburgh).
+- Chime (C0153 P3): +2 — Amy Silverman (Dir of Recruiting / Head of Recruiting, Chicago, strategic TA), Alena Arambula (Lead Technical Recruiter, SWE/eng pipelines). (Lean dedicated UR function; former Kiara Collins now at Intuit.)
+- Toast (C0154 P3): +3 — Rachel Deras (Assoc Mgr TA Early Career, leads global intern/new grad/SWE program), Jessica Dilling (Early Careers Recruiter, SWE Intern posts), Brie Olootu (Tech TA Partner w/ prior campus recruiting exp).
+- Samsung Semiconductor (US) (C0155 P3): +3 — Grace Nicolas (UR, Bay Area), Caitlin Chausse (UR/TA SRA, AI/ML/CV/robotics/SWE research interns, active 2026 posts), Netania Singh (UR Programs SRA, early talent pipelines).
+- GE Aerospace (C0156 P3): +4 — Alissa Friedman (US Early Career Recruiting Leader, Cincinnati, Edison/intern/co-op strategy), Maeve Madsen (Intern Experience Leader), Suzanne Wolff (Research Early Career & UR Leader, Schenectady), Stan Whatley (Sr TA Partner, SWE/SRE technical focus).
+
+Full 3x node -e edits (safe pattern, only alpha.json) + merge-recruiter-partitions.js + status. Alpha meta.last_updated: 2026-06-07. Partition now 157/157 populated, 374 recruiters (was 342 pre-batch).
+
+**Range status post-batch**:
+Range C0001–C0157: 157 total
+Populated: 157 | Unpopulated: 0
+Total recruiters in partition: 374
+
+**=== RANGE COVERAGE COMPLETE FOR ALPHA (C0001–C0157) ===**
+
+All 157 companies in Alpha partition now have recruiters (min viable 2–3 per the rules; P3 signals varied as expected for industrial/older-tech/niche EdTech/Fintech). Strongest dedicated university/early-career teams: Garmin, Rockwell Automation, GE Aerospace, Samsung SRA (AI/research), Toast, Duolingo, Honeywell. Lighter/lean TA (Coursera, Chime, Keysight, Zebra, Dolby): 2 + search URL notes per speed/quality rules. No over-research; moved efficiently. Pre-built recruiter_search_url remains on every entry for future manual harvests or Phase 2 bolster.
+
+Alpha is now available for Phase 2 bolster (if orchestrator directs) or re-assignment to help other agents (Beta/Delta/Theta still have large unpop tails). Offer capacity to swarm.
+
+Observations from tail P3: Cyber/defense/aerospace/semicon had usable but thinner pure "university recruiter" titles vs pure tech/consumer; many route through broader TA or technical recruiters — broadened per rules still yielded credible SWE/AI intern reach-outs. Consulting/fintech/EdTech mixed but actionable.
+
+Ready for orchestrator "continue" / re-assign / bolster directive. No unpopulated remain in C0001–C0157.
 
