@@ -2,7 +2,14 @@
 // on the server (gte-server/), so the browser just POSTs the query text and gets
 // back the nearest companies. No model download, no Supabase client in the browser.
 
-const BASE = process.env.NEXT_PUBLIC_GTE_SERVER_URL || "http://localhost:8787";
+// Only fall back to localhost in dev. In production an UNSET env must NOT default
+// to localhost — a deployed site fetching http://localhost:8787 makes the browser
+// pop a scary "wants to access devices on your local network" permission prompt
+// (and points at the visitor's own machine). With no configured server we throw,
+// so the UI shows its graceful "semantic search offline" hint instead.
+const BASE =
+  process.env.NEXT_PUBLIC_GTE_SERVER_URL ||
+  (process.env.NODE_ENV === "development" ? "http://localhost:8787" : "");
 
 export type SemanticMatch = { id: string; similarity: number };
 
@@ -14,6 +21,7 @@ export type SemanticMatch = { id: string; similarity: number };
 export async function semanticSearch(query: string, limit = 100): Promise<SemanticMatch[]> {
   const q = query.trim();
   if (q.length < 2) return [];
+  if (!BASE) throw new Error("NEXT_PUBLIC_GTE_SERVER_URL is not set");
 
   const res = await fetch(`${BASE}/search`, {
     method: "POST",
