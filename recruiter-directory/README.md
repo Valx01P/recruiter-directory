@@ -86,8 +86,9 @@ so it does not also need a duplicate `public/data/recruiter.json`.
 Two pieces:
 
 1. **This frontend** — fully static. Deploy to Vercel (`vercel --prod`) or any static host. The
-   only runtime env var it needs is `NEXT_PUBLIC_GTE_SERVER_URL` pointing at your deployed
-   gte-server. Keyword/sector search is instant and offline; only the semantic fallback calls
+   public build-time env var `NEXT_PUBLIC_GTE_SERVER_URL` must point at your deployed gte-server.
+   Because it is a `NEXT_PUBLIC_*` value, set it before building/deploying and redeploy after
+   changing it. Keyword/sector search is instant and offline; only the semantic fallback calls
    the server.
 2. **gte-server** — an always-on Node process (model + Supabase query). Host it somewhere that
    keeps a persistent process (Render/Railway/Fly/VM), **not** a serverless platform. See

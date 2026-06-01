@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "db:setup": "tsx scripts/setup-db.ts",
+    "clear:embeddings": "tsx scripts/clear-embeddings.ts",
     "embed": "tsx scripts/embed-companies.ts",
-    "semantic:reindex": "npm run db:setup && npm run embed"
+    "semantic:reindex": "npm run db:setup && npm run clear:embeddings && npm run embed"
   },
   "dependencies": {
     "gsap": "^3.15.0",

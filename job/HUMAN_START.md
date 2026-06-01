@@ -76,6 +76,36 @@ Use this only if you intentionally want to stop without merging:
 node job/scripts/codex-sector-orchestrator.js stop --no-merge
 ```
 
+## Refresh Smart Search
+
+Smart search uses Supabase `company_embeddings`, built from `recruiter-directory/data/recruiter.json`.
+The deleted sector JSONs and swarm logs are not used by the vector DB.
+
+After a merge changes the dataset, refresh the vector index:
+
+```bash
+cd recruiter-directory
+npm run semantic:reindex
+```
+
+`semantic:reindex` runs the schema setup, clears old `company_embeddings` rows, and then embeds the bundled data through gte-server. Make sure `../gte-server` is running first and `.env.local` has the Supabase credentials.
+
+If the direct DB connection cannot be reached, paste these SQL files in Supabase SQL Editor:
+
+1. `recruiter-directory/supabase/schema.sql`
+2. `recruiter-directory/supabase/reset-company-embeddings.sql`
+
+Then run `cd recruiter-directory && npm run embed`.
+
+If the frontend says smart search is offline, check these in order:
+
+1. `gte-server` is running: `cd gte-server && npm run dev`.
+2. The frontend has `NEXT_PUBLIC_GTE_SERVER_URL` set, usually `http://localhost:8787` for local dev.
+   In production this is baked into the frontend at build/deploy time, so redeploy the frontend after changing it.
+3. `gte-server/.env` has `SUPABASE_URL` and `SUPABASE_SECRET_KEY`.
+4. The vector index has been populated with `cd recruiter-directory && npm run semantic:reindex`.
+5. For a deployed frontend, `gte-server` has `ALLOWED_ORIGINS` set to that frontend origin.
+
 ## After Cleanup
 
 For a lean app/repo commit, keep the canonical aggregate JSON and workflow code, but do not keep generated run artifacts:
