@@ -416,8 +416,13 @@ export default function RecruiterDirectory() {
   const handleExportClick = () => {
     if (!user) {
       setExportArmed(false);
-      toast.error("Sign in to export CSV", {
-        description: "CSV export is available for signed-in users.",
+      toast("Sign in to export CSV", {
+        duration: 1200,
+        className: "text-xs !w-[180px] !px-3 justify-center",
+        classNames: {
+          content: "items-center text-center",
+          title: "text-center",
+        },
       });
       return;
     }
