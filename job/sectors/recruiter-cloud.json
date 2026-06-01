@@ -23993,6 +23993,19 @@
           "responded": false,
           "date_contacted": "",
           "notes": "The Org Harness Human Resources Team lists Alice as Lead Recruiter, Go-to-market; Split hiring now routes through Harness after acquisition."
+        },
+        {
+          "name": "Joseph D.",
+          "title": "Senior Director, Talent Acquisition at Harness",
+          "linkedin_url": "https://theorg.com/org/harness/teams/human-resources-team",
+          "email": "",
+          "location": "",
+          "focus_area": "Senior talent acquisition leadership for Harness recruiting operations",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Harness Human Resources Team lists Joseph D. as Senior Director, Talent Acquisition; relevant parent-company recruiting contact for Split/Feature Management roles."
         }
       ]
     },
@@ -24996,6 +25009,32 @@
           "responded": false,
           "date_contacted": "",
           "notes": "The Org Pulumi Engineering team lists Komal as Director Of Engineering; included as a technical hiring-manager contact in bolster mode."
+        },
+        {
+          "name": "Casey Huang",
+          "title": "Software Engineering Manager at Pulumi",
+          "linkedin_url": "https://theorg.com/org/pulumi/teams/engineering",
+          "email": "",
+          "location": "",
+          "focus_area": "Software engineering management for Pulumi infrastructure-as-code platform",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Pulumi Engineering team lists Casey as Software Engineering Manager; Pulumi org chart also shows active hiring markers."
+        },
+        {
+          "name": "Justin Van Patten",
+          "title": "Engineering Manager at Pulumi",
+          "linkedin_url": "https://theorg.com/org/pulumi/teams/engineering",
+          "email": "",
+          "location": "",
+          "focus_area": "Engineering management for cloud infrastructure and developer tooling teams",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Pulumi Engineering team lists Justin as Engineering Manager; useful technical team lead when recruiter coverage is thin."
         }
       ]
     },
@@ -25251,6 +25290,45 @@
           "responded": false,
           "date_contacted": "",
           "notes": "The Org Doppler Engineering Team lists David as Senior Data Engineer; Doppler public general application page says the company is scaling hiring goals."
+        },
+        {
+          "name": "Franklin Davenport",
+          "title": "Senior Full Stack Engineer at Doppler",
+          "linkedin_url": "https://theorg.com/org/doppler/teams/engineering-team",
+          "email": "",
+          "location": "",
+          "focus_area": "Full-stack engineering for Doppler developer security workflows",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Doppler Engineering Team lists Franklin as Senior Full Stack Engineer; added as technical staff after focused recruiter searches were thin."
+        },
+        {
+          "name": "Joel W.",
+          "title": "Sr. Technical Customer Success Engineer at Doppler",
+          "linkedin_url": "https://theorg.com/org/doppler/teams/engineering-team",
+          "email": "",
+          "location": "",
+          "focus_area": "Technical customer success and implementation for secrets-management users",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Doppler Engineering Team lists Joel W. as Sr. Technical Customer Success Engineer; relevant for technical platform and customer-facing engineering outreach."
+        },
+        {
+          "name": "Mike Sellitto",
+          "title": "Software Engineer at Doppler",
+          "linkedin_url": "https://theorg.com/org/doppler/teams/engineering-team",
+          "email": "",
+          "location": "",
+          "focus_area": "Software engineering for Doppler core platform",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Doppler Engineering Team lists Mike as Software Engineer; included for small-team technical coverage with public hiring/general-application evidence."
         }
       ]
     },
@@ -25787,6 +25865,58 @@
           "responded": false,
           "date_contacted": "",
           "notes": "The Org Dagster Software Development Team lists Matt as Engineering Manager; added as a technical hiring-manager contact."
+        },
+        {
+          "name": "Yuhan Luo",
+          "title": "Engineering Manager at Dagster",
+          "linkedin_url": "https://theorg.com/org/dagster/teams/software-development-team",
+          "email": "",
+          "location": "",
+          "focus_area": "Engineering management for Dagster data platform development",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Dagster Software Development Team lists Yuhan as Engineering Manager; included in bolster mode for technical team coverage."
+        },
+        {
+          "name": "Shalabh Chaturvedi",
+          "title": "Software Engineer at Dagster",
+          "linkedin_url": "https://theorg.com/org/dagster/teams/software-development-team",
+          "email": "",
+          "location": "",
+          "focus_area": "Software engineering for Dagster orchestration and developer tooling",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Dagster Software Development Team and LinkedIn company employee listing identify Shalabh as a Dagster software engineer."
+        },
+        {
+          "name": "Nicklaus Roach",
+          "title": "Data Engineer at Dagster",
+          "linkedin_url": "https://theorg.com/org/dagster/teams/software-development-team",
+          "email": "",
+          "location": "",
+          "focus_area": "Data engineering and applied platform work around Dagster pipelines",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Dagster Software Development Team lists Nicklaus as Data Engineer; LinkedIn search results also show a Dagster Labs profile for Nicklaus."
+        },
+        {
+          "name": "Alex Langenfeld",
+          "title": "Software Engineer at Dagster",
+          "linkedin_url": "https://theorg.com/org/dagster/teams/software-development-team",
+          "email": "",
+          "location": "",
+          "focus_area": "Software engineering for Dagster core platform",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Dagster Software Development Team lists Alex as Software Engineer; added after recruiter searches returned limited net-new contacts."
         }
       ]
     },
@@ -25895,6 +26025,45 @@
           "responded": false,
           "date_contacted": "",
           "notes": "The Org Jaime Onofre profile lists Jelena as Technical Recruiter in Zapier technical recruiting; a 2026 Zapier job post says Jaime leads global technical recruiting."
+        },
+        {
+          "name": "Tiffany Daley",
+          "title": "Senior Recruiter, Build Team at Zapier",
+          "linkedin_url": "https://theorg.com/org/zapier/org-chart/jaime-onofre",
+          "email": "",
+          "location": "",
+          "focus_area": "Senior recruiting for Zapier build, product, and engineering teams",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Jaime Onofre profile lists Tiffany as Senior Recruiter, Build Team in Zapier technical recruiting."
+        },
+        {
+          "name": "Marta Mierzejewska",
+          "title": "Sr Technical Recruiter at Zapier",
+          "linkedin_url": "https://theorg.com/org/zapier/org-chart/jaime-onofre",
+          "email": "",
+          "location": "",
+          "focus_area": "Technical recruiting for Zapier software engineering and applied AI roles",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Jaime Onofre profile lists Marta as Sr Technical Recruiter; Zapier technical recruiter posting mentions applied AI, software engineering, data, and SRE hiring."
+        },
+        {
+          "name": "Luciana Raleigh",
+          "title": "Technical Recruiter at Zapier",
+          "linkedin_url": "https://theorg.com/org/zapier/org-chart/jaime-onofre",
+          "email": "",
+          "location": "",
+          "focus_area": "Technical recruiting for Zapier product-building teams",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Jaime Onofre profile lists Luciana as Technical Recruiter in Zapier technical recruiting."
         }
       ]
     },
@@ -26297,6 +26466,45 @@
           "responded": false,
           "date_contacted": "",
           "notes": "The Org profile lists Zach as VP of Global Technical Support Engineering for MuleSoft at Salesforce since May 2022, with direct MuleSoft support engineers under him."
+        },
+        {
+          "name": "Anthony Amorim",
+          "title": "Technical Recruiter at Salesforce",
+          "linkedin_url": "https://theorg.com/org/salesforce/teams/recruitment-services",
+          "email": "",
+          "location": "",
+          "focus_area": "Technical recruiting for Salesforce engineering and platform roles including MuleSoft routing",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Salesforce Recruitment Services team lists Anthony as Technical Recruiter; relevant parent-company recruiter contact for MuleSoft."
+        },
+        {
+          "name": "April Freese",
+          "title": "Technical Recruiter at Salesforce",
+          "linkedin_url": "https://theorg.com/org/salesforce/teams/recruitment-services",
+          "email": "",
+          "location": "",
+          "focus_area": "Technical recruiting for Salesforce cloud, platform, and integration teams",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Salesforce Recruitment Services team lists April as Technical Recruiter; Salesforce org chart lists MuleSoft Sales and Engagement as a major team."
+        },
+        {
+          "name": "Beatriz Assis Junqueira",
+          "title": "Senior Technical Recruiter at Salesforce",
+          "linkedin_url": "https://theorg.com/org/salesforce/teams/recruitment-services",
+          "email": "",
+          "location": "",
+          "focus_area": "Senior technical recruiting for Salesforce software and integration roles",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "The Org Salesforce Recruitment Services team lists Beatriz as Senior Technical Recruiter; relevant for MuleSoft/Salesforce technical hiring."
         }
       ]
     },
