@@ -3,7 +3,7 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import {
   Search, ExternalLink, Users, Calendar, Download,
-  ArrowUpDown, X, ChevronDown, ChevronUp, Copy, Check, Sun, Moon
+  ArrowUpDown, X, ChevronDown, ChevronUp, Copy, Check, Sun, Moon, Lock
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { gsap } from 'gsap';
@@ -62,7 +62,7 @@ export default function RecruiterDirectory() {
   // Connection tracking — set of `${companyId}#${idx}` keys. Persisted to
   // localStorage always (works signed-out), and mirrored to the DB per-user
   // (via gte-server) when signed in. Signing in merges local marks into the DB.
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const [connected, setConnected] = useState<Set<string>>(new Set());
   useEffect(() => {
     try {
@@ -269,6 +269,7 @@ export default function RecruiterDirectory() {
   const [suggesting, setSuggesting] = useState(false);
   const [semanticError, setSemanticError] = useState(false);
   const noKeywordResults = filteredCompanies.length === 0 && searchQuery.trim().length >= 2;
+  const smartSearchLocked = noKeywordResults && !authLoading && !user;
 
   // User-tunable similarity cutoff for the semantic results (persisted).
   const [simThreshold, setSimThreshold] = useState(0.74);
@@ -284,7 +285,7 @@ export default function RecruiterDirectory() {
   };
 
   useEffect(() => {
-    if (!noKeywordResults) {
+    if (!noKeywordResults || !user) {
       setSuggestions([]);
       setSuggesting(false);
       setSemanticError(false);
@@ -310,7 +311,7 @@ export default function RecruiterDirectory() {
       .catch(() => { if (!cancelled) { setSuggestions([]); setSemanticError(true); } })
       .finally(() => { if (!cancelled) setSuggesting(false); });
     return () => { cancelled = true; };
-  }, [noKeywordResults, searchQuery, companyById]);
+  }, [noKeywordResults, searchQuery, companyById, user]);
 
   // Slider-filtered view of the semantic matches.
   const shownSuggestions = useMemo(
@@ -413,6 +414,13 @@ export default function RecruiterDirectory() {
   const [exportArmed, setExportArmed] = useState(false);
   const exportTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const handleExportClick = () => {
+    if (!user) {
+      setExportArmed(false);
+      toast.error("Sign in to export CSV", {
+        description: "CSV export is available for signed-in users.",
+      });
+      return;
+    }
     if (!exportArmed) {
       setExportArmed(true);
       exportTimer.current = setTimeout(() => setExportArmed(false), 3500);
@@ -475,14 +483,15 @@ export default function RecruiterDirectory() {
 
               <button
                 onClick={handleExportClick}
-                disabled={totalRecruiters === 0}
+                disabled={totalRecruiters === 0 || authLoading}
+                title={!user ? "Sign in to export CSV" : exportArmed ? "Confirm CSV export" : "Export recruiters as CSV"}
                 className={`inline-flex items-center gap-1.5 rounded-full px-3 h-8 text-xs font-medium border transition-colors disabled:opacity-50 ${
                   exportArmed
                     ? 'bg-emerald-600 border-emerald-600 text-white'
                     : 'border-zinc-200 dark:border-zinc-800'
                 }`}
               >
-                {exportArmed ? <Check className="h-3.5 w-3.5" /> : <Download className="h-3.5 w-3.5" />}
+                {!user ? <Lock className="h-3.5 w-3.5" /> : exportArmed ? <Check className="h-3.5 w-3.5" /> : <Download className="h-3.5 w-3.5" />}
                 {exportArmed ? 'Confirm export' : 'Export CSV'}
               </button>
 
@@ -647,6 +656,11 @@ export default function RecruiterDirectory() {
                   No exact matches for <span className="font-medium text-zinc-700 dark:text-zinc-300">“{searchQuery.trim()}”</span>.
                   {suggesting && <span className="ml-2 text-xs text-zinc-400">finding closest companies…</span>}
                 </div>
+                {smartSearchLocked && (
+                  <div className="max-w-md mx-auto text-center text-sm text-zinc-700 dark:text-zinc-300 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3">
+                    Sign in to use smart “did you mean” search. Keyword and industry search still work without an account.
+                  </div>
+                )}
                 {suggestions.length > 0 && (
                   <div className="max-w-3xl mx-auto">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
@@ -699,12 +713,12 @@ export default function RecruiterDirectory() {
                     )}
                   </div>
                 )}
-                {!suggesting && semanticError && (
+                {!smartSearchLocked && !suggesting && semanticError && (
                   <div className="max-w-md mx-auto text-center text-sm text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 rounded-xl px-4 py-3">
                     Smart “did you mean” search is offline right now. Keyword &amp; industry search still work — try a company name, an industry (e.g. “fintech”), or <button onClick={clearFilters} className="underline">reset filters</button>.
                   </div>
                 )}
-                {!suggesting && !semanticError && suggestions.length === 0 && (
+                {!smartSearchLocked && !suggesting && !semanticError && suggestions.length === 0 && (
                   <div className="text-center text-sm text-zinc-500">
                     No close matches either. <button onClick={clearFilters} className="underline">Reset filters</button>
                   </div>

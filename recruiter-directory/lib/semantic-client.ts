@@ -25,6 +25,7 @@ export async function semanticSearch(query: string, limit = 100): Promise<Semant
 
   const res = await fetch(`${BASE}/search`, {
     method: "POST",
+    credentials: "include",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ q, limit, threshold: 0 }),
   });

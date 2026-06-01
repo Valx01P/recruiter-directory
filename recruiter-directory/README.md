@@ -7,12 +7,12 @@ Fast, searchable directory of US tech company recruiters (focus: university / ea
 - **Three-tier search**
   1. Keyword match across companies + every recruiter field (name, title, location, notes, focus).
   2. **Industry/sector synonyms** — type `defense`, `big tech`, `fintech`, `machine learning`, `ecommerce`… and it matches even when that exact word isn't in the company name or category.
-  3. **Semantic "did you mean"** — when a query gets zero keyword hits, the browser calls the **gte-server** service (see `../gte-server`), which embeds the query (gte-small, 384-dim) and runs a Supabase pgvector search, returning the closest companies *by meaning* ("company that makes rockets" → SpaceX/Astra; "self driving cars" → Cruise/Lucid). A **Min-match slider** lets you tune how strict/loose the matches are.
+  3. **Semantic "did you mean"** — for signed-in users, when a query gets zero keyword hits, the browser calls the **gte-server** service (see `../gte-server`), which embeds the query (gte-small, 384-dim) and runs a Supabase pgvector search, returning the closest companies *by meaning* ("company that makes rockets" → SpaceX/Astra; "self driving cars" → Cruise/Lucid). A **Min-match slider** lets you tune how strict/loose the matches are.
 - **Industry sector chips** fold 130+ raw categories into ~16 searchable industries, each with a live count.
 - Priority filters (P1 = top targets), connection-status filters, "only unconnected people" toggle.
 - Per-recruiter: open LinkedIn profile, one-click **Copy URL**, **Message** button; per-company **Find more recruiters** LinkedIn People search.
-- **Export CSV** of every populated recruiter.
-- **Accounts** (optional): sign in with Google or email/password (handled by gte-server, JWT in an HttpOnly cookie). Signed out, connection checkmarks save to localStorage; on sign-in they merge into the DB and sync across devices.
+- **Export CSV** of every populated recruiter for signed-in users.
+- **Accounts**: sign in with Google or email/password (handled by gte-server, JWT in an HttpOnly cookie). Signed out, connection checkmarks save to localStorage; on sign-in they merge into the DB and sync across devices. Smart semantic search and CSV export are signed-in features.
 - Dark mode; mobile responsive.
 
 ## Quick start (local)
@@ -24,7 +24,7 @@ cp .env.example .env.local     # then fill in your Supabase values (see below)
 npm run dev                    # http://localhost:3000
 ```
 
-The keyword + sector search works with **no setup**. The semantic fallback needs the Supabase index + the running **gte-server** (see below and `../gte-server`).
+The keyword + sector search works with **no setup**. The semantic fallback needs a signed-in user, the Supabase index, and the running **gte-server** (see below and `../gte-server`).
 
 ## Environment variables
 

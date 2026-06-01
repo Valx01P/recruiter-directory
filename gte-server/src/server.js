@@ -107,7 +107,7 @@ app.post("/embed", async (req, res) => {
   }
 });
 
-app.post("/search", async (req, res) => {
+app.post("/search", requireUser, async (req, res) => {
   try {
     if (!supabase) return res.status(500).json({ error: "Supabase not configured" });
     const q = String(req.body?.q || "").trim();

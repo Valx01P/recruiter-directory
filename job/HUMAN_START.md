@@ -80,6 +80,7 @@ node job/scripts/codex-sector-orchestrator.js stop --no-merge
 
 Smart search uses Supabase `company_embeddings`, built from `recruiter-directory/data/recruiter.json`.
 The deleted sector JSONs and swarm logs are not used by the vector DB.
+The frontend and backend gate smart search behind sign-in; CSV export is also a signed-in feature.
 
 After a merge changes the dataset, refresh the vector index:
 
