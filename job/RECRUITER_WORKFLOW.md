@@ -37,6 +37,8 @@ Each company also carries:
 
 Descriptions should be 18-35 words, concrete, and conservative. Codex sector workers should backfill descriptions for existing populated companies as well as new companies they touch.
 
+Contact targets are intentionally different by company type: smaller Miami / South Florida startup teams only need 5 good recruiter or technical hiring contacts, while medium/larger companies elsewhere in the United States remain capped at 10.
+
 When adding new companies during sector expansion, reserve IDs with:
 
 ```bash

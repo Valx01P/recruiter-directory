@@ -74,6 +74,16 @@ function isPresent(value) {
   return value !== undefined && value !== null && String(value).trim() !== "";
 }
 
+function isSouthFloridaCompany(company) {
+  return /miami|fort lauderdale|boca raton|west palm beach|coral gables|doral|wynwood|brickell|aventura|hollywood|pompano|delray|south florida/i.test(
+    String(company.hq_location || "")
+  );
+}
+
+function contactTargetForCompany(company) {
+  return isSouthFloridaCompany(company) ? 5 : 10;
+}
+
 function recruiterKey(recruiter) {
   const url = normalizeUrl(recruiter.linkedin_url);
   if (url) return `url:${url}`;
@@ -240,7 +250,7 @@ partitionConfig.files.forEach(({ fname, agentLabel: fallbackAgentLabel, range: f
   const pop = partCos.filter(c => c.recruiters && c.recruiters.length > 0).length;
   const recs = partCos.reduce((s,c)=>s+(c.recruiters||[]).length,0);
   const missingDescriptions = partCos.filter(c => !String(c.description || "").trim()).length;
-  const belowContactTarget = partCos.filter(c => (c.recruiters || []).length < 10).length;
+  const belowContactTarget = partCos.filter(c => (c.recruiters || []).length < contactTargetForCompany(c)).length;
   const agentLabel =
     (data.meta && data.meta.sector && data.meta.sector.label) ||
     (data.meta && data.meta.partition && data.meta.partition.agent) ||

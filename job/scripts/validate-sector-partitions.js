@@ -24,6 +24,16 @@ function normalizeCompanyName(s) {
     .replace(/\s+/g, " ");
 }
 
+function isSouthFloridaCompany(company) {
+  return /miami|fort lauderdale|boca raton|west palm beach|coral gables|doral|wynwood|brickell|aventura|hollywood|pompano|delray|south florida/i.test(
+    String(company.hq_location || "")
+  );
+}
+
+function contactTargetForCompany(company) {
+  return isSouthFloridaCompany(company) ? 5 : 10;
+}
+
 function main() {
   if (!fs.existsSync(MANIFEST_FILE)) {
     fail("Missing job/sectors/manifest.json");
@@ -70,7 +80,7 @@ function main() {
 
       const recCount = (company.recruiters || []).length;
       if (recCount > 0) populated++;
-      if (recCount < 10) underTen++;
+      if (recCount < contactTargetForCompany(company)) underTen++;
       if (!String(company.description || "").trim()) missingDescriptions++;
       recruiters += recCount;
     }
@@ -82,7 +92,7 @@ function main() {
   console.log(`Unique IDs: ${seenIds.size}`);
   console.log(`Populated: ${populated}`);
   console.log(`Missing descriptions: ${missingDescriptions}`);
-  console.log(`Companies below 10 contacts: ${underTen}`);
+  console.log(`Companies below contact target: ${underTen}`);
   console.log(`Recruiters / contacts: ${recruiters}`);
 
   if (manifest.total_companies !== total) {

@@ -1,318 +1,318 @@
 {
   "sectors": {
     "bigtech": {
-      "pid": 99122,
-      "batchNumber": 43,
-      "launchedAt": "2026-06-01T09:28:41.950Z",
-      "promptFile": "job/swarm/codex-sector-logs/bigtech-batch-0043-prompt.txt",
+      "pid": 17610,
+      "batchNumber": 62,
+      "launchedAt": "2026-06-01T17:26:47.023Z",
+      "promptFile": "job/swarm/codex-sector-logs/bigtech-batch-0062-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/bigtech.jsonl",
       "current": {
-        "total": 72,
-        "populated": 72,
+        "total": 113,
+        "populated": 113,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 6,
-        "totalRecruiters": 682,
-        "phase": "bolster"
+        "belowContactTarget": 0,
+        "totalRecruiters": 911,
+        "phase": "expand"
       },
       "fingerprint": {
-        "size": 465958,
-        "mtimeMs": 1780306005393
+        "size": 657218,
+        "mtimeMs": 1780334696402
       },
       "lastError": "",
       "lastWarning": ""
     },
     "fintech": {
-      "pid": 99098,
-      "batchNumber": 62,
-      "launchedAt": "2026-06-01T09:28:41.937Z",
-      "promptFile": "job/swarm/codex-sector-logs/fintech-batch-0062-prompt.txt",
+      "pid": 17598,
+      "batchNumber": 80,
+      "launchedAt": "2026-06-01T17:26:47.020Z",
+      "promptFile": "job/swarm/codex-sector-logs/fintech-batch-0080-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/fintech.jsonl",
       "current": {
-        "total": 154,
-        "populated": 154,
+        "total": 165,
+        "populated": 165,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 49,
-        "totalRecruiters": 1214,
-        "phase": "bolster"
+        "belowContactTarget": 0,
+        "totalRecruiters": 1595,
+        "phase": "expand"
       },
       "fingerprint": {
-        "size": 916765,
-        "mtimeMs": 1780305797332
+        "size": 1199580,
+        "mtimeMs": 1780334724697
       },
       "lastError": "",
       "lastWarning": ""
     },
     "insurance": {
-      "pid": 99158,
-      "batchNumber": 51,
-      "launchedAt": "2026-06-01T09:28:41.994Z",
-      "promptFile": "job/swarm/codex-sector-logs/insurance-batch-0051-prompt.txt",
+      "pid": 17602,
+      "batchNumber": 71,
+      "launchedAt": "2026-06-01T17:26:47.021Z",
+      "promptFile": "job/swarm/codex-sector-logs/insurance-batch-0071-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/insurance.jsonl",
       "current": {
-        "total": 85,
-        "populated": 85,
+        "total": 127,
+        "populated": 127,
         "unpopulated": 0,
         "missingDescriptions": 0,
         "belowContactTarget": 0,
-        "totalRecruiters": 850,
+        "totalRecruiters": 1121,
         "phase": "expand"
       },
       "fingerprint": {
-        "size": 632781,
-        "mtimeMs": 1780305755876
+        "size": 847069,
+        "mtimeMs": 1780334642792
       },
       "lastError": "",
       "lastWarning": ""
     },
     "defense": {
-      "pid": 99154,
-      "batchNumber": 59,
-      "launchedAt": "2026-06-01T09:28:41.990Z",
-      "promptFile": "job/swarm/codex-sector-logs/defense-batch-0059-prompt.txt",
+      "pid": 17582,
+      "batchNumber": 77,
+      "launchedAt": "2026-06-01T17:26:47.013Z",
+      "promptFile": "job/swarm/codex-sector-logs/defense-batch-0077-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/defense.jsonl",
       "current": {
-        "total": 102,
-        "populated": 102,
+        "total": 142,
+        "populated": 142,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 0,
-        "totalRecruiters": 1020,
-        "phase": "expand"
+        "belowContactTarget": 1,
+        "totalRecruiters": 1301,
+        "phase": "bolster"
       },
       "fingerprint": {
-        "size": 745856,
-        "mtimeMs": 1780306023260
+        "size": 978149,
+        "mtimeMs": 1780334664404
       },
       "lastError": "",
       "lastWarning": ""
     },
     "health": {
-      "pid": 99134,
-      "batchNumber": 69,
-      "launchedAt": "2026-06-01T09:28:41.957Z",
-      "promptFile": "job/swarm/codex-sector-logs/health-batch-0069-prompt.txt",
+      "pid": 17586,
+      "batchNumber": 116,
+      "launchedAt": "2026-06-01T17:26:47.014Z",
+      "promptFile": "job/swarm/codex-sector-logs/health-batch-0116-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/health.jsonl",
       "current": {
         "total": 98,
         "populated": 98,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 2,
+        "belowContactTarget": 1,
         "totalRecruiters": 970,
         "phase": "bolster"
       },
       "fingerprint": {
-        "size": 705653,
-        "mtimeMs": 1780306001769
+        "size": 738624,
+        "mtimeMs": 1780334582941
       },
       "lastError": "",
       "lastWarning": ""
     },
     "consulting": {
-      "pid": 99110,
-      "batchNumber": 55,
-      "launchedAt": "2026-06-01T09:28:41.943Z",
-      "promptFile": "job/swarm/codex-sector-logs/consulting-batch-0055-prompt.txt",
+      "pid": 17566,
+      "batchNumber": 84,
+      "launchedAt": "2026-06-01T17:26:47.009Z",
+      "promptFile": "job/swarm/codex-sector-logs/consulting-batch-0084-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/consulting.jsonl",
       "current": {
-        "total": 57,
-        "populated": 57,
+        "total": 63,
+        "populated": 63,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 8,
-        "totalRecruiters": 537,
+        "belowContactTarget": 5,
+        "totalRecruiters": 563,
         "phase": "bolster"
       },
       "fingerprint": {
-        "size": 424988,
-        "mtimeMs": 1780305952064
+        "size": 507936,
+        "mtimeMs": 1780334600934
       },
       "lastError": "",
       "lastWarning": ""
     },
     "media": {
-      "pid": 99142,
-      "batchNumber": 59,
-      "launchedAt": "2026-06-01T09:28:41.974Z",
-      "promptFile": "job/swarm/codex-sector-logs/media-batch-0059-prompt.txt",
+      "pid": 17562,
+      "batchNumber": 79,
+      "launchedAt": "2026-06-01T17:26:47.008Z",
+      "promptFile": "job/swarm/codex-sector-logs/media-batch-0079-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/media.jsonl",
       "current": {
-        "total": 104,
-        "populated": 104,
+        "total": 146,
+        "populated": 146,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 1,
-        "totalRecruiters": 1033,
+        "belowContactTarget": 5,
+        "totalRecruiters": 1274,
         "phase": "bolster"
       },
       "fingerprint": {
-        "size": 809970,
-        "mtimeMs": 1780306053828
+        "size": 999647,
+        "mtimeMs": 1780334686769
       },
       "lastError": "",
       "lastWarning": ""
     },
     "retail": {
-      "pid": 99150,
-      "batchNumber": 59,
-      "launchedAt": "2026-06-01T09:28:41.986Z",
-      "promptFile": "job/swarm/codex-sector-logs/retail-batch-0059-prompt.txt",
+      "pid": 17574,
+      "batchNumber": 78,
+      "launchedAt": "2026-06-01T17:26:47.011Z",
+      "promptFile": "job/swarm/codex-sector-logs/retail-batch-0078-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/retail.jsonl",
       "current": {
-        "total": 120,
-        "populated": 120,
+        "total": 164,
+        "populated": 164,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 0,
-        "totalRecruiters": 1200,
-        "phase": "expand"
+        "belowContactTarget": 2,
+        "totalRecruiters": 1456,
+        "phase": "bolster"
       },
       "fingerprint": {
-        "size": 859357,
-        "mtimeMs": 1780305735077
+        "size": 1051541,
+        "mtimeMs": 1780334660666
       },
       "lastError": "",
       "lastWarning": ""
     },
     "cyber": {
-      "pid": 99118,
-      "batchNumber": 63,
-      "launchedAt": "2026-06-01T09:28:41.949Z",
-      "promptFile": "job/swarm/codex-sector-logs/cyber-batch-0063-prompt.txt",
+      "pid": 17570,
+      "batchNumber": 91,
+      "launchedAt": "2026-06-01T17:26:47.009Z",
+      "promptFile": "job/swarm/codex-sector-logs/cyber-batch-0091-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/cyber.jsonl",
       "current": {
-        "total": 89,
-        "populated": 89,
+        "total": 96,
+        "populated": 96,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 7,
-        "totalRecruiters": 843,
+        "belowContactTarget": 5,
+        "totalRecruiters": 886,
         "phase": "bolster"
       },
       "fingerprint": {
-        "size": 651907,
-        "mtimeMs": 1780305922003
+        "size": 750862,
+        "mtimeMs": 1780334713144
       },
       "lastError": "",
       "lastWarning": ""
     },
     "cloud": {
-      "pid": 99094,
-      "batchNumber": 62,
-      "launchedAt": "2026-06-01T09:28:41.936Z",
-      "promptFile": "job/swarm/codex-sector-logs/cloud-batch-0062-prompt.txt",
+      "pid": 17550,
+      "batchNumber": 79,
+      "launchedAt": "2026-06-01T17:26:47.005Z",
+      "promptFile": "job/swarm/codex-sector-logs/cloud-batch-0079-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/cloud.jsonl",
       "current": {
         "total": 206,
         "populated": 206,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 84,
-        "totalRecruiters": 1386,
+        "belowContactTarget": 31,
+        "totalRecruiters": 1866,
         "phase": "bolster"
       },
       "fingerprint": {
-        "size": 974524,
-        "mtimeMs": 1780305923325
+        "size": 1262936,
+        "mtimeMs": 1780334743573
       },
       "lastError": "",
       "lastWarning": ""
     },
     "hardware": {
-      "pid": 99102,
-      "batchNumber": 64,
-      "launchedAt": "2026-06-01T09:28:41.940Z",
-      "promptFile": "job/swarm/codex-sector-logs/hardware-batch-0064-prompt.txt",
+      "pid": 17558,
+      "batchNumber": 91,
+      "launchedAt": "2026-06-01T17:26:47.007Z",
+      "promptFile": "job/swarm/codex-sector-logs/hardware-batch-0091-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/hardware.jsonl",
       "current": {
-        "total": 118,
-        "populated": 118,
+        "total": 121,
+        "populated": 121,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 9,
-        "totalRecruiters": 1119,
+        "belowContactTarget": 6,
+        "totalRecruiters": 1138,
         "phase": "bolster"
       },
       "fingerprint": {
-        "size": 800188,
-        "mtimeMs": 1780306044411
+        "size": 878421,
+        "mtimeMs": 1780334752123
       },
       "lastError": "",
       "lastWarning": ""
     },
     "ai": {
-      "pid": 99126,
-      "batchNumber": 56,
-      "launchedAt": "2026-06-01T09:28:41.953Z",
-      "promptFile": "job/swarm/codex-sector-logs/ai-batch-0056-prompt.txt",
+      "pid": 17594,
+      "batchNumber": 73,
+      "launchedAt": "2026-06-01T17:26:47.019Z",
+      "promptFile": "job/swarm/codex-sector-logs/ai-batch-0073-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/ai.jsonl",
       "current": {
-        "total": 120,
-        "populated": 120,
+        "total": 165,
+        "populated": 165,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 6,
-        "totalRecruiters": 1173,
-        "phase": "bolster"
+        "belowContactTarget": 0,
+        "totalRecruiters": 1450,
+        "phase": "expand"
       },
       "fingerprint": {
-        "size": 825977,
-        "mtimeMs": 1780306076374
+        "size": 1069054,
+        "mtimeMs": 1780334716108
       },
       "lastError": "",
       "lastWarning": ""
     },
     "energy": {
-      "pid": 99114,
-      "batchNumber": 57,
-      "launchedAt": "2026-06-01T09:28:41.947Z",
-      "promptFile": "job/swarm/codex-sector-logs/energy-batch-0057-prompt.txt",
+      "pid": 17554,
+      "batchNumber": 82,
+      "launchedAt": "2026-06-01T17:26:47.006Z",
+      "promptFile": "job/swarm/codex-sector-logs/energy-batch-0082-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/energy.jsonl",
       "current": {
-        "total": 79,
-        "populated": 79,
+        "total": 85,
+        "populated": 85,
         "unpopulated": 0,
         "missingDescriptions": 0,
         "belowContactTarget": 7,
-        "totalRecruiters": 740,
+        "totalRecruiters": 776,
         "phase": "bolster"
       },
       "fingerprint": {
-        "size": 561434,
-        "mtimeMs": 1780306093666
+        "size": 648384,
+        "mtimeMs": 1780334741107
       },
       "lastError": "",
       "lastWarning": ""
     },
     "edhr": {
-      "pid": 99138,
-      "batchNumber": 55,
-      "launchedAt": "2026-06-01T09:28:41.966Z",
-      "promptFile": "job/swarm/codex-sector-logs/edhr-batch-0055-prompt.txt",
+      "pid": 17606,
+      "batchNumber": 75,
+      "launchedAt": "2026-06-01T17:26:47.022Z",
+      "promptFile": "job/swarm/codex-sector-logs/edhr-batch-0075-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/edhr.jsonl",
       "current": {
-        "total": 78,
-        "populated": 78,
+        "total": 118,
+        "populated": 118,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 1,
-        "totalRecruiters": 777,
-        "phase": "bolster"
+        "belowContactTarget": 0,
+        "totalRecruiters": 1010,
+        "phase": "expand"
       },
       "fingerprint": {
-        "size": 591105,
-        "mtimeMs": 1780306013316
+        "size": 809586,
+        "mtimeMs": 1780334776719
       },
       "lastError": "",
       "lastWarning": ""
     },
     "logistics": {
-      "pid": 99146,
-      "batchNumber": 77,
-      "launchedAt": "2026-06-01T09:28:41.980Z",
-      "promptFile": "job/swarm/codex-sector-logs/logistics-batch-0077-prompt.txt",
+      "pid": 17590,
+      "batchNumber": 126,
+      "launchedAt": "2026-06-01T17:26:47.015Z",
+      "promptFile": "job/swarm/codex-sector-logs/logistics-batch-0126-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/logistics.jsonl",
       "current": {
         "total": 60,
@@ -324,52 +324,52 @@
         "phase": "bolster"
       },
       "fingerprint": {
-        "size": 486780,
-        "mtimeMs": 1780305966198
+        "size": 522678,
+        "mtimeMs": 1780334712240
       },
       "lastError": "",
       "lastWarning": ""
     },
     "proptech": {
-      "pid": 99106,
-      "batchNumber": 39,
-      "launchedAt": "2026-06-01T09:28:41.941Z",
-      "promptFile": "job/swarm/codex-sector-logs/proptech-batch-0039-prompt.txt",
+      "pid": 17614,
+      "batchNumber": 59,
+      "launchedAt": "2026-06-01T17:26:47.024Z",
+      "promptFile": "job/swarm/codex-sector-logs/proptech-batch-0059-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/proptech.jsonl",
       "current": {
-        "total": 54,
-        "populated": 54,
+        "total": 86,
+        "populated": 86,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 8,
-        "totalRecruiters": 495,
-        "phase": "bolster"
+        "belowContactTarget": 0,
+        "totalRecruiters": 710,
+        "phase": "expand"
       },
       "fingerprint": {
-        "size": 379963,
-        "mtimeMs": 1780305795408
+        "size": 592028,
+        "mtimeMs": 1780333956297
       },
       "lastError": "",
       "lastWarning": ""
     },
     "other": {
-      "pid": 99130,
-      "batchNumber": 37,
-      "launchedAt": "2026-06-01T09:28:41.955Z",
-      "promptFile": "job/swarm/codex-sector-logs/other-batch-0037-prompt.txt",
+      "pid": 17578,
+      "batchNumber": 73,
+      "launchedAt": "2026-06-01T17:26:47.012Z",
+      "promptFile": "job/swarm/codex-sector-logs/other-batch-0073-prompt.txt",
       "logFile": "job/swarm/codex-sector-logs/other.jsonl",
       "current": {
-        "total": 43,
-        "populated": 43,
+        "total": 53,
+        "populated": 53,
         "unpopulated": 0,
         "missingDescriptions": 0,
-        "belowContactTarget": 3,
-        "totalRecruiters": 412,
+        "belowContactTarget": 1,
+        "totalRecruiters": 470,
         "phase": "bolster"
       },
       "fingerprint": {
-        "size": 311403,
-        "mtimeMs": 1780305919584
+        "size": 389908,
+        "mtimeMs": 1780334654435
       },
       "lastError": "",
       "lastWarning": ""

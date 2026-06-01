@@ -2,7 +2,7 @@
   "meta": {
     "description": "US-based tech companies large enough to run dedicated recruiting + internship programs. Target for LinkedIn outreach to recruiters. Populate each company's 'recruiters' array over time with the recruiter object schema below.",
     "version": "2.1",
-    "last_updated": "2026-06-08",
+    "last_updated": "2026-06-01",
     "owner": "Pablo Valdes",
     "use_case": "Connect with recruiters at top US tech companies on LinkedIn to source SWE / AI internship opportunities.",
     "recruiter_object_schema": {
@@ -35,7 +35,7 @@
       "description": "Concise company description for search, semantic matching, and outreach context"
     },
     "recruiter_links_note": "recruiter_search_url is a name-based LinkedIn People search ('<company> recruiter') that works for every company without needing the exact company page slug — open it to see current recruiters, then paste individual profile URLs into recruiters[]. Each company has a unique 'id' (C0001...) so the list is countable/verifiable. NOTE: the first ~263 entries are curated with HQ/size/company-slug; the bulk entries carry verified real names + working recruiter links, with HQ/slug left blank to enrich.",
-    "total_companies": 79,
+    "total_companies": 85,
     "notes": "Sector working file for EV / Energy. Codex agents edit only this file; the orchestrator merges sector files back into canonical recruiter.json.",
     "ui_directory": "recruiter-directory/ (Next.js searchable UI with direct LinkedIn links + CSV export)",
     "population_progress": "Codex sector split. 873 companies populated with 1937 total recruiters; 1250 company descriptions missing. Merge run: 2026-06-01",
@@ -9041,7 +9041,7 @@
           "messaged": false,
           "responded": false,
           "date_contacted": "",
-          "notes": "Florida Sunbiz and BisProfiles list Christian J. Peña as the sole manager/registered agent of PulsePoint Charging LLC; LinkedIn profile shows PulsePoint Charging and professional engineering credentials. PulsePoint public launch material lists info@pulsepointcharging.com for host outreach. Batch 40 recheck on 2026-06-01 reviewed PulsePoint LinkedIn/company pages, CJ Development Group EV charging/about pages, partner posts, Sunbiz/BisProfiles, and targeted recruiter/talent/employee searches; public evidence still points to Christian/CJDG as the operator-engineering lead, while other visible names were vendor partners, post likers, or CJDG profiles without PulsePoint-specific hiring/technical ownership. Batch 42 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Sunbiz/entity records, CJ Development Group/PulsePoint project posts, Autel/SWTCH partner posts, and targeted recruiter/talent searches; public evidence still shows Christian J. Peña as the only clearly company-specific operator/engineering lead, with other names appearing as vendors, partners, or social reactions rather than PulsePoint staff. Batch 43 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, Florida business profiles, CJ Development Group/PulsePoint project posts, and partner/vendor posts; no net-new PulsePoint-specific staff were public beyond Christian. Batch 44 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, Florida company registry/BisProfiles records, CJ Development Group factory-visit/project posts, and targeted employee/recruiter searches; no additional PulsePoint-specific staff were public beyond Christian, while other visible names were vendors, partners, or post engagers. Batch 45 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, CJ Development Group/PulsePoint project posts, Autel/SWTCH partner posts, Florida company registry snippets, and targeted recruiter/employee searches; public evidence still points to Christian as the only clearly company-specific operator/engineering lead, with other visible names appearing as vendors, partners, or post engagers. Batch 46 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, CJ Development Group projects/contact pages, PulsePoint/CJ Development Group project posts, BisProfiles/BizProfile entity records, and targeted recruiter/employee searches; no additional PulsePoint-specific staff were public beyond Christian, with other visible names appearing as vendors, partners, or post engagers. Batch 47 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, PulsePoint/CJ Development Group project posts, Florida company registry records, SWTCH partner posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, while other visible names were vendors, partners, or post engagers. Batch 48 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, Sunbiz/BizProfile/BisProfiles registry records, CJ Development Group EV project posts, SWTCH Porta Bella case study, and targeted recruiter/employee searches; public evidence still shows Christian J. Pena as the only company-specific manager/operator, with other visible names appearing as vendors, partners, or social engagers. Batch 49 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, BisProfiles/BizProfile/Florida registry records, CJ Development Group project pages, and SWTCH/Autel partner posts; public evidence still shows Christian J. Pena as the only company-specific manager/operator, with other visible names appearing as vendors, partners, or post engagers. Batch 50 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn/search snippets, Sunbiz/BisProfiles/BizProfile registry records, PulsePoint project posts, and targeted recruiter/employee searches; public evidence still shows Christian J. Pena as the only company-specific operator/engineering lead, while other visible names were vendors, partners, or unrelated PulsePoint entities. Batch 51 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, BisProfiles registry record, CJ Development Group/PulsePoint project posts, SWTCH/Autel partner references, and targeted recruiter/employee searches; public evidence still shows Christian J. Pena as the only clearly company-specific manager/operator, while other visible names were vendors, partners, unrelated PulsePoint entities, or social engagers. Batch 52 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, BisProfiles/Sunbiz registry records, official launch/project posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only company-specific operator/engineering lead. Batch 53 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, Sunbiz/BisProfiles records, project posts, and targeted employee/recruiter searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, with other visible names appearing as vendors, partners, unrelated Pulsepoint entities, or social engagers. Batch 54 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, Florida registry mirrors, CJ Development Group/PulsePoint project references, and targeted employee/recruiter searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, with other names appearing as vendors, partners, post engagers, or unrelated Pulsepoint entities. Batch 55 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Peña LinkedIn, Sunbiz current detail and registry mirrors, PulsePoint project posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only company-specific manager/operator, while other visible names were vendors, partners, unrelated PulsePoint entities, or social engagers. Batch 56 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, current Sunbiz/detail and registry mirrors, PulsePoint launch/project posts, and targeted recruiter/employee searches; public evidence still shows Christian J. Pena as the only clearly company-specific manager/operator, while other visible names were vendors, partners, unrelated PulsePoint entities, or social engagers."
+          "notes": "Florida Sunbiz and BisProfiles list Christian J. Peña as the sole manager/registered agent of PulsePoint Charging LLC; LinkedIn profile shows PulsePoint Charging and professional engineering credentials. PulsePoint public launch material lists info@pulsepointcharging.com for host outreach. Batch 40 recheck on 2026-06-01 reviewed PulsePoint LinkedIn/company pages, CJ Development Group EV charging/about pages, partner posts, Sunbiz/BisProfiles, and targeted recruiter/talent/employee searches; public evidence still points to Christian/CJDG as the operator-engineering lead, while other visible names were vendor partners, post likers, or CJDG profiles without PulsePoint-specific hiring/technical ownership. Batch 42 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Sunbiz/entity records, CJ Development Group/PulsePoint project posts, Autel/SWTCH partner posts, and targeted recruiter/talent searches; public evidence still shows Christian J. Peña as the only clearly company-specific operator/engineering lead, with other names appearing as vendors, partners, or social reactions rather than PulsePoint staff. Batch 43 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, Florida business profiles, CJ Development Group/PulsePoint project posts, and partner/vendor posts; no net-new PulsePoint-specific staff were public beyond Christian. Batch 44 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, Florida company registry/BisProfiles records, CJ Development Group factory-visit/project posts, and targeted employee/recruiter searches; no additional PulsePoint-specific staff were public beyond Christian, while other visible names were vendors, partners, or post engagers. Batch 45 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, CJ Development Group/PulsePoint project posts, Autel/SWTCH partner posts, Florida company registry snippets, and targeted recruiter/employee searches; public evidence still points to Christian as the only clearly company-specific operator/engineering lead, with other visible names appearing as vendors, partners, or post engagers. Batch 46 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, CJ Development Group projects/contact pages, PulsePoint/CJ Development Group project posts, BisProfiles/BizProfile entity records, and targeted recruiter/employee searches; no additional PulsePoint-specific staff were public beyond Christian, with other visible names appearing as vendors, partners, or post engagers. Batch 47 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, PulsePoint/CJ Development Group project posts, Florida company registry records, SWTCH partner posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, while other visible names were vendors, partners, or post engagers. Batch 48 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, Sunbiz/BizProfile/BisProfiles registry records, CJ Development Group EV project posts, SWTCH Porta Bella case study, and targeted recruiter/employee searches; public evidence still shows Christian J. Pena as the only company-specific manager/operator, with other visible names appearing as vendors, partners, or social engagers. Batch 49 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, BisProfiles/BizProfile/Florida registry records, CJ Development Group project pages, and SWTCH/Autel partner posts; public evidence still shows Christian J. Pena as the only company-specific manager/operator, with other visible names appearing as vendors, partners, or post engagers. Batch 50 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn/search snippets, Sunbiz/BisProfiles/BizProfile registry records, PulsePoint project posts, and targeted recruiter/employee searches; public evidence still shows Christian J. Pena as the only company-specific operator/engineering lead, while other visible names were vendors, partners, or unrelated PulsePoint entities. Batch 51 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, BisProfiles registry record, CJ Development Group/PulsePoint project posts, SWTCH/Autel partner references, and targeted recruiter/employee searches; public evidence still shows Christian J. Pena as the only clearly company-specific manager/operator, while other visible names were vendors, partners, unrelated PulsePoint entities, or social engagers. Batch 52 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, BisProfiles/Sunbiz registry records, official launch/project posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only company-specific operator/engineering lead. Batch 53 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, Sunbiz/BisProfiles records, project posts, and targeted employee/recruiter searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, with other visible names appearing as vendors, partners, unrelated Pulsepoint entities, or social engagers. Batch 54 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, Florida registry mirrors, CJ Development Group/PulsePoint project references, and targeted employee/recruiter searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, with other names appearing as vendors, partners, post engagers, or unrelated Pulsepoint entities. Batch 55 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Peña LinkedIn, Sunbiz current detail and registry mirrors, PulsePoint project posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only company-specific manager/operator, while other visible names were vendors, partners, unrelated PulsePoint entities, or social engagers. Batch 56 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, current Sunbiz/detail and registry mirrors, PulsePoint launch/project posts, and targeted recruiter/employee searches; public evidence still shows Christian J. Pena as the only clearly company-specific manager/operator, while other visible names were vendors, partners, unrelated PulsePoint entities, or social engagers. Batch 58 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn directory results, Florida registry mirrors, CJ Development Group/PulsePoint project references, and targeted recruiter/employee searches; public evidence still shows Christian as the only company-specific manager/operator, with other names appearing as vendors, partners, unrelated PulsePoint entities, or post engagers. Batch 59 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena references, CJ Development Group/PulsePoint project references, Florida registry mirrors, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific manager/operator, while other visible names were vendors, partners, unrelated PulsePoint entities, or post engagers. Batch 60 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, Florida registry mirrors, PulsePoint project posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, while other visible names were vendors, partners, unrelated PulsePoint entities, or social engagers. Batch 61 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, current PulsePoint project posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, with other results unrelated PulsePoint entities, vendors, partners, or social engagers. Batch 62 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn snippets, current PulsePoint launch/project posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, with other results unrelated PulsePoint entities, vendors, partners, or broad job noise. Batch 63 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, CJ Development Group/PulsePoint project references, Autel/SWTCH partner posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, while other names were vendors, partners, unrelated PulsePoint entities, or social engagers. Batch 64 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, the current Sunbiz detail naming Christian J. Pena as the sole manager/registered agent, BisProfiles registry mirror, Christian Pena LinkedIn, and targeted team/recruiter searches; no additional PulsePoint-specific staff were public beyond Christian. Batch 66 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, BisProfiles/BizProfile registry mirrors, CJ Development Group/PulsePoint posts, Autel/SWTCH partner references, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, with other names appearing as vendors, partners, or social engagers. Batch 67 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, BisProfiles, CJ Development Group EV charging page describing Pulse Point network operations, SWTCH Porta Bella case study, and targeted recruiter/employee searches; no additional PulsePoint-specific staff were public beyond Christian/CJDG operating-team references. Batch 68 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, CJ Development Group EV charging articles, the SWTCH Porta Bella case study, and targeted PulsePoint/CJ Development Group recruiter and employee searches; no additional PulsePoint-specific staff were public beyond Christian, while other names were partner, vendor, or social-engagement references. Batch 69 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn, Christian J. Pena LinkedIn, BisProfiles/BizProfile registry records, CJ Development Group EV charging posts/articles, SWTCH Porta Bella case study, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, with other names appearing as vendors, partners, or social-engagement references. Batch 70 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, BisProfiles and Florida registry mirrors, CJ Development Group/PulsePoint project references, Autel/SWTCH partner snippets, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, while other visible names were vendors, partners, unrelated PulsePoint entities, or social-engagement references. Batch 71 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, PulsePoint/CJ Development Group project posts including Autel/SWTCH references, Florida registry mirrors, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, while other visible names were vendors, partners, or social engagers. Batch 72 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, Sunbiz/BisProfiles records, PulsePoint project posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, with other visible names appearing as partners, vendors, or unrelated PulsePoint entities. Batch 73 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, current Sunbiz/BisProfiles registry records, PulsePoint launch/project posts, SWTCH/Autel partner references, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, with other names appearing as vendors, partners, unrelated PulsePoint entities, or social engagers. Batch 74 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, current Sunbiz/BizProfile registry records, CJ Development Group/PulsePoint posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific manager/operator, with other visible names appearing as vendors, partners, unrelated PulsePoint entities, or social engagers. Batch 75 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, CJ Development Group/PulsePoint project posts, SWTCH partner posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator/engineering lead, while other visible names were vendors, partners, unrelated PulsePoint entities, or social engagers. Batch 76 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn page, Christian J. Pena LinkedIn/search snippets, BisProfiles registry record, CJ Development Group/PulsePoint project posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific manager/operator, with other names appearing as vendors, related CJDG context, or unrelated PulsePoint entities. Batch 77 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, CJ Development Group EV charging page, SWTCH Porta Bella case study, and targeted recruiter/employee searches; public evidence still points to Christian/CJDG as the only company-specific operator-engineering lead, with no additional PulsePoint-specific staff found. Batch 78 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian J. Pena LinkedIn, BisProfiles/Sunbiz registry mirrors, CJ Development Group/PulsePoint project posts, and targeted recruiter/employee searches; no additional PulsePoint-specific staff were public beyond Christian. Batch 79 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company page, Christian Pena LinkedIn, Sunbiz/BisProfiles entity records, CJ Development Group/PulsePoint project references, and targeted recruiter/employee searches; no additional PulsePoint-specific staff were public beyond Christian. Batch 80 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, BisProfiles registry records, CJ Development Group/PulsePoint Autel and SWTCH partner posts, and targeted recruiter/employee searches; public evidence still points to Christian J. Pena as the only company-specific operator-engineering lead, with other visible names appearing as vendors, partners, or social engagers. Batch 81 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, current Florida registry mirrors, partner/vendor posts, and targeted recruiter/employee searches; public evidence still shows Christian as the only clearly company-specific operator-engineering lead. Batch 82 recheck on 2026-06-01 reviewed PulsePoint Charging LinkedIn/company results, Christian J. Pena LinkedIn, CJ Development Group EV charging page, Autel/SWTCH partner posts, and targeted recruiter/employee searches; public evidence still shows Christian/CJDG as the only clearly company-specific operator-engineering lead, with other visible names appearing as vendors, partners, or post engagers."
         }
       ]
     },
@@ -9512,7 +9512,7 @@
           "messaged": false,
           "responded": false,
           "date_contacted": "",
-          "notes": "Recharge Miami official site lists Nicholas Jeffrey as co-founder and says the company handles equipment, installation, permitting, operations, maintenance, and software-backed charging for South Florida properties. Batch 42 recheck on 2026-06-01 reviewed Recharge Miami official site, Recharge South Florida Florida business profiles, Nicholas/Omar Jeffrey LinkedIn directory results, and targeted recruiter/talent searches; no additional company-specific staff or technical hiring contacts were public beyond the two founders. Batch 43 recheck on 2026-06-01 reviewed Recharge Miami official founder page, Recharge South Florida Florida business profiles, and targeted LinkedIn/recruiter searches; public evidence still shows Nicholas and Omar Jeffrey as the only company-specific operators. Batch 44 recheck on 2026-06-01 reviewed Recharge Miami official site, Recharge South Florida Florida business-profile records, founder LinkedIn/search results, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific managers/operators. Batch 45 recheck on 2026-06-01 reviewed Recharge Miami official site, Recharge South Florida Florida business-profile records, founder sections, and targeted LinkedIn/recruiter searches; public records and the official site still identify Nicholas and Omar Jeffrey as the only company-specific managers/operators. Batch 46 recheck on 2026-06-01 reviewed the Recharge Miami official founder/site pages, Recharge South Florida business-profile records, founder search results, and targeted LinkedIn/recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific managers/operators. Batch 47 recheck on 2026-06-01 reviewed Recharge Miami official site/founder page, Recharge South Florida Florida business-profile records, Nicholas/Omar Jeffrey LinkedIn directory results, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific managers/operators. Batch 48 recheck on 2026-06-01 reviewed the Recharge Miami official site, Recharge South Florida LLC Florida business-profile records, BisProfiles, founder search results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific managers/operators. Batch 49 recheck on 2026-06-01 reviewed the Recharge Miami official site, Recharge South Florida LLC registry mirrors, BisProfiles/BizProfile records, founder search results, and targeted LinkedIn/recruiter searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific managers/operators. Batch 50 recheck on 2026-06-01 reviewed the Recharge Miami official site, Recharge South Florida BisProfiles/BizProfile records, Nicholas Jeffrey LinkedIn directory results, Omar Jeffrey public profile/site results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific managers/operators, with duplicated officer rows representing the same founders rather than additional contacts. Batch 51 recheck on 2026-06-01 reviewed Recharge Miami official site/founder section, Recharge South Florida BisProfiles record, Nicholas/Omar Jeffrey public search results, and targeted LinkedIn/recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific managers/operators, with duplicated principal rows representing the same founders rather than additional contacts. Batch 52 recheck on 2026-06-01 reviewed Recharge Miami official founder/site pages, Recharge South Florida business-profile records, Nicholas/Omar Jeffrey public search results, and targeted LinkedIn/recruiter searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific managers/operators. Batch 53 recheck on 2026-06-01 reviewed Recharge Miami official site/founder page, Recharge South Florida BisProfiles record, Nicholas Jeffrey LinkedIn directory result, Omar Jeffrey searches, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 54 recheck on 2026-06-01 reviewed Recharge Miami official site/founder page, Recharge South Florida registry mirrors, Nicholas/Omar Jeffrey public results, and targeted LinkedIn/recruiter searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 55 recheck on 2026-06-01 reviewed Recharge Miami official site/founder page, Recharge South Florida registry records, founder search results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific operators. Batch 56 recheck on 2026-06-01 reviewed Recharge Miami official site/founder page, Recharge South Florida LLC registry/BisProfiles records, Nicholas Jeffrey LinkedIn directory results, Omar Jeffrey public results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific operators."
+          "notes": "Recharge Miami official site lists Nicholas Jeffrey as co-founder and says the company handles equipment, installation, permitting, operations, maintenance, and software-backed charging for South Florida properties. Batch 42 recheck on 2026-06-01 reviewed Recharge Miami official site, Recharge South Florida Florida business profiles, Nicholas/Omar Jeffrey LinkedIn directory results, and targeted recruiter/talent searches; no additional company-specific staff or technical hiring contacts were public beyond the two founders. Batch 43 recheck on 2026-06-01 reviewed Recharge Miami official founder page, Recharge South Florida Florida business profiles, and targeted LinkedIn/recruiter searches; public evidence still shows Nicholas and Omar Jeffrey as the only company-specific operators. Batch 44 recheck on 2026-06-01 reviewed Recharge Miami official site, Recharge South Florida Florida business-profile records, founder LinkedIn/search results, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific managers/operators. Batch 45 recheck on 2026-06-01 reviewed Recharge Miami official site, Recharge South Florida Florida business-profile records, founder sections, and targeted LinkedIn/recruiter searches; public records and the official site still identify Nicholas and Omar Jeffrey as the only company-specific managers/operators. Batch 46 recheck on 2026-06-01 reviewed the Recharge Miami official founder/site pages, Recharge South Florida business-profile records, founder search results, and targeted LinkedIn/recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific managers/operators. Batch 47 recheck on 2026-06-01 reviewed Recharge Miami official site/founder page, Recharge South Florida Florida business-profile records, Nicholas/Omar Jeffrey LinkedIn directory results, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific managers/operators. Batch 48 recheck on 2026-06-01 reviewed the Recharge Miami official site, Recharge South Florida LLC Florida business-profile records, BisProfiles, founder search results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific managers/operators. Batch 49 recheck on 2026-06-01 reviewed the Recharge Miami official site, Recharge South Florida LLC registry mirrors, BisProfiles/BizProfile records, founder search results, and targeted LinkedIn/recruiter searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific managers/operators. Batch 50 recheck on 2026-06-01 reviewed the Recharge Miami official site, Recharge South Florida BisProfiles/BizProfile records, Nicholas Jeffrey LinkedIn directory results, Omar Jeffrey public profile/site results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific managers/operators, with duplicated officer rows representing the same founders rather than additional contacts. Batch 51 recheck on 2026-06-01 reviewed Recharge Miami official site/founder section, Recharge South Florida BisProfiles record, Nicholas/Omar Jeffrey public search results, and targeted LinkedIn/recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific managers/operators, with duplicated principal rows representing the same founders rather than additional contacts. Batch 52 recheck on 2026-06-01 reviewed Recharge Miami official founder/site pages, Recharge South Florida business-profile records, Nicholas/Omar Jeffrey public search results, and targeted LinkedIn/recruiter searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific managers/operators. Batch 53 recheck on 2026-06-01 reviewed Recharge Miami official site/founder page, Recharge South Florida BisProfiles record, Nicholas Jeffrey LinkedIn directory result, Omar Jeffrey searches, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 54 recheck on 2026-06-01 reviewed Recharge Miami official site/founder page, Recharge South Florida registry mirrors, Nicholas/Omar Jeffrey public results, and targeted LinkedIn/recruiter searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 55 recheck on 2026-06-01 reviewed Recharge Miami official site/founder page, Recharge South Florida registry records, founder search results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific operators. Batch 56 recheck on 2026-06-01 reviewed Recharge Miami official site/founder page, Recharge South Florida LLC registry/BisProfiles records, Nicholas Jeffrey LinkedIn directory results, Omar Jeffrey public results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific operators. Batch 58 recheck on 2026-06-01 reviewed Recharge Miami official site/founder page, Recharge South Florida registry records, Nicholas Jeffrey LinkedIn directory result, Omar Jeffrey public results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific operators. Batch 59 recheck on 2026-06-01 reviewed Recharge Miami official founder/site pages, Recharge South Florida registry records, Nicholas/Omar Jeffrey public results, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 60 recheck on 2026-06-01 reviewed Recharge Miami official site, Recharge South Florida registry records, Nicholas/Omar Jeffrey public profiles, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 61 recheck on 2026-06-01 reviewed Recharge Miami official site/founder section, Recharge South Florida registry references, Nicholas/Omar Jeffrey public results, and targeted LinkedIn/recruiter searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 62 recheck on 2026-06-01 reviewed Recharge Miami official site/founder section, Recharge South Florida registry references, Nicholas/Omar Jeffrey public results, and targeted LinkedIn/recruiter searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 63 recheck on 2026-06-01 reviewed Recharge Miami official site/founder section, Nicholas Jeffrey LinkedIn directory result, Omar Jeffrey public results, Recharge South Florida records, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 64 recheck on 2026-06-01 reviewed Recharge Miami official founder/site page, Recharge South Florida registry mirrors, Nicholas/Omar Jeffrey public results, and targeted LinkedIn/recruiter searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 66 recheck on 2026-06-01 reviewed Recharge Miami official site/founder section, Recharge South Florida registry/BisProfiles records, Nicholas Jeffrey LinkedIn directory results, Omar Jeffrey searches, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 67 recheck on 2026-06-01 reviewed Recharge Miami official founder/site page, Recharge South Florida registry mirrors, Nicholas/Omar Jeffrey public results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific operators. Batch 68 recheck on 2026-06-01 reviewed Recharge Miami official site/founder/contact sections, Recharge South Florida LLC registry mirrors, Nicholas Jeffrey LinkedIn directory results, Omar Jeffrey searches, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific operators. Batch 69 recheck on 2026-06-01 reviewed Recharge Miami official founder/site page, Recharge South Florida BisProfiles record, Nicholas/Omar Jeffrey LinkedIn directory results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific operators, with no additional recruiter, employee, or technical hiring contact found. Batch 70 recheck on 2026-06-01 reviewed Recharge Miami official site/founder section, Recharge South Florida LLC BisProfiles registry record, Nicholas/Omar Jeffrey public searches, and targeted LinkedIn/recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific operators, with no additional named technical, operations, or hiring contacts found. Batch 71 recheck on 2026-06-01 reviewed Recharge Miami official site/founder section, Recharge South Florida LLC registry/BizProfile record, Nicholas Jeffrey LinkedIn directory result, Omar Jeffrey searches, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 72 recheck on 2026-06-01 reviewed Recharge Miami official site/founder section, Recharge South Florida LLC registry mirrors, Nicholas Jeffrey LinkedIn directory result, Omar Jeffrey searches, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 73 recheck on 2026-06-01 reviewed Recharge Miami official site, Recharge South Florida BisProfiles registry record, Nicholas Jeffrey LinkedIn directory result, Omar Jeffrey searches, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 74 recheck on 2026-06-01 reviewed Recharge Miami official site/founder section, Recharge South Florida registry mirrors, Nicholas Jeffrey LinkedIn directory results, Omar Jeffrey public searches, and targeted recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 75 recheck on 2026-06-01 reviewed Recharge Miami official site/founder section, Recharge South Florida BisProfiles record, founder LinkedIn/search results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific operators, with Nicholas duplicated in registry roles rather than representing an additional contact. Batch 76 recheck on 2026-06-01 reviewed Recharge Miami official founder/site pages, Recharge South Florida registry results, Nicholas/Omar public searches, and targeted recruiter/employee searches; the official site still identifies only Nicholas Jeffrey and Omar Jeffrey as founders/operators, with no net-new technical or hiring staff found. Batch 77 recheck on 2026-06-01 reviewed Recharge Miami official site, Recharge South Florida registry record, LinkedIn directory results for Nicholas Jeffrey, Omar Jeffrey searches, and targeted recruiter/employee searches; public evidence still shows the two founders as the only company-specific operators. Batch 78 recheck on 2026-06-01 reviewed Recharge Miami official site/founder page, Recharge South Florida business records, founder search results, and targeted LinkedIn/recruiter searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 79 recheck on 2026-06-01 reviewed Recharge Miami official site, Recharge South Florida registry records, founder/team search results, and targeted LinkedIn/recruiter searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 80 recheck on 2026-06-01 reviewed the Recharge Miami official site/founder page, Recharge South Florida registry references, founder search results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific operators. Batch 81 recheck on 2026-06-01 reviewed Recharge Miami official site/founder page, Recharge South Florida contact details, founder search results, and targeted LinkedIn recruiter/employee searches; public evidence still identifies Nicholas and Omar Jeffrey as the only company-specific operators. Batch 82 recheck on 2026-06-01 reviewed Recharge Miami official site, Recharge South Florida Florida business profile, founder/search results, and targeted recruiter/employee searches; public evidence still identifies Nicholas Jeffrey and Omar Jeffrey as the only company-specific operators."
         },
         {
           "name": "Omar Jeffrey",
@@ -10290,12 +10290,12 @@
           "messaged": false,
           "responded": false,
           "date_contacted": "",
-          "notes": "BBB and public profiles list Alejandro Burgana as President/CEO of Miami-based Brickell Energy; public coverage describes him leading South Florida EV charging infrastructure work. Batch 42 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, Sunbiz/BizProfile records, public EV infrastructure coverage, and targeted recruiter/talent searches; public company-specific staff still show Alejandro Burgana, Mike Gibaldi, and Leonor Colomina, while OBE Power technical contacts are already represented under the separate OBE Power company record. Batch 43 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB business profile, Florida Sunbiz record, Bisnow coverage, and Dream in Green speaker materials; public company-specific staff remain Alejandro Burgana, Mike Gibaldi, and Leonor Colomina. Batch 44 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, SignalHire/ContactOut/LeadIQ snippets, Community Newspapers/Bisnow coverage, Miami Parking Authority partner references, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, and Leonor Colomina, with OBE Power contacts treated as separate-company contacts. Batch 45 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, BizProfile/Sunbiz-derived officer records, LeadIQ/ContactOut/VisualVisitor snippets, Community Newspapers/Bisnow coverage, and targeted recruiter/employee searches; LinkedIn still shows only Mike Gibaldi, Leonor Colomina, and Alejandro Burgana as employees, all already captured. Batch 46 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, Florida business-record mirrors, Miami-Dade small-business listings, public EV charging coverage, and targeted recruiter/employee searches; LinkedIn still surfaces Mike Gibaldi, Leonor Colomina, and Alejandro Burgana, with Claudio Ramirez added from public officer records. Batch 47 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, Sunbiz and BizProfile officer records, City-Data/IntercreditReport registry mirrors, Community Newspapers coverage, Refresh Miami OBE/Brickell context, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez. Batch 48 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, Sunbiz/BizProfile/BisProfiles records, Dream in Green and Palm Beach County EVCS materials, Innovation City/Refresh Miami/OBE Power context, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with OBE Power personnel kept under the separate OBE Power record. Batch 49 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, Alejandro Burgana LinkedIn, BBB profile, Intercredit/registry records, The Org, Bisnow, and targeted recruiter/employee searches; LinkedIn still lists only Mike Gibaldi, Leonor Colomina, and Alejandro Burgana as employees, with Claudio Ramirez visible in officer records and OBE Power personnel kept under the separate OBE Power record. Batch 50 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, BBB profile, official services/contact pages, Intercredit/Florida registry mirrors, ContactOut/SignalHire snippets, and targeted recruiter/employee searches; public staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with OBE Power personnel kept under the separate OBE Power record. Batch 51 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, official services/contact page, BBB profile, Sunbiz record, The Org/Innovation City coverage, local EV charging coverage, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with OBE Power personnel kept under the separate OBE Power record. Batch 52 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, BBB profile, official contact/services pages, registry records, The Org/Innovation City coverage, and targeted recruiter/employee searches; public staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with OBE Power personnel kept under the separate OBE Power record. Batch 53 recheck on 2026-06-01 reviewed Brickell Energy BBB profile, official contact page, LinkedIn/company results, ContactOut snippet, Intercredit/registry records, and targeted recruiter/employee searches; public staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with OBE Power personnel kept under the separate OBE Power record. Batch 54 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, official contact/services pages, BBB and registry profiles, public EV charging coverage, and targeted employee/recruiter searches; public staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with OBE Power personnel kept under the separate OBE Power record. Batch 55 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, BBB profile, Sunbiz/BizProfile/Intercredit registry records, LeadIQ snippets, Bisnow coverage, and targeted recruiter/employee searches; public staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with no net-new recruiter or talent contact found. Batch 56 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, official contact page, Sunbiz/BizProfile records, Intercredit registry mirror, Leonor Colomina LinkedIn, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with no net-new recruiter or hiring contact found."
+          "notes": "BBB and public profiles list Alejandro Burgana as President/CEO of Miami-based Brickell Energy; public coverage describes him leading South Florida EV charging infrastructure work. Batch 42 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, Sunbiz/BizProfile records, public EV infrastructure coverage, and targeted recruiter/talent searches; public company-specific staff still show Alejandro Burgana, Mike Gibaldi, and Leonor Colomina, while OBE Power technical contacts are already represented under the separate OBE Power company record. Batch 43 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB business profile, Florida Sunbiz record, Bisnow coverage, and Dream in Green speaker materials; public company-specific staff remain Alejandro Burgana, Mike Gibaldi, and Leonor Colomina. Batch 44 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, SignalHire/ContactOut/LeadIQ snippets, Community Newspapers/Bisnow coverage, Miami Parking Authority partner references, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, and Leonor Colomina, with OBE Power contacts treated as separate-company contacts. Batch 45 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, BizProfile/Sunbiz-derived officer records, LeadIQ/ContactOut/VisualVisitor snippets, Community Newspapers/Bisnow coverage, and targeted recruiter/employee searches; LinkedIn still shows only Mike Gibaldi, Leonor Colomina, and Alejandro Burgana as employees, all already captured. Batch 46 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, Florida business-record mirrors, Miami-Dade small-business listings, public EV charging coverage, and targeted recruiter/employee searches; LinkedIn still surfaces Mike Gibaldi, Leonor Colomina, and Alejandro Burgana, with Claudio Ramirez added from public officer records. Batch 47 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, Sunbiz and BizProfile officer records, City-Data/IntercreditReport registry mirrors, Community Newspapers coverage, Refresh Miami OBE/Brickell context, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez. Batch 48 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, Sunbiz/BizProfile/BisProfiles records, Dream in Green and Palm Beach County EVCS materials, Innovation City/Refresh Miami/OBE Power context, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with OBE Power personnel kept under the separate OBE Power record. Batch 49 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, Alejandro Burgana LinkedIn, BBB profile, Intercredit/registry records, The Org, Bisnow, and targeted recruiter/employee searches; LinkedIn still lists only Mike Gibaldi, Leonor Colomina, and Alejandro Burgana as employees, with Claudio Ramirez visible in officer records and OBE Power personnel kept under the separate OBE Power record. Batch 50 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, BBB profile, official services/contact pages, Intercredit/Florida registry mirrors, ContactOut/SignalHire snippets, and targeted recruiter/employee searches; public staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with OBE Power personnel kept under the separate OBE Power record. Batch 51 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, official services/contact page, BBB profile, Sunbiz record, The Org/Innovation City coverage, local EV charging coverage, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with OBE Power personnel kept under the separate OBE Power record. Batch 52 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, BBB profile, official contact/services pages, registry records, The Org/Innovation City coverage, and targeted recruiter/employee searches; public staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with OBE Power personnel kept under the separate OBE Power record. Batch 53 recheck on 2026-06-01 reviewed Brickell Energy BBB profile, official contact page, LinkedIn/company results, ContactOut snippet, Intercredit/registry records, and targeted recruiter/employee searches; public staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with OBE Power personnel kept under the separate OBE Power record. Batch 54 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, official contact/services pages, BBB and registry profiles, public EV charging coverage, and targeted employee/recruiter searches; public staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with OBE Power personnel kept under the separate OBE Power record. Batch 55 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, BBB profile, Sunbiz/BizProfile/Intercredit registry records, LeadIQ snippets, Bisnow coverage, and targeted recruiter/employee searches; public staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with no net-new recruiter or talent contact found. Batch 56 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, official contact page, Sunbiz/BizProfile records, Intercredit registry mirror, Leonor Colomina LinkedIn, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with no net-new recruiter or hiring contact found. Batch 58 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, official contact page, BBB/registry references, and targeted recruiter/employee searches; LinkedIn still surfaces Mike Gibaldi, Leonor Colomina, and Alejandro Burgana, with Claudio Ramirez already captured from officer records and no net-new recruiter or hiring contact found. Batch 59 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, BBB/profile references, registry mirrors, Alejandro Burgana/Mike Gibaldi/Leonor Colomina/Claudio Ramirez searches, and targeted recruiter/employee searches; public company-specific staff still resolve to the existing four records with no net-new hiring contact found. Batch 60 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, Leonor Colomina profile, public project coverage, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with OBE Power personnel kept under the separate OBE Power record. Batch 61 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, Leonor Colomina LinkedIn, Florida registry mirrors, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with no net-new Brickell Energy contacts found. Batch 62 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, Florida registry mirrors, Alejandro Burgana/Leonor Colomina/Mike Gibaldi references, and targeted recruiter/employee searches; public company-specific staff still resolve to existing contacts, with no additional recruiter or technical hiring owner found. Batch 63 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, LeadIQ snippets, contact page, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and registry secretary Claudio Ramirez only. Batch 64 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, Florida business-record mirrors, Refresh Miami/OBE Power coverage, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez only. Batch 66 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, BizProfile registry mirrors, Royal Caribbean project coverage, Funding Finder aFLoat listing, and targeted recruiter/technical searches; public evidence still resolves company-specific Brickell staff to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and registry-listed Claudio Ramirez, while OBE Power technical contacts are already tracked separately. Batch 67 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, current Sunbiz/BizProfile registry records, Miami-Dade small-business listings, and targeted recruiter/employee searches; public company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and registry-listed Claudio Ramirez only. Batch 68 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, Leonor Colomina and Alejandro Burgana LinkedIn results, public registry references, and targeted recruiter/employee searches; LinkedIn still lists Mike Gibaldi, Leonor Colomina, and Alejandro Burgana only, with Claudio Ramirez already captured from officer records. Batch 69 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, SignalHire and ContactOut snippets for Alejandro/Leonor, Refresh Miami OBE/Brickell coverage, and targeted recruiter/employee searches; public evidence still resolves to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez, with no net-new Brickell-specific recruiter or technical staff found. Batch 70 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company employee results, BBB business profile, official services page snippets, current Sunbiz/BizProfile registry records, and Mike Gibaldi/Leonor Colomina/Alejandro Burgana searches; no fifth named company-specific staff member was publicly verified beyond the existing contacts and generic sales/service channels. Batch 71 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company employee results, BBB profile, official contact/services pages, Refresh Miami/OBE Power context, The Org, and targeted recruiter/employee searches; public Brickell-specific staff still resolve to Alejandro, Mike, Leonor, and Claudio only, with OBE Power personnel kept under the separate OBE Power record. Batch 72 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, current Sunbiz/BizProfile records, ContactOut/SignalHire snippets, and targeted recruiter/employee searches; public Brickell-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and registry-listed Claudio Ramirez only, with OBE Power personnel kept under the separate OBE Power record. Batch 74 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, BBB profile, VisualVisitor/LeadIQ snippets, Florida registry mirrors, Mike Gibaldi public references, and targeted recruiter/employee searches; public staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez only. Batch 75 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company employees, Refresh Miami coverage of OBE Power and Brickell Energy, LeadIQ directory snippets, and targeted recruiter/employee searches; no net-new Brickell-specific staff were public beyond Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and the existing corporate secretary record, while related OBE Power and customer/vendor names were not Brickell Energy staff. Batch 76 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn employee list, BBB business profile, Florida registry/BisProfiles records, OBE/Brickell references, and targeted recruiter searches; public evidence still resolves Brickell-specific contacts to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and registry officer context, with no net-new hiring or technical staff found. Batch 77 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn employee list, BBB profile, BisProfiles registry, NREL alternative fuel vendor appendix, Refresh Miami OBE/Brickell coverage, and targeted recruiter searches; public Brickell-specific contacts still resolve to Alejandro, Mike, Leonor, and Claudio only while OBE Power personnel are tracked separately. Batch 78 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn employee results, BBB profile, BisProfiles/Sunbiz registry mirrors, and targeted recruiter/talent searches; public staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez. Batch 79 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn, official services page, BBB profile, public project/news references, and targeted employee/recruiter searches; visible company-specific staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and registry secretary Claudio Ramirez. Batch 80 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company results, BBB business profile, LeadIQ employee directory, Refresh Miami OBE Power/Brickell coverage, and targeted recruiter/employee searches; public staff still resolve to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez only. Batch 81 recheck on 2026-06-01 reviewed Brickell Energy LinkedIn/company page, BBB profile, Florida registry mirrors, project coverage, and targeted recruiter/employee searches; public evidence still resolves company-specific contacts to Alejandro Burgana, Mike Gibaldi, Leonor Colomina, and Claudio Ramirez only."
         },
         {
           "name": "Mike Gibaldi",
           "title": "Sales Manager",
-          "linkedin_url": "",
+          "linkedin_url": "https://www.linkedin.com/in/mike-gibaldi-clean-energy",
           "email": "sales@brickellenergy.com",
           "location": "Miami, FL",
           "focus_area": "EV charging sales, site-host outreach, and customer relationship development",
@@ -10303,7 +10303,7 @@
           "messaged": false,
           "responded": false,
           "date_contacted": "",
-          "notes": "BBB business profile and local coverage list Mike Gibaldi as Sales Manager at Brickell Energy; company contact page publishes sales@brickellenergy.com for outreach."
+          "notes": "BBB business profile and local coverage list Mike Gibaldi as Sales Manager at Brickell Energy; company contact page publishes sales@brickellenergy.com for outreach. Batch 73 public verification on 2026-06-01: LinkedIn public profile at /in/mike-gibaldi-clean-energy, Brickell Energy LinkedIn company page, BBB profile, The Org profile, and local EV charging coverage all confirm Mike Gibaldi as a Brickell Energy sales lead; no additional Brickell Energy staff beyond Alejandro, Mike, Leonor, and Claudio were found."
         },
         {
           "email": "",
@@ -10330,6 +10330,19 @@
           "responded": false,
           "date_contacted": "",
           "notes": "Batch 46 public verification: Florida business-record mirrors for Brickell Energy, Inc. list Claudio Ramirez as Secretary, alongside Alejandro Burgana as President/Treasurer; added as a net-new company officer after LinkedIn, BBB, and targeted recruiter/employee searches repeated the three existing public staff names."
+        },
+        {
+          "name": "Luis Paul",
+          "title": "Co-Founder & Managing Director, OBE Power / EV Charging Network Partner",
+          "linkedin_url": "",
+          "email": "",
+          "location": "Miami, FL",
+          "focus_area": "EV charging-as-a-service growth, charging-network partnerships, infrastructure finance, and host/customer expansion with Brickell Energy sister-company context",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 82 public verification: Refresh Miami reports Alejandro Burgana is founder/CEO of sister company Brickell Energy and co-managing partner of OBE Power with Luis Paul, while Brickell Energy sells, installs, and maintains the stations for the shared EV charging network. BusinessWire and Aspen Ideas identify Luis Paul as OBE Power co-founder/managing director; retained as a related EV charging network leadership contact rather than a dedicated Brickell recruiter."
         }
       ]
     },
@@ -10506,7 +10519,7 @@
           "messaged": false,
           "responded": false,
           "date_contacted": "",
-          "notes": "Batch 52 public verification: TimeCharge official team page lists Christian Belloso as Founder & CEO; public LinkedIn profile lists TimeCharge in Miami and company LinkedIn posts show active EV charging partnerships and hiring. Batch 54 recheck on 2026-06-01 reviewed TimeCharge official team page, LinkedIn company results, active strategic-partnerships hiring snippets, and targeted recruiter/employee searches; public named staff still resolve to Christian Belloso, Adrian Young, Jon Holland, and Doug Schadle. Batch 55 recheck on 2026-06-01 reviewed TimeCharge official team page, LinkedIn company and job postings, Christian Belloso LinkedIn, StartupNation founder coverage, Clutch vendor review, and targeted recruiter/employee searches; public named staff still resolve to Christian Belloso, Adrian Young, Jon Holland, and Doug Schadle, while active postings do not expose an additional named hiring owner. Batch 56 recheck on 2026-06-01 reviewed TimeCharge official team page, TimeCharge LinkedIn/company page, current LinkedIn strategic-partnerships hiring post/job, Christian Belloso LinkedIn/posts, StartupNation founder coverage, Clutch vendor review, and targeted recruiter/employee searches; public named team still resolves to Christian Belloso, Adrian Young, Jon Holland, and Doug Schadle, and active hiring did not expose an additional named hiring owner."
+          "notes": "Batch 52 public verification: TimeCharge official team page lists Christian Belloso as Founder & CEO; public LinkedIn profile lists TimeCharge in Miami and company LinkedIn posts show active EV charging partnerships and hiring. Batch 54 recheck on 2026-06-01 reviewed TimeCharge official team page, LinkedIn company results, active strategic-partnerships hiring snippets, and targeted recruiter/employee searches; public named staff still resolve to Christian Belloso, Adrian Young, Jon Holland, and Doug Schadle. Batch 55 recheck on 2026-06-01 reviewed TimeCharge official team page, LinkedIn company and job postings, Christian Belloso LinkedIn, StartupNation founder coverage, Clutch vendor review, and targeted recruiter/employee searches; public named staff still resolve to Christian Belloso, Adrian Young, Jon Holland, and Doug Schadle, while active postings do not expose an additional named hiring owner. Batch 56 recheck on 2026-06-01 reviewed TimeCharge official team page, TimeCharge LinkedIn/company page, current LinkedIn strategic-partnerships hiring post/job, Christian Belloso LinkedIn/posts, StartupNation founder coverage, Clutch vendor review, and targeted recruiter/employee searches; public named team still resolves to Christian Belloso, Adrian Young, Jon Holland, and Doug Schadle, and active hiring did not expose an additional named hiring owner. Batch 58 recheck on 2026-06-01 reviewed TimeCharge official team page, LinkedIn company page, active Founding Head of Strategic Partnerships job post, Christian Belloso LinkedIn/posts, and targeted recruiter/employee searches; public named team still resolves to Christian Belloso, Adrian Young, Jon Holland, and Doug Schadle, and active hiring did not expose an additional named hiring owner. Batch 59 recheck on 2026-06-01 reviewed TimeCharge official team page, LinkedIn company results, active strategic-partnerships hiring snippets, Christian Belloso references, and targeted recruiter/employee searches; public named team still resolves to Christian Belloso, Adrian Young, Jon Holland, and Doug Schadle, with no additional named hiring owner found. Batch 60 recheck on 2026-06-01 reviewed TimeCharge official team page, LinkedIn/company results, startup profiles, and targeted recruiter/employee searches; public named team still resolves to Christian Belloso, Adrian Young, Jon Holland, and Doug Schadle. Batch 61 recheck on 2026-06-01 reviewed TimeCharge official team page, LinkedIn company page, Christian Belloso LinkedIn, active strategic-partnerships job post, and targeted recruiter/employee searches; public named team still resolves to Christian Belloso, Adrian Young, Jon Holland, and Doug Schadle, and active hiring did not expose an additional named owner. Batch 62 recheck on 2026-06-01 reviewed TimeCharge official team page, LinkedIn company page, active Founding Head of Strategic Partnerships posting, Christian Belloso LinkedIn, and targeted employee/recruiter searches; public named team still resolves to Christian Belloso, Adrian Young, Jon Holland, and Doug Schadle, while active hiring did not expose a named recruiting owner. Batch 63 recheck on 2026-06-01 reviewed TimeCharge official team page, LinkedIn company page, F6S, CB Insights, and targeted recruiter/employee searches; official/public team still resolves to Christian Belloso, Adrian Young, Jon Holland, and Doug Schadle only, with hiring posts naming roles rather than people."
         },
         {
           "name": "Adrian Young",
@@ -10546,6 +10559,19 @@
           "responded": false,
           "date_contacted": "",
           "notes": "Batch 53 public verification: TimeCharge official team page lists Doug Schadle as BA Franchising alongside Christian Belloso, Adrian Young, and Jon Holland; TimeCharge describes itself as a Miami EV charging and mobility hub company."
+        },
+        {
+          "name": "Danish Shah",
+          "title": "Head of Development",
+          "linkedin_url": "",
+          "email": "",
+          "location": "",
+          "focus_area": "EV charging network development and battery systems",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 64 public verification: Dealroom TimeCharge profile names Danish Shah as Head of Development and describes battery-project experience for BMW and NIO at Tsinghua University; TimeCharge LinkedIn shows active hiring posts for strategic partnerships and business development, but no public LinkedIn URL for Danish was verified."
         }
       ]
     },
@@ -10575,20 +10601,33 @@
           "messaged": false,
           "responded": false,
           "date_contacted": "",
-          "notes": "Batch 52 public verification: Rapid Charge EV official site lists founder Carlos and customer reviews identify owner Carlos Ortiz; Sunbiz and BisProfiles list Carlos J. Ortiz on the active Rapid Charge EV LLC record. Batch 53 recheck on 2026-06-01 reviewed Rapid Charge EV official site/about page, current Sunbiz record, BisProfiles/BizProfile mirrors, customer-review references, and targeted LinkedIn searches; public evidence still confirms Carlos J. Ortiz and Justin A. Ortiz as the current company-specific operators, with no additional current hiring or technical staff found. Batch 54 recheck on 2026-06-01 reviewed Rapid Charge EV official site/about/review references, current Sunbiz and registry-mirror records, and targeted LinkedIn/recruiter searches; current evidence still confirms Carlos J. Ortiz and Justin A. Ortiz as company-specific operators, while Madelyn Ortiz appeared only in stale or conflicting registry snippets and was not added. Batch 55 recheck on 2026-06-01 reviewed Rapid Charge EV official site/about page, current Sunbiz detail, BisProfiles/BizProfile registry mirrors, service-area pages, and targeted LinkedIn/recruiter searches; current evidence confirms Carlos J. Ortiz and Justin A. Ortiz as company-specific operators, while Madelyn Ortiz appears only in conflicting registry mirrors and was not added. Batch 56 recheck on 2026-06-01 reviewed Rapid Charge EV official site/about page, service-area pages, customer review snippets, Nextdoor profile, current registry mirrors, and targeted LinkedIn/recruiter searches; public evidence still confirms Carlos J. Ortiz and Justin A. Ortiz as company-specific operators, with no additional current named team or hiring contact found."
+          "notes": "Batch 52 public verification: Rapid Charge EV official site lists founder Carlos and customer reviews identify owner Carlos Ortiz; Sunbiz and BisProfiles list Carlos J. Ortiz on the active Rapid Charge EV LLC record. Batch 53 recheck on 2026-06-01 reviewed Rapid Charge EV official site/about page, current Sunbiz record, BisProfiles/BizProfile mirrors, customer-review references, and targeted LinkedIn searches; public evidence still confirms Carlos J. Ortiz and Justin A. Ortiz as the current company-specific operators, with no additional current hiring or technical staff found. Batch 54 recheck on 2026-06-01 reviewed Rapid Charge EV official site/about/review references, current Sunbiz and registry-mirror records, and targeted LinkedIn/recruiter searches; current evidence still confirms Carlos J. Ortiz and Justin A. Ortiz as company-specific operators, while Madelyn Ortiz appeared only in stale or conflicting registry snippets and was not added. Batch 55 recheck on 2026-06-01 reviewed Rapid Charge EV official site/about page, current Sunbiz detail, BisProfiles/BizProfile registry mirrors, service-area pages, and targeted LinkedIn/recruiter searches; current evidence confirms Carlos J. Ortiz and Justin A. Ortiz as company-specific operators, while Madelyn Ortiz appears only in conflicting registry mirrors and was not added. Batch 56 recheck on 2026-06-01 reviewed Rapid Charge EV official site/about page, service-area pages, customer review snippets, Nextdoor profile, current registry mirrors, and targeted LinkedIn/recruiter searches; public evidence still confirms Carlos J. Ortiz and Justin A. Ortiz as company-specific operators, with no additional current named team or hiring contact found. Batch 58 recheck on 2026-06-01 reviewed Rapid Charge EV official site/reviews, current Sunbiz detail, registry mirrors, service-area pages, and targeted LinkedIn/recruiter searches; current primary evidence confirms Carlos J. Ortiz and Justin A. Ortiz, while older Madelyn Ortiz registry mirrors conflict with current Sunbiz and were not added. Batch 59 recheck on 2026-06-01 reviewed Rapid Charge EV official site/reviews, current Sunbiz and registry mirrors, Carlos/Justin Ortiz references, and targeted LinkedIn/recruiter searches; current primary evidence confirms Carlos J. Ortiz and Justin A. Ortiz, while other names were stale, conflicting, or not company-specific. Batch 60 recheck on 2026-06-01 reviewed Rapid Charge EV official site/about pages, current Sunbiz detail, service-area pages, customer review references, and targeted LinkedIn/recruiter searches; current public evidence still confirms Carlos J. Ortiz and Justin A. Ortiz as company-specific operators, with no additional named hiring or technical staff found. Batch 61 recheck on 2026-06-01 reviewed Rapid Charge EV official site, current Sunbiz detail, service-area pages, customer-review references, and targeted LinkedIn/recruiter searches; current public evidence still confirms Carlos J. Ortiz and Justin A. Ortiz as company-specific operators, with no additional named hiring or technical staff found. Batch 62 recheck on 2026-06-01 reviewed Rapid Charge EV official about/home pages, current registry mirrors, Carlos/Justin Ortiz service references, and targeted LinkedIn/recruiter searches; current public evidence still confirms Carlos J. Ortiz and Justin A. Ortiz as company-specific operators, with no additional named hiring or technical staff found. Batch 63 recheck on 2026-06-01 reviewed Rapid Charge EV official site/reviews, current Sunbiz detail, BisProfiles snippets, service-area pages, and targeted LinkedIn/recruiter searches; current Sunbiz lists Carlos J. Ortiz and Madelyn Ortiz, while the official site still names Carlos and customer reviews still mention Justin as a technician. Batch 64 recheck on 2026-06-01 reviewed Rapid Charge EV official site/reviews, South Florida service-area pages, BisProfiles/BizProfile registry mirrors, and targeted LinkedIn/recruiter searches; current public evidence still confirms Carlos J. Ortiz, Justin A. Ortiz, and Madelyn Ortiz only. Batch 66 recheck on 2026-06-01 reviewed Rapid Charge EV official contact, Broward/Miami-Dade/Davie/Pompano service pages, BisProfiles current registry details, and targeted LinkedIn/recruiter searches; public evidence still confirms Carlos J. Ortiz, Madelyn Ortiz, and Justin Ortiz only, with no additional named dispatch, fleet, or technician contacts found. Batch 67 recheck on 2026-06-01 reviewed Rapid Charge EV official site, Broward/Miami-Dade service pages, current Sunbiz and BisProfiles registry snippets, customer reviews naming Carlos and Justin, and targeted LinkedIn/recruiter searches; public evidence still confirms Carlos J. Ortiz, Justin A. Ortiz, and Madelyn Ortiz only, with no additional named dispatch, fleet, or technician contacts found. Batch 68 recheck on 2026-06-01 reviewed Rapid Charge EV official home/about/contact/blog/service-area pages, current registry search snippets, Carlos/Justin/Madelyn Ortiz references, and targeted LinkedIn/recruiter searches; public evidence still confirms the existing Carlos, Justin, and Madelyn contacts only, with the broader technician/dispatch team unnamed. Batch 69 recheck on 2026-06-01 reviewed Rapid Charge EV official site/reviews, service-area pages, current Rapid Charge EV LLC registry snippets, and targeted LinkedIn/recruiter searches; public evidence still confirms Carlos, Justin, and Madelyn Ortiz only, with the broader technician/dispatch team unnamed and no recruiter found. Batch 70 recheck on 2026-06-01 reviewed Rapid Charge EV official home, service-area pages, customer reviews naming Carlos and Justin, current BisProfiles/Sunbiz registry records, and targeted LinkedIn/recruiter/employee searches; public evidence still confirms Carlos J. Ortiz, Justin A. Ortiz, and Madelyn Ortiz only, with the broader technician and dispatch team unnamed. Batch 71 recheck on 2026-06-01 reviewed Rapid Charge EV official site/service-area pages/reviews, current Sunbiz/BisProfiles records, targeted LinkedIn/recruiter/employee searches for Carlos, Justin, Madelyn, and myrapidchargeev; public evidence still confirms Carlos, Justin, and Madelyn only, with the broader technician and dispatch team unnamed. Batch 72 recheck on 2026-06-01 reviewed Rapid Charge EV official site/reviews, current Sunbiz detail, BisProfiles mirror, and targeted LinkedIn/recruiter searches; public evidence still confirms Carlos J. Ortiz, Justin A. Ortiz, and Madelyn Ortiz only, with broader certified technician/dispatch staff unnamed. Batch 73 recheck on 2026-06-01 reviewed Rapid Charge EV official home/contact/service-area/blog pages, current Sunbiz and BisProfiles registry results, Carlos/Justin/Madelyn Ortiz references, and targeted LinkedIn/recruiter searches; public evidence still confirms Carlos, Justin, and Madelyn only, with the broader technician/dispatch team unnamed. Batch 74 recheck on 2026-06-01 reviewed Rapid Charge EV official home/about pages, customer-review snippets naming Carlos and Justin, Rapid Charge EV LLC registry/BisProfiles references, and targeted LinkedIn/recruiter searches; no additional named company-specific operators or technicians were public beyond Carlos, Justin, and Madelyn Ortiz. Batch 75 recheck on 2026-06-01 reviewed Rapid Charge EV official site/testimonials, Broward and Miami-Dade service pages, BisProfiles/Sunbiz records, and targeted recruiter/employee searches; public evidence still resolves company-specific operators to Carlos J. Ortiz, Madelyn Ortiz, and field technician Justin only. Batch 76 recheck on 2026-06-01 reviewed Rapid Charge EV official site, Sunbiz entity detail, BisProfiles registry mirror, Carlos/Justin review mentions, and targeted recruiter/employee searches; public evidence still resolves active company-specific contacts to Carlos Ortiz, Madelyn Ortiz, and named mobile technician Justin Ortiz only. Batch 77 recheck on 2026-06-01 reviewed Rapid Charge EV official site, mobile charging service pages/testimonials, current Sunbiz detail, BisProfiles registry, and targeted LinkedIn/recruiter searches; public named team still resolves to Carlos Ortiz, Justin A. Ortiz, and Madelyn Ortiz only. Batch 78 recheck on 2026-06-01 reviewed Rapid Charge EV official site, about/service pages, customer-review staff mentions, Sunbiz/BisProfiles records, and targeted LinkedIn/recruiter searches; public staff still resolve to Carlos, Justin, and Madelyn Ortiz only. Batch 79 recheck on 2026-06-01 reviewed Rapid Charge EV official site/about page, public customer reviews, BisProfiles/Sunbiz records, and targeted LinkedIn/team searches; current public names still resolve to Carlos Ortiz, Justin Ortiz, and Madelyn Ortiz. Batch 80 recheck on 2026-06-01 reviewed Rapid Charge EV official home/about/contact pages, Sunbiz and BisProfiles records, Nextdoor business page, customer-review snippets naming field technicians, and targeted LinkedIn/recruiter searches; public evidence still resolves company-specific operators to Carlos J. Ortiz, Justin A. Ortiz, and Madelyn Ortiz only. Batch 81 recheck on 2026-06-01 reviewed Rapid Charge EV official site/about/services/review pages, Sunbiz and BisProfiles records, contact pages, and targeted LinkedIn/recruiter searches; public evidence still resolves named operators to Carlos Ortiz, Justin Ortiz, and Madelyn Ortiz, with customer reviews mentioning Justin as technician but no additional named staff. Batch 82 recheck on 2026-06-01 reviewed Rapid Charge EV official service/contact pages, Sunbiz/BisProfiles records, and targeted recruiter/employee searches; public evidence still resolves named company operators to Carlos J. Ortiz, Justin A. Ortiz, and Madelyn Ortiz only."
         },
         {
           "name": "Justin A. Ortiz",
-          "title": "Manager / Registered Agent",
+          "title": "Manager / Technician / Mobile Charging Operations",
           "linkedin_url": "",
           "email": "support@myrapidchargeev.com",
           "location": "Davie, FL",
-          "focus_area": "Mobile charging dispatch, EV-safe roadside operations, technician coordination, and local service coverage",
+          "focus_area": "Mobile charging dispatch, EV-safe roadside support, technician coordination, and local service coverage",
           "connected": false,
           "messaged": false,
           "responded": false,
           "date_contacted": "",
-          "notes": "Batch 52 public verification: Sunbiz active entity record lists Justin A. Ortiz as manager and registered agent for Rapid Charge EV LLC; official site customer reviews also mention Justin as a Rapid Charge EV technician."
+          "notes": "Batch 52 public verification: Sunbiz active entity record lists Justin A. Ortiz as manager and registered agent for Rapid Charge EV LLC; official site customer reviews also mention Justin as a Rapid Charge EV technician. Batch 63 correction: current Sunbiz now lists Carlos J. Ortiz as registered agent/authorized member and Madelyn Ortiz as manager, so Justin is retained based on official-site customer reviews naming him as a Rapid Charge EV technician rather than as current registered agent. Batch 73 registry recheck found the current Sunbiz result listing Justin A. Ortiz as manager/registered agent and Carlos J. Ortiz as authorized representative, while BisProfiles still lists Madelyn Ortiz and Carlos J. Ortiz; retained all three existing contacts because official-site reviews continue to name Justin as a Rapid Charge EV technician and public records conflict on the manager row. Batch 77 public verification: current Sunbiz detail lists Justin A. Ortiz as registered agent and Manager for Rapid Charge EV LLC; official site testimonials identify Justin as a technician performing mobile EV charging rescues."
+        },
+        {
+          "name": "Madelyn Ortiz",
+          "title": "Manager",
+          "linkedin_url": "",
+          "email": "support@myrapidchargeev.com",
+          "location": "Davie, FL",
+          "focus_area": "Mobile EV charging operations, company administration, dispatch coverage, and South Florida service coordination",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 63 public verification: current Sunbiz detail for active Rapid Charge EV LLC lists Madelyn Ortiz as MGR at the Davie principal address; Rapid Charge EV official site publishes support@myrapidchargeev.com for service contact and describes a professional mobile charging team across Broward, Miami-Dade, and Palm Beach."
         }
       ]
     },
@@ -10618,7 +10657,7 @@
           "messaged": false,
           "responded": false,
           "date_contacted": "",
-          "notes": "Batch 52 public verification: Denrgy official about page lists Monty Bannerman as CEO; Miami-Dade Climate Ready Tech Hub materials describe Monty as Denrgy co-founder and CEO leading resilient renewable microgrid work. Batch 54 recheck on 2026-06-01 reviewed Denrgy official about page, LinkedIn company results, Miami-Dade Climate Ready Tech Hub materials, FIU UP-LIFT references, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell. Batch 55 recheck on 2026-06-01 reviewed Denrgy official about page, LinkedIn company results, Miami-Dade ClimateReady Tech Hub materials, FIU/UP-LIFT references, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell, with no net-new recruiter or technical staff found. Batch 56 recheck on 2026-06-01 reviewed Denrgy official about/platform/finance pages, Denrgy LinkedIn/company page, Monty Bannerman LinkedIn, Bimergen/Bitech public board materials, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell, with no net-new recruiter or technical staff found."
+          "notes": "Batch 52 public verification: Denrgy official about page lists Monty Bannerman as CEO; Miami-Dade Climate Ready Tech Hub materials describe Monty as Denrgy co-founder and CEO leading resilient renewable microgrid work. Batch 54 recheck on 2026-06-01 reviewed Denrgy official about page, LinkedIn company results, Miami-Dade Climate Ready Tech Hub materials, FIU UP-LIFT references, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell. Batch 55 recheck on 2026-06-01 reviewed Denrgy official about page, LinkedIn company results, Miami-Dade ClimateReady Tech Hub materials, FIU/UP-LIFT references, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell, with no net-new recruiter or technical staff found. Batch 56 recheck on 2026-06-01 reviewed Denrgy official about/platform/finance pages, Denrgy LinkedIn/company page, Monty Bannerman LinkedIn, Bimergen/Bitech public board materials, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell, with no net-new recruiter or technical staff found. Batch 58 recheck on 2026-06-01 reviewed Denrgy official about/platform pages, LinkedIn company page, Monty Bannerman LinkedIn, Miami-Dade Climate Ready Tech Hub materials, Bitech/Bimergen public board materials, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell, with no net-new recruiter or technical staff found. Batch 59 recheck on 2026-06-01 reviewed Denrgy official about/platform pages, LinkedIn company results, Miami-Dade Climate Ready Tech Hub materials, Monty Bannerman/Greg Clark/Bahar Ozdemir/Chick Wassell references, and targeted recruiter/employee searches; no net-new recruiter or technical staff were found. Batch 60 recheck on 2026-06-01 reviewed Denrgy official about/platform pages, LinkedIn company results, Miami-Dade public materials, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell, with no net-new recruiter or technical staff found. Batch 61 recheck on 2026-06-01 reviewed Denrgy official about/leadership page, Denrgy LinkedIn/company page, Monty/Bahar LinkedIn results, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell, with no net-new recruiter or technical staff found. Batch 62 recheck on 2026-06-01 reviewed Denrgy official about/leadership page, LinkedIn/company results, Monty Bannerman/Bahar Ozdemir references, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell, with no net-new recruiter or technical staff found. Batch 63 recheck on 2026-06-01 reviewed Denrgy official about page, LinkedIn company page, Miami-Dade Climate Ready Tech Hub materials, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 64 recheck on 2026-06-01 reviewed Denrgy official about page, Denrgy LinkedIn/company page, Monty/Bahar public LinkedIn results, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 66 recheck on 2026-06-01 reviewed Denrgy official about page, LinkedIn company page, Monty Bannerman and Bahar Ozdemir public LinkedIn results, Bimergen public filing references, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 67 recheck on 2026-06-01 reviewed Denrgy official leadership/about page, Denrgy LinkedIn/company page, Monty Bannerman and Bahar Ozdemir public LinkedIn results, Miami-Dade Climate Ready Tech Hub materials, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 68 recheck on 2026-06-01 reviewed Denrgy official about/leadership page, Denrgy LinkedIn/company page, Monty Bannerman and Bahar Ozdemir LinkedIn results, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 69 recheck on 2026-06-01 reviewed Denrgy official about/leadership page, Denrgy LinkedIn company page, Monty Bannerman/Bimergen public bio and filing snippets, and targeted recruiter/employee searches; public evidence still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 70 recheck on 2026-06-01 reviewed Denrgy official about/leadership page, LinkedIn/company results, Monty Bannerman/Bahar Ozdemir public profile snippets, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 71 recheck on 2026-06-01 reviewed Denrgy official about/leadership page, LinkedIn company page, Monty/Bahar LinkedIn results, Miami-Dade Climate Ready Tech Hub materials, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 72 recheck on 2026-06-01 reviewed Denrgy official about/platform pages, Denrgy LinkedIn/company results, Bahar Ozdemir LinkedIn, Miami-Dade Climate Ready Tech Hub materials, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 73 recheck on 2026-06-01 reviewed Denrgy official about page, Denrgy LinkedIn company page, Monty Bannerman and Bahar Ozdemir LinkedIn results, Miami-Dade Climate Ready Tech Hub materials, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 74 recheck on 2026-06-01 reviewed Denrgy official about/platform pages, Denrgy LinkedIn/company page, Monty Bannerman and Bahar Ozdemir public LinkedIn results, Miami-Dade Climate Ready Tech Hub materials, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 75 recheck on 2026-06-01 reviewed Denrgy official about/leadership page, Denrgy LinkedIn/company page, Monty Bannerman and Bahar Ozdemir LinkedIn results, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 76 recheck on 2026-06-01 reviewed Denrgy official about/platform pages, LinkedIn company page, Monty/Bahar public LinkedIn results, Bitech/Bimergen/Miami-Dade references, and targeted recruiter/employee searches; official leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 77 recheck on 2026-06-01 reviewed Denrgy official about/platform pages, LinkedIn company employee list, Miami-Dade Climate Ready Tech Hub letter, Bimergen/Bitech public bio snippets, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 78 recheck on 2026-06-01 reviewed Denrgy official about/platform pages, Denrgy LinkedIn page, Monty Bannerman and Bahar Ozdemir LinkedIn results, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 79 recheck on 2026-06-01 reviewed Denrgy official leadership page, Bimergen/OTC references, Miami-Dade Climate Ready Tech Hub materials, and targeted LinkedIn/recruiter searches; public leadership remains Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell. Batch 80 recheck on 2026-06-01 reviewed Denrgy official about/leadership page, Denrgy LinkedIn/company results, Bimergen/Simply Wall St references, Miami-Dade public materials, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 81 recheck on 2026-06-01 reviewed Denrgy official about/platform pages, LinkedIn/company search results, Miami-Dade Climate Ready Tech Hub materials, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only. Batch 82 recheck on 2026-06-01 reviewed Denrgy official leadership/about page, Miami-Dade Climate Ready Tech Hub materials, Bimergen/RedChip public bios, and targeted recruiter/employee searches; public leadership still resolves to Monty Bannerman, Greg Clark, Bahar Ozdemir, and Chick Wassell only."
         },
         {
           "name": "Greg Clark",
@@ -10834,7 +10873,7 @@
           "messaged": false,
           "responded": false,
           "date_contacted": "",
-          "notes": "Batch 52 public verification: D Squared Engineering LinkedIn and Refresh Miami profile list Derek Duzoglou as founder; official KOOP materials publish derek@d-squaredengineering.com for the microgrid company. Batch 53 recheck on 2026-06-01 reviewed Derek Duzoglou LinkedIn, D Squared Engineering LinkedIn/search results, Gust profile, KOOP/Blue Current materials, BizProfile records, and targeted employee/recruiter searches; public evidence still resolves company-specific staff to Derek and Robert Duzoglou. Batch 55 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn, Gust profile, BizProfile/BisProfiles records, University of Miami Smart Cities materials, KOOP deck references, and targeted employee/recruiter searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, and Claudio Tamae. Batch 56 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn, Gust profile, BizProfile/BisProfiles records, KOOP deck, and targeted recruiter/employee searches; public employees still resolve to Derek Duzoglou, Robert Duzoglou, and Claudio Tamae, with no additional current named hiring or technical contact found."
+          "notes": "Batch 52 public verification: D Squared Engineering LinkedIn and Refresh Miami profile list Derek Duzoglou as founder; official KOOP materials publish derek@d-squaredengineering.com for the microgrid company. Batch 53 recheck on 2026-06-01 reviewed Derek Duzoglou LinkedIn, D Squared Engineering LinkedIn/search results, Gust profile, KOOP/Blue Current materials, BizProfile records, and targeted employee/recruiter searches; public evidence still resolves company-specific staff to Derek and Robert Duzoglou. Batch 55 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn, Gust profile, BizProfile/BisProfiles records, University of Miami Smart Cities materials, KOOP deck references, and targeted employee/recruiter searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, and Claudio Tamae. Batch 56 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn, Gust profile, BizProfile/BisProfiles records, KOOP deck, and targeted recruiter/employee searches; public employees still resolve to Derek Duzoglou, Robert Duzoglou, and Claudio Tamae, with no additional current named hiring or technical contact found. Batch 58 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn, University of Miami Smart Cities materials, SignalHire snippets, and targeted recruiter/employee searches; public employees still resolve to Derek Duzoglou, Robert Duzoglou, and Claudio Tamae, with no additional current named hiring or technical contact found. Batch 59 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn, KOOP/Blue Current materials, University of Miami Smart Cities materials, SignalHire snippets, and targeted recruiter/employee searches; public employees still resolve to Derek Duzoglou, Robert Duzoglou, and Claudio Tamae, with no additional current named hiring contact found. Batch 60 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Gust profile, Florida registry mirrors, University of Miami Smart Cities materials, and targeted recruiter/employee searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, and Claudio Tamae. Batch 61 recheck on 2026-06-01 reviewed D Squared Engineering public profiles, Gust profile, KOOP deck, LinkedIn/search snippets, and targeted recruiter/employee searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, and Claudio Tamae, with no additional current named hiring contact found. Batch 62 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn company page, Gust profile, current Florida registry mirrors, KOOP deck, University of Miami Smart Cities materials, and targeted recruiter/employee searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, and Claudio Tamae only. Batch 63 recheck on 2026-06-01 reviewed D Squared Engineering official page, LinkedIn company page, Derek Duzoglou LinkedIn, Refresh Miami coverage, KOOP deck references, and targeted recruiter/employee searches; public employees still resolve to Derek Duzoglou, Robert Duzoglou, and Claudio Tamae only. Batch 64 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Gust profile, current Florida registry mirror, Derek Duzoglou LinkedIn, Smart Cities Miami materials, and targeted recruiter/employee searches; public employees still resolve to Derek Duzoglou, Robert Duzoglou, and Claudio Tamae only. Batch 67 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn, SignalHire employee snippets, Refresh Miami Blue Current coverage, StartUP FIU seminar posts, and targeted recruiter/employee searches; public employees still resolve to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and weak fabrication contact David Reid only. Batch 68 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn, SignalHire employee snippets, Refresh Miami/StartUP FIU Blue Currents materials, and targeted recruiter/employee searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and weak fabrication contact David Reid only. Batch 69 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn company page, Derek Duzoglou LinkedIn/Blue Currents posts, Smart Cities Miami, PropJump/Gust/registry snippets, and targeted recruiter/employee searches; public evidence still resolves to Derek/Robert Duzoglou, Claudio Tamae, and weak fabrication contact David Reid only. Batch 70 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company employee results, SignalHire company profile, Derek Duzoglou public profile references, Refresh Miami/Gust/registry snippets, and targeted recruiter/employee searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and weak fabrication contact David Reid only. Batch 71 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou public profile snippets, Florida registry/BizProfile records, SignalHire/VisualVisitor employee snippets, Smart Cities Miami materials, and targeted recruiter/employee searches; public staff still resolve to Derek, Robert Duzoglou, Claudio Tamae, and weak fabrication contact David Reid only. Batch 72 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn, Gust profile, StartUP FIU Blue Currents post, SignalHire snippet, and targeted recruiter/employee searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and weak fabrication contact David Reid only. Batch 73 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Gust profile, KOOP deck, Florida registry mirrors, Derek Duzoglou LinkedIn, SignalHire/VisualVisitor snippets, and targeted recruiter/employee searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and weak fabrication contact David Reid only. Batch 74 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn/posts, Refresh Miami Blue Current coverage, KOOP/Blue Current references, SignalHire/VisualVisitor snippets, and targeted recruiter/employee searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and weak fabrication contact David Reid only. Batch 75 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn/posts, StartUP FIU and University of Miami Smart Cities materials, PropJump profile, and targeted recruiter/employee searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and the weak fabrication contact David Reid only. Batch 76 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn company page, Derek Duzoglou LinkedIn, SignalHire employee profile, Refresh Miami Blue Current coverage, StartUP FIU/University of Miami Smart Cities materials, and targeted recruiter/employee searches; public evidence still resolves current company-specific team to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and weak SignalHire David Reid only. Batch 77 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn employee list, Derek Duzoglou LinkedIn, SignalHire employee snippet, Smart Cities Miami 2026 materials, and targeted recruiter/employee searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and weak David Reid fabrication contact only. Batch 78 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn, Gust profile, SignalHire snippets, Smart Cities/Refresh Miami materials, and targeted recruiter/employee searches; public team still resolves to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and weak David Reid only. Batch 79 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company results, Derek Duzoglou LinkedIn, Gust profile, BizProfile registry record, KOOP deck, and Smart Cities Miami materials; public team still resolves to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and weak fabrication contact David Reid. Batch 80 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company results, SignalHire employee snippets, Derek Duzoglou public profile references, KOOP/Blue Current materials, and targeted recruiter/employee searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and weak fabrication contact David Reid only. Batch 81 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn/activity, KOOP/Blue Current materials, SignalHire snippets, Smart Cities/StartUP FIU references, and targeted recruiter/employee searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and weak fabrication contact David Reid only. Batch 82 recheck on 2026-06-01 reviewed D Squared Engineering LinkedIn/company page, Derek Duzoglou LinkedIn/activity, StartUP FIU/Refresh Miami Blue Currents materials, SignalHire snippets, and targeted recruiter/employee searches; public staff still resolve to Derek Duzoglou, Robert Duzoglou, Claudio Tamae, and weak fabrication contact David Reid only."
         },
         {
           "name": "Robert Duzoglou",
@@ -10861,6 +10900,19 @@
           "responded": false,
           "date_contacted": "",
           "notes": "Batch 54 public verification: D Squared Engineering LinkedIn company results list Claudio Tamae among employees; Claudio Tamae public LinkedIn profile lists D Squared Engineering in Key Biscayne, and SignalHire lists Claudio Tamae as an intern."
+        },
+        {
+          "name": "David Reid",
+          "title": "Boilermaker / Fabrication Support",
+          "linkedin_url": "",
+          "email": "",
+          "location": "",
+          "focus_area": "Containerized infrastructure fabrication, field build support, microgrid hardware assembly, and modular utility deployment",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 66 public verification: SignalHire public company profile for D Squared Engineering lists David Reid as Boilermaker among top employees, while D Squared LinkedIn still lists Derek Duzoglou, Robert Duzoglou, and Claudio Tamae as visible employees. No direct LinkedIn URL or current location was clearly verified, so this is retained as a weak fabrication/field-operations contact."
         }
       ]
     },
@@ -11008,6 +11060,550 @@
           "responded": false,
           "date_contacted": "",
           "notes": "Batch 55 public verification: Wellfound PayOli Solar careers/people pages list Jorge Gomez as a Miami employee while the same profile shows PayOli actively hiring a Field Engineer - Project Manager; PayOli careers page also lists active Field Engineer, EV Business Development Manager, Outside Sales Representative, and Solar Sales Consultant openings."
+        }
+      ]
+    },
+    {
+      "id": "C1668",
+      "name": "Nopetro Energy",
+      "category": "EV / Energy",
+      "sector": "energy",
+      "description": "Nopetro Energy develops renewable natural gas production, CNG/RNG fueling infrastructure, and integrated fleet energy solutions for transit, logistics, and industrial customers.",
+      "hq_location": "Miami, FL",
+      "priority": 3,
+      "size_estimate": "11-50",
+      "has_intern_program": false,
+      "linkedin_company_url": "https://www.linkedin.com/company/nopetro-energy",
+      "linkedin_url_verified": true,
+      "recruiter_search_url": "https://www.linkedin.com/search/results/people/?keywords=Nopetro%20Energy%20recruiter",
+      "careers_url": "https://nopetroenergy.com/why-nopetro",
+      "recruiters": [
+        {
+          "name": "Jorge Herrera",
+          "title": "Co-Founder & CEO",
+          "linkedin_url": "https://www.linkedin.com/in/jorge-herrera-3745144a",
+          "email": "info@nopetroenergy.com",
+          "location": "Miami, FL",
+          "focus_area": "RNG/CNG infrastructure strategy, fleet energy partnerships, executive hiring, and integrated clean-fuel growth",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 public verification: Nopetro official why page lists Jorge Herrera as Cofounder & CEO and publishes info@nopetroenergy.com; LinkedIn profile and company posts identify Jorge as Miami-based Nopetro CEO/co-founder discussing RNG/CNG fleet strategy."
+        },
+        {
+          "name": "Scott A. Brinner",
+          "title": "EVP, RNG Solutions",
+          "linkedin_url": "https://www.linkedin.com/in/scott-brinner-b449416",
+          "email": "info@nopetroenergy.com",
+          "location": "Denver Metropolitan Area / Miami, FL",
+          "focus_area": "RNG solutions, commercial development, renewable natural gas infrastructure, and customer expansion",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 public verification: Nopetro official leadership page lists Scott A. Brinner as EVP, RNG Solutions; public LinkedIn profile lists Nopetro Energy, and Nopetro posts cite Scott on RNG in heavy-duty trucking."
+        },
+        {
+          "name": "Kevin Hyatt",
+          "title": "SVP, Business Development",
+          "linkedin_url": "https://www.linkedin.com/in/kevin-hyatt-4b42861",
+          "email": "info@nopetroenergy.com",
+          "location": "Dallas, TX / Miami, FL",
+          "focus_area": "Business development, transit and fleet partnerships, fueling infrastructure sales, and customer growth",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 public verification: Nopetro official leadership page lists Kevin Hyatt as SVP, Business Development; Nopetro LinkedIn company page lists Kevin Hyatt among employees, and public event materials associate him with Nopetro Energy."
+        },
+        {
+          "name": "Melissa Linton",
+          "title": "Chief Financial Officer",
+          "linkedin_url": "",
+          "email": "",
+          "location": "Miami, FL / Remote",
+          "focus_area": "Finance leadership, capital planning, RNG project economics, and executive hiring support",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 60 public verification on 2026-06-01: Nopetro official leadership page lists Melissa Linton as Chief Financial Officer; The Official Board also lists her as Nopetro Energy CFO among company leadership."
+        },
+        {
+          "name": "Edward Hart",
+          "title": "Chief Supply Officer",
+          "linkedin_url": "https://www.linkedin.com/in/ed-hart-56b569178",
+          "email": "",
+          "location": "Greater Tampa Bay Area / Miami, FL",
+          "focus_area": "RNG/CNG supply strategy, fuel procurement, infrastructure operations, and supplier partnerships",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 60 public verification on 2026-06-01: Nopetro official leadership page lists Edward Hart as Chief Supply Officer; public LinkedIn profile lists Nopetro Energy in Miami from 2014-present and Chief Supply Officer."
+        },
+        {
+          "name": "Christopher Galle",
+          "title": "SVP, Finance",
+          "linkedin_url": "",
+          "email": "",
+          "location": "Miami, FL / Remote",
+          "focus_area": "Project finance, capital allocation, acquisitions, RNG infrastructure financing, and growth planning",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 60 public verification on 2026-06-01: Nopetro official leadership page lists Christopher Galle as SVP, Finance; Nopetro's public LinkedIn post and Waste Today coverage announced him as Senior VP of Finance."
+        },
+        {
+          "name": "Mike Whitney",
+          "title": "SVP, RNG Operations",
+          "linkedin_url": "https://www.linkedin.com/in/michael-whitney-a30bab29",
+          "email": "",
+          "location": "Miami, FL / Remote",
+          "focus_area": "RNG plant operations, production infrastructure, operational partnerships, and project execution",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 60 public verification on 2026-06-01: Nopetro official leadership page lists Mike Whitney as SVP, RNG Operations; public LinkedIn profile for Michael Whitney lists Nopetro Energy and activity around Nopetro RNG plant partnerships."
+        },
+        {
+          "name": "Travis Payne",
+          "title": "SVP, RNG Development",
+          "linkedin_url": "https://www.linkedin.com/in/travis-payne-8811201a",
+          "email": "",
+          "location": "Raleigh-Durham, NC / Miami, FL",
+          "focus_area": "Renewable natural gas development, landfill gas projects, utility partnerships, and infrastructure growth",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 60 public verification on 2026-06-01: Nopetro official leadership page lists Travis Payne as SVP, RNG Development; Nopetro's public LinkedIn post and Waste Today coverage announced him as Senior VP of Renewable Natural Gas Development."
+        },
+        {
+          "name": "Russ Boullion",
+          "title": "VP, Commercial Development, RNG Solutions",
+          "linkedin_url": "",
+          "email": "",
+          "location": "Miami, FL / Remote",
+          "focus_area": "Heavy-duty fleet partnerships, RNG commercial development, N360 growth, and customer expansion",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 60 public verification on 2026-06-01: Nopetro LinkedIn post and RNG Coalition/Waste Today coverage say Russ Boullion joined as Vice President of Commercial Development for the RNG Solutions division."
+        },
+        {
+          "name": "Aldi Collaku, CFA",
+          "title": "Director of Finance",
+          "linkedin_url": "https://www.linkedin.com/in/aldi-collaku-cfa-b599ba1b",
+          "email": "",
+          "location": "Miami, FL",
+          "focus_area": "Finance analysis, project economics, capital planning, and RNG/CNG infrastructure finance support",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 60 public verification on 2026-06-01: Nopetro LinkedIn company page lists Aldi Collaku, CFA among employees; public LinkedIn profile lists Nopetro Energy in Miami, and Cornell alumni notice identifies the role as Director of Finance at Nopetro Energy."
+        }
+      ]
+    },
+    {
+      "id": "C1669",
+      "name": "Rouse Energy",
+      "category": "EV / Energy",
+      "sector": "energy",
+      "description": "Rouse Energy converts industrial waste streams into patented fuel additives that improve solid-fuel combustion, reduce emissions, and support circular energy use in heavy industry.",
+      "hq_location": "Miami, FL",
+      "priority": 3,
+      "size_estimate": "2-10",
+      "has_intern_program": false,
+      "linkedin_company_url": "https://www.linkedin.com/company/rouse-energy",
+      "linkedin_url_verified": true,
+      "recruiter_search_url": "https://www.linkedin.com/search/results/people/?keywords=Rouse%20Energy%20recruiter",
+      "careers_url": "https://www.rouseenergy.com/career",
+      "recruiters": [
+        {
+          "name": "Dmitry Ashurov",
+          "title": "Founder & CEO",
+          "linkedin_url": "https://www.linkedin.com/in/rouseenergy",
+          "email": "ask@rouseenergy.com",
+          "location": "Miami, FL",
+          "focus_area": "Clean-tech product development, industrial waste-to-fuel strategy, partnerships, and early team growth",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 public verification: Rouse Energy official who-we-are page lists Dmitry Ashurov as Founder & CEO; LinkedIn company updates identify Dmitry as CEO representing Rouse at Miami energy/resilience events. Batch 60 recheck on 2026-06-01 reviewed Rouse Energy official who-we-are/career pages, LinkedIn company page, Dmitry/Oksana/Heather public results, and targeted recruiter/employee searches; public staff still resolve to Dmitry Ashurov, Oksana Golovko-Kamoshenkova, and Heather Saltz. Batch 62 recheck on 2026-06-01 reviewed Rouse Energy official who-we-are/overview pages, LinkedIn company page, recent company posts, Justia patent search for U.S. Patent 12,570,913, and targeted recruiter/employee searches; official staff still resolve to existing team contacts, with Michail Sigalas added only as a patent-listed R&D technical contributor. Batch 63 recheck on 2026-06-01 reviewed Rouse Energy official who-we-are page, LinkedIn company page, recent company posts, Justia patent listing, and targeted recruiter/employee searches; public staff still resolve to the existing team contacts and patent-listed technical contributors. Batch 64 recheck on 2026-06-01 reviewed Rouse Energy official who-we-are page, LinkedIn company page, careers pages for Technical Advisor and industrial waste roles, patent/update references, and targeted recruiter/employee searches; no named recruiter surfaced beyond the existing team and patent-listed technical contributors."
+        },
+        {
+          "name": "Oksana Golovko-Kamoshenkova",
+          "title": "Vice President of Engineering / Chief Engineer",
+          "linkedin_url": "",
+          "email": "ask@rouseenergy.com",
+          "location": "Miami, FL / Remote",
+          "focus_area": "Chemical engineering, waste-based fuel additive R&D, testing, and technical product development",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 public verification: Rouse Energy official who-we-are page lists Oksana Golovko-Kamoshenkova as Chief Engineer, and the Rouse LinkedIn company page lists Oksana Golovko Kamoshenkova as Vice President of Engineering at Rouse Energy."
+        },
+        {
+          "name": "Heather Saltz",
+          "title": "Director of Communications & External Relations",
+          "linkedin_url": "https://www.linkedin.com/in/heathersaltz",
+          "email": "ask@rouseenergy.com",
+          "location": "New York, NY / Miami, FL",
+          "focus_area": "External relations, energy-event outreach, clean-tech communications, and partnership coordination",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 public verification: Rouse Energy LinkedIn company page lists Heather Saltz as an employee; company posts say CEO Dmitry Ashurov and Director of Communications & External Relations Heather Saltz represented Rouse Energy at Disasters Expo USA in Miami."
+        },
+        {
+          "name": "Michael Danov",
+          "title": "Board Member & President of Business Development",
+          "linkedin_url": "https://www.linkedin.com/in/mdanov",
+          "email": "mdanov@rouseenergy.com",
+          "location": "New York City Metropolitan Area / Miami, FL",
+          "focus_area": "Business development, industrial waste-stream partnerships, investment strategy, and clean-tech commercialization",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 61 public verification: Rouse Energy official who-we-are page lists Michael Danov as Board Member & President of Business Development; Michael Danov LinkedIn posts describe Rouse Energy partnership outreach and publish mdanov@rouseenergy.com for waste-to-energy collaboration."
+        },
+        {
+          "name": "Igor Moshensky",
+          "title": "Waste Management and Recycling Expert",
+          "linkedin_url": "",
+          "email": "",
+          "location": "Miami, FL / Remote",
+          "focus_area": "Industrial waste sourcing, recycling strategy, circular-economy feedstocks, and environmental compliance",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 61 public verification: Rouse Energy official who-we-are page lists Igor Moshensky as Waste Management and Recycling Expert, describing his work on waste reduction, disposal, recycling, resource recovery, and circular-economy principles."
+        },
+        {
+          "name": "Michail Sigalas",
+          "title": "Patent Inventor / R&D Technical Contributor",
+          "linkedin_url": "",
+          "email": "",
+          "location": "",
+          "focus_area": "Waste-based fuel additive R&D, industrial waste chemistry, patent-backed combustion-enhancement technology, and technical commercialization support",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 62 public verification: Justia patent search for U.S. Patent 12,570,913, Waste-based additive for solid fuel and related methods, lists assignee Rouse Energy Enterprises LLC and inventors Oksana Golovko-Kamoshenkova, Michail Sigalas, Igor Moshensky, and Dmitriy Ashurov. No current public Rouse company bio or clearly matching LinkedIn profile was found, so link and location are left blank."
+        }
+      ]
+    },
+    {
+      "id": "C1670",
+      "name": "BEVERYTHING, EV Consulting",
+      "category": "EV / Energy",
+      "sector": "energy",
+      "description": "BEVERYTHING provides EV retail consulting, workforce training, process optimization, and software tools that help dealerships build profitable electric-vehicle sales and service operations.",
+      "hq_location": "Miami-Fort Lauderdale, FL",
+      "priority": 3,
+      "size_estimate": "2-10",
+      "has_intern_program": false,
+      "linkedin_company_url": "https://www.linkedin.com/company/beveverything",
+      "linkedin_url_verified": true,
+      "recruiter_search_url": "https://www.linkedin.com/search/results/people/?keywords=BEVERYTHING%20EV%20Consulting%20recruiter",
+      "careers_url": "https://beveverything.com/",
+      "recruiters": [
+        {
+          "name": "John Ellis",
+          "title": "Founder/CEO",
+          "linkedin_url": "https://www.linkedin.com/in/john-ellis-9754bb4",
+          "email": "",
+          "location": "Ellisville, MS / Miami-Fort Lauderdale, FL",
+          "focus_area": "EV retail strategy, consulting software, dealer operations, workforce development, and executive partnerships",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 public verification: BEVERYTHING official site lists John Ellis as Founder/CEO and describes BEVERYTHING as an EV retail advisory serving North American clients; LinkedIn profile lists BEVEverything.com among John Ellis company websites. Batch 60 recheck on 2026-06-01 reviewed BEVEverything official site/team section, LinkedIn company page, John Ellis and Durran Cage public profiles, and targeted recruiter/employee searches; no additional clearly company-specific BEVEverything staff were verified beyond the existing team contacts. Batch 61 recheck on 2026-06-01 reviewed BEVEverything official team page, LinkedIn company page, John Ellis/Durran Cage public profiles, and targeted recruiter/employee searches; public team still resolves to John Ellis, Durran Cage, and Julie Kinloch, with no additional clearly company-specific staff verified. Batch 62 recheck on 2026-06-01 reviewed BEVEverything official site/team section, LinkedIn company page, John Ellis/Durran Cage/Julie Kinloch public references, and targeted recruiter/employee searches; public company-specific staff still resolve to the existing contacts, with no additional recruiter or technical hiring owner found. Batch 63 recheck on 2026-06-01 reviewed BEVERYTHING official site/team section, LinkedIn company page, John Ellis and Durran Cage public posts, and targeted recruiter/employee searches; public company-specific staff still resolve to John Ellis, Durran Cage, and Julie Kinloch only. Batch 64 recheck on 2026-06-01 reviewed BEVERYTHING official site/team section, LinkedIn company page, John Ellis and Durran Cage public LinkedIn results, Julie Kinloch references, and targeted recruiter/employee searches; public company-specific staff still resolve to John Ellis, Durran Cage, and Julie Kinloch only."
+        },
+        {
+          "name": "Durran Cage",
+          "title": "Co-Founder",
+          "linkedin_url": "https://www.linkedin.com/in/durrancage",
+          "email": "",
+          "location": "Arlington, TN / Miami-Fort Lauderdale, FL",
+          "focus_area": "EV dealer consulting, online experience teams, CRM process optimization, training, and strategic marketing",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 public verification: BEVERYTHING official team page lists Durran Cage as Co-Founder and describes his dealership operations, consulting, and process-optimization background; public podcast and search results provide the LinkedIn profile URL."
+        },
+        {
+          "name": "Julie Kinloch",
+          "title": "Director of Operations",
+          "linkedin_url": "",
+          "email": "",
+          "location": "Miami-Fort Lauderdale, FL / Remote",
+          "focus_area": "Operations management, EV consulting delivery, client coordination, and internal process support",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 public verification: BEVERYTHING official team page lists Julie Kinloch as Director of Operations on the EV consulting firm team; no clearly matching public LinkedIn profile was found in targeted searches."
+        },
+        {
+          "name": "Dario Gomez",
+          "title": "Director of Business Development",
+          "linkedin_url": "",
+          "email": "",
+          "location": "",
+          "focus_area": "Business development, EV dealership consulting growth, client partnerships, and sales pipeline support",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 66 public verification: BEVEverything LinkedIn/company searches and multiple public LinkedIn activity snippets surfaced a BEVEverything welcome post saying Dario Gomez recently joined as Director of Business Development. No direct profile URL or location was clearly verified, so link and location are left blank."
+        },
+        {
+          "name": "Rodrigo Da Rocha",
+          "title": "EV Consulting Team Member",
+          "linkedin_url": "",
+          "email": "",
+          "location": "",
+          "focus_area": "EV retail consulting delivery, dealership operations support, training programs, and client growth",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 67 public verification: targeted LinkedIn/public searches found BEVEverything public activity saying BEVeverything welcomed Rodrigo Da Rocha to the team as it continues to expand automotive EV consulting work. No direct profile URL, title, or location was clearly verified, so link and location are left blank."
+        }
+      ]
+    },
+    {
+      "id": "C1955",
+      "name": "Energy IQ",
+      "category": "EV / Energy",
+      "sector": "energy",
+      "description": "Energy IQ builds open-protocol building automation, microgrid, and energy optimization systems for commercial, hospitality, data center, military, and smart infrastructure customers.",
+      "hq_location": "Boca Raton, FL",
+      "priority": 3,
+      "size_estimate": "11-50",
+      "has_intern_program": false,
+      "linkedin_company_url": "https://www.linkedin.com/company/energy-iq-group-llc/",
+      "linkedin_url_verified": true,
+      "recruiter_search_url": "https://www.linkedin.com/search/results/people/?keywords=Energy%20IQ%20recruiter",
+      "careers_url": "https://www.energyiq.com/en/about-us/",
+      "recruiters": [
+        {
+          "name": "Karl Zimmerman",
+          "title": "CEO",
+          "linkedin_url": "https://www.linkedin.com/in/karl-zimmerman-5096a213",
+          "email": "info@energyiq.com",
+          "location": "Boca Raton, FL",
+          "focus_area": "Building automation leadership, microgrid systems, data center energy optimization, and engineering team growth",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 78 public verification: Energy IQ official about page lists Karl Zimmerman as CEO with IBM systems engineering and energy management background; LinkedIn profile lists EnergyIQ Group in Boca Raton."
+        },
+        {
+          "name": "James Parker",
+          "title": "Director",
+          "linkedin_url": "",
+          "email": "info@energyiq.com",
+          "location": "Boca Raton, FL",
+          "focus_area": "Smart infrastructure strategy, data/IoT systems, energy management, and technical leadership",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 78 public verification: Energy IQ official about page lists James Parker as Director and describes his CIO, telemetry, sensor-data, and leadership background."
+        },
+        {
+          "name": "Joe Stepenovitch",
+          "title": "Vice Chairman & Co-Founder",
+          "linkedin_url": "https://www.linkedin.com/in/joe-stepenovitch-826b971a",
+          "email": "",
+          "location": "Florida / Boca Raton, FL",
+          "focus_area": "Energy markets, utility operations, data center efficiency, renewable integration, and business development",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 78 public verification: Energy IQ LinkedIn employee list includes Joe Stepenovitch; public LinkedIn and SignalHire snippets list him at EnergyIQ Group / Energy IQ with co-founder and vice-chairman roles."
+        },
+        {
+          "name": "Richard Viens",
+          "title": "President / Authorized Dealer Contact",
+          "linkedin_url": "",
+          "email": "",
+          "location": "Boca Raton, FL",
+          "focus_area": "Building automation projects, controls integration, customer technical scoping, and partner delivery",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 78 public verification: Reliable Controls dealer listing names Richard Viens as Energy IQ Group contact in Boca Raton, and FAU engineering advisory-board materials list Richard Viens with Energy IQ."
+        },
+        {
+          "name": "Tony Rossini",
+          "title": "Building Automation Team Member / Technical Hiring Contact",
+          "linkedin_url": "https://www.linkedin.com/in/tonyrossini",
+          "email": "careers@energyiq.com",
+          "location": "Boca Raton, FL / United States",
+          "focus_area": "Building automation field engineering, Niagara/BAS integration hiring, smart-building project delivery, and statewide technical team growth",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 79 public verification: Tony Rossini public LinkedIn profile lists Energy IQ in Boca Raton, and a public LinkedIn hiring post from Tony says his team is hiring a Senior Building Automation Field Engineer for Niagara/BAS integration; Energy IQ job materials direct applicants to careers@energyiq.com."
+        }
+      ]
+    },
+    {
+      "id": "C1956",
+      "name": "Monta",
+      "category": "EV / Energy",
+      "sector": "energy",
+      "description": "Monta provides EV charging management software for operators, fleets, and drivers, using OCPP integrations, payments, roaming, support automation, and AI operations tooling.",
+      "hq_location": "Miami, FL / Copenhagen, Denmark",
+      "priority": 3,
+      "size_estimate": "201-500",
+      "has_intern_program": false,
+      "linkedin_company_url": "https://www.linkedin.com/company/montaapp/",
+      "linkedin_url_verified": true,
+      "recruiter_search_url": "https://www.linkedin.com/search/results/people/?keywords=Monta%20recruiter",
+      "careers_url": "https://careers.monta.com/",
+      "recruiters": [
+        {
+          "name": "Polina Arkhipova",
+          "title": "Talent Acquisition Specialist / People & Culture",
+          "linkedin_url": "",
+          "email": "",
+          "location": "Remote / Europe",
+          "focus_area": "Talent acquisition for Monta roles, including Miami commercial hiring and broader EV charging software teams",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 78 public verification: Monta Miami Sales Development Representative job lists Polina Arkhipova as Talent Acquisition contact; The Org lists her as Monta Talent Acquisition Specialist since January 2024."
+        },
+        {
+          "name": "Casper H Rasmussen",
+          "title": "CEO & Co-Founder",
+          "linkedin_url": "https://www.linkedin.com/in/casper-h-rasmussen-63b13922",
+          "email": "",
+          "location": "Miami, FL",
+          "focus_area": "North America expansion, EV charging software platform strategy, AI operations, and executive hiring leadership",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 78 public verification: Monta press release and official about page list the Miami U.S. office; Casper H Rasmussen LinkedIn lists Miami and CEO/co-founder at Monta."
+        },
+        {
+          "name": "Kevin Spangenberg",
+          "title": "Senior Demand Strategy Lead / Strategy Operations",
+          "linkedin_url": "https://dk.linkedin.com/in/kevin-spangenberg-a9494367",
+          "email": "",
+          "location": "Miami, FL / United States",
+          "focus_area": "North American demand strategy, EV charging operator growth, partner webinars, and commercial team scaling",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 78 public verification: Monta event pages list Kevin Spangenberg as Senior Demand Strategy Lead, The Org lists him in Miami, and Monta/Refresh Miami posts tie him to the Wynwood U.S. presence."
+        },
+        {
+          "name": "Zeeshan Minhas",
+          "title": "Director of Public Charging & Roaming",
+          "linkedin_url": "https://de.linkedin.com/in/zeeshan-minhas-%F0%9F%8D%89-81014125",
+          "email": "",
+          "location": "Berlin, Germany / North America roaming programs",
+          "focus_area": "Public charging, roaming integrations, OCPI interoperability, North American CPO/eMSP strategy, and product leadership",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 79 public verification: Monta event pages list Zeeshan Minhas as Director of Product and Roaming / Director of Roaming for a North America roaming webinar, and his public LinkedIn profile lists him as Director of Public Charging & Roaming at Monta."
+        },
+        {
+          "name": "Brian Rountree",
+          "title": "VP of Engineering / Financial Services Engineering Hiring Lead",
+          "linkedin_url": "https://es.linkedin.com/in/brianrountree",
+          "email": "",
+          "location": "Barcelona, Spain / Remote",
+          "focus_area": "Financial services engineering, payments, billing, invoices, VAT, platform engineering, SRE, and backend hiring",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 79 public verification: The Org lists Brian Rountree as Monta VP of Engineering leading platform and SRE teams, and his public LinkedIn hiring post says his Financial Services Engineering team is hiring a Senior Backend Engineer."
+        }
+      ]
+    },
+    {
+      "id": "C1957",
+      "name": "Greenview Energy",
+      "category": "EV / Energy",
+      "sector": "energy",
+      "description": "Greenview Energy finances, develops, owns, and operates renewable infrastructure projects spanning solar, storage, wind, renewable natural gas, and sustainable fuels.",
+      "hq_location": "Palm Beach, FL",
+      "priority": 3,
+      "size_estimate": "2-10",
+      "has_intern_program": false,
+      "linkedin_company_url": "https://www.linkedin.com/company/greenview-energy-llc/",
+      "linkedin_url_verified": true,
+      "recruiter_search_url": "https://www.linkedin.com/search/results/people/?keywords=Greenview%20Energy%20recruiter",
+      "careers_url": "https://www.gvepartners.com/about",
+      "recruiters": [
+        {
+          "name": "Casey Moye",
+          "title": "Founder & CEO",
+          "linkedin_url": "https://www.linkedin.com/in/casey-moye-47248667",
+          "email": "inquiries@gvepartners.com",
+          "location": "West Palm Beach, FL / Palm Beach, FL",
+          "focus_area": "Renewable infrastructure development, RNG projects, solar/storage investing, and project-development partnerships",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 78 public verification: Greenview Energy LinkedIn, official about page, PRNewswire launch release, and Casey Moye LinkedIn list him as founder/CEO of the Palm Beach renewable infrastructure company. Batch 79 recheck on 2026-06-01 reviewed Greenview Energy official site, LinkedIn company page, Casey Moye LinkedIn, BisProfiles/BizProfile records, launch materials, and Reno County/Meadowlark RNG partnership coverage; no additional current Greenview staff were public beyond Casey Moye and Amy Dittami. Batch 80 recheck on 2026-06-01 reviewed Greenview Energy official about page, Greenview Energy LinkedIn/company page, Casey Moye LinkedIn/profile posts, launch/RNG partnership coverage, and targeted recruiter/employee searches; public staff still resolve to Casey Moye and Amy Dittami only, while other visible names were partners or social engagers. Batch 81 recheck on 2026-06-01 reviewed Greenview Energy LinkedIn/company posts, Casey Moye LinkedIn, official about page, Florida registry mirrors, Greenview launch/RNG partnership materials, and targeted recruiter/employee searches; public staff still resolve to Casey Moye and Amy Dittami only, while other visible names were investors, partners, or social engagers."
+        },
+        {
+          "name": "Amy Dittami",
+          "title": "Chief Financial Officer / Registered Agent",
+          "linkedin_url": "",
+          "email": "inquiries@gvepartners.com",
+          "location": "Boynton Beach, FL / Palm Beach, FL",
+          "focus_area": "Renewable infrastructure finance, company operations, asset ownership support, and partner coordination",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 78 public verification: Greenview Energy official about page lists Amy Dittami as CFO; Florida business records list Amy Dittami as registered agent for Greenview Energy LLC."
+        },
+        {
+          "name": "Kenneth Z. Slater",
+          "title": "Chairman, Slater Family Holdings / Manager, Tremont Partners",
+          "linkedin_url": "",
+          "email": "inquiries@gvepartners.com",
+          "location": "Boynton Beach, FL / Palm Beach, FL",
+          "focus_area": "Greenview Energy investor backing, renewable infrastructure finance, long-term project capital, and partner relationships",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 82 public verification: Greenview Energy launch materials on GVE/PRNewswire identify Slater Family Holdings as Greenview Energy primary investor and quote Kenneth Slater, chairman of Slater Family Holdings, on the partnership with Casey Moye. Sunbiz records list Kenneth Z. Slater as manager of Tremont Partners LLC, which Florida business records list as a Greenview Energy manager entity at the same Boynton Beach address. Retained as investor/manager contact, not a dedicated recruiter."
         }
       ]
     }

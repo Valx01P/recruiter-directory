@@ -33,6 +33,16 @@ function companyHasDescription(company) {
   return typeof company.description === "string" && company.description.trim().length > 0;
 }
 
+function isSouthFloridaCompany(company) {
+  return /miami|fort lauderdale|boca raton|west palm beach|coral gables|doral|wynwood|brickell|aventura|hollywood|pompano|delray|south florida/i.test(
+    String(company.hq_location || "")
+  );
+}
+
+function contactTargetForCompany(company) {
+  return isSouthFloridaCompany(company) ? 5 : 10;
+}
+
 function normalizeCompany(company, sectorKey) {
   return {
     id: company.id,
@@ -78,7 +88,7 @@ function main() {
     const outPath = path.join(OUT_DIR, file);
     const populated = companies.filter((company) => (company.recruiters || []).length > 0).length;
     const missingDescription = companies.filter((company) => !companyHasDescription(company)).length;
-    const belowContactTarget = companies.filter((company) => (company.recruiters || []).length < 10).length;
+    const belowContactTarget = companies.filter((company) => (company.recruiters || []).length < contactTargetForCompany(company)).length;
     const totalRecruiters = recruiterCount(companies);
 
     const partition = {

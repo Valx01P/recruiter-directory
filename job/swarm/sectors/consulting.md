@@ -3,7 +3,7 @@
 **Assignment**
 - Sector key: `consulting`
 - Working file: `job/sectors/recruiter-consulting.json`
-- Companies owned by this sector: 36
+- Companies owned by this sector: 57
 - You may edit **only** `job/sectors/recruiter-consulting.json`.
 - Do not edit `job/recruiter.json`, UI copies, other sector files, or shared docs.
 - Do not run the merge script. The orchestrator runs merges centrally after each batch to avoid write races.
@@ -13,7 +13,7 @@ Populate this sector with useful outreach data without repeating completed work:
 1. Add or improve `company.description` for every company you touch, including companies that already have recruiters.
 2. Populate empty `recruiters[]` arrays where credible public LinkedIn/web evidence exists.
 3. Keep existing recruiter entries unless you can clearly tell they are stale or wrong.
-4. After coverage is complete, deepen companies to a maximum of 10 contacts each.
+4. After coverage is complete, deepen companies to their contact target: 5 for smaller Miami / South Florida startup teams, 10 for medium/larger companies elsewhere.
 5. If a sector is fully covered and bolstering is no longer yielding easy net-new contacts, add more companies in this sector, prioritizing smaller Miami / South Florida companies and startups.
 
 ## Company Description Standard
@@ -36,7 +36,7 @@ Minimum viable per company:
 - Prefer university, campus, emerging talent, early-career, intern, new grad, SWE, AI, ML, or technical recruiting titles.
 - In bolster mode, technical members who are publicly hiring for their team are valid, especially for internship, new-grad, SWE, AI, ML, data, infrastructure, or product engineering roles.
 - US-based or clearly US-hiring people are preferred.
-- Never add more than 10 contacts to a company. If it already has 10 or more, skip it unless correcting stale data.
+- Never exceed the contact target: 5 contacts is enough for smaller Miami / South Florida startup teams; 10 contacts remains the cap for medium/larger companies elsewhere.
 - Use only public professional information. Do not scrape aggressively.
 
 Recruiter object schema:
@@ -61,11 +61,12 @@ Recruiter object schema:
 - Do exactly one batch per Codex invocation, then exit after printing the marker.
 - Batch size: 8-14 companies.
 - Phase 1 Coverage: finish missing `description` fields first, then fill any empty `recruiters[]` arrays.
-- Phase 2 Bolster: once every existing company has a description and at least one contact, improve companies with fewer than 10 contacts. Add recruiters first, then technical hiring managers, founders, CTOs, VPs/Heads of Engineering, engineering managers, product/AI/data/security leads, or team leads who are visibly hiring or leading technical teams.
+- Phase 2 Bolster: once every existing company has a description and at least one contact, improve companies below their contact target. Add recruiters first, then technical hiring managers, founders, CTOs, VPs/Heads of Engineering, engineering managers, product/AI/data/security leads, or team leads who are visibly hiring or leading technical teams.
 - Bolster timebox: do not stall on a small company. If 2-3 focused searches do not find credible net-new contacts, keep any useful technical lead you found, note the search path in the contact notes, and move on.
-- Phase 3 Expansion: if descriptions are complete and bolster work is no longer producing easy net-new contacts, add 3-8 new companies in this sector per batch. Prioritize smaller Miami / South Florida companies and startups, then San Jose / Silicon Valley startups. Add descriptions and at least 1-3 contacts for new companies where possible.
+- Phase 3 Expansion: if descriptions are complete and bolster work is no longer producing easy net-new contacts, add 3-8 new companies in this sector per batch. Prioritize smaller Miami / South Florida companies and startups, then medium-sized companies elsewhere in the United States. Add descriptions and at least 1-3 contacts for new companies where possible.
 - Expansion geography: Miami, Fort Lauderdale, Boca Raton, West Palm Beach, Coral Gables, Doral, Wynwood, Brickell, and nearby South Florida startup/industrial hubs first; then San Jose, Santa Clara, Sunnyvale, Mountain View, Palo Alto, and nearby Silicon Valley startup hubs.
 - Expansion sector fit: for construction, industrial, logistics, energy, proptech, hardware, defense, healthcare, fintech, AI, cloud, and cybersecurity sectors, prefer smaller local operators with real software, data, engineering, operations, product, or technical hiring needs.
+- Expansion contact target: for smaller Miami / South Florida startup entries, 5 good contacts is enough. For medium-sized companies elsewhere in the United States, keep the 10-contact maximum target.
 - Spend roughly 5-8 minutes per company on average.
 - Use web search in parallel where possible:
   - `"<Company>" ("university recruiter" OR "campus recruiter" OR "early career recruiter" OR "talent acquisition") (intern OR "new grad" OR SWE OR software) LinkedIn -inurl:jobs`
@@ -78,19 +79,21 @@ Recruiter object schema:
 node -e '
 const fs=require("fs"); const d=JSON.parse(fs.readFileSync("job/sectors/recruiter-consulting.json","utf8"));
 const companies=d.companies||[];
+const isSoFla=c=>/miami|fort lauderdale|boca raton|west palm beach|coral gables|doral|wynwood|brickell|aventura|hollywood|pompano|delray|south florida/i.test(String(c.hq_location||""));
+const target=c=>isSoFla(c)?5:10;
 const unpop=companies.filter(c=>!(c.recruiters||[]).length);
 const missing=companies.filter(c=>!String(c.description||"").trim());
-const under10=companies.filter(c=>(c.recruiters||[]).length<10);
-const phase=(unpop.length||missing.length) ? "coverage" : (under10.length ? "bolster" : "expand");
+const underTarget=companies.filter(c=>(c.recruiters||[]).length<target(c));
+const phase=(unpop.length||missing.length) ? "coverage" : (underTarget.length ? "bolster" : "expand");
 console.log("=== SECTOR consulting STATUS ===");
 console.log("File: job/sectors/recruiter-consulting.json");
-console.log("Phase:", phase, "| Companies:", companies.length, "| Unpopulated:", unpop.length, "| Missing descriptions:", missing.length, "| Below 10 contacts:", under10.length);
+console.log("Phase:", phase, "| Companies:", companies.length, "| Unpopulated:", unpop.length, "| Missing descriptions:", missing.length, "| Below contact target:", underTarget.length);
 console.log("Recruiters:", companies.reduce((s,c)=>s+(c.recruiters||[]).length,0));
 console.log("Next work:");
-[...unpop, ...missing.filter(c=>!unpop.some(u=>u.id===c.id)), ...under10.filter(c=>!unpop.some(u=>u.id===c.id)&&!missing.some(m=>m.id===c.id))]
+[...unpop, ...missing.filter(c=>!unpop.some(u=>u.id===c.id)), ...underTarget.filter(c=>!unpop.some(u=>u.id===c.id)&&!missing.some(m=>m.id===c.id))]
   .sort((a,b)=>(a.priority-b.priority)||a.id.localeCompare(b.id))
   .slice(0,14)
-  .forEach(c=>console.log(c.id, "P"+c.priority, c.name, "| recs="+((c.recruiters||[]).length), "| desc="+(String(c.description||"").trim() ? "yes" : "no")));
+  .forEach(c=>console.log(c.id, "P"+c.priority, c.name, "| recs="+((c.recruiters||[]).length)+"/"+target(c), "| desc="+(String(c.description||"").trim() ? "yes" : "no")));
 '
 ```
 

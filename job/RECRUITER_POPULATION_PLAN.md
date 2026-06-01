@@ -19,7 +19,7 @@ Do not edit old ID-range partitions; they no longer exist. Codex workers edit on
 - Populated companies: 873
 - Empty recruiter arrays: 377
 - Missing company descriptions: 1,250
-- Company contacts target: up to 10 per company
+- Company contacts target: 5 for smaller Miami / South Florida startup teams, up to 10 for medium/larger companies elsewhere
 
 One duplicate existing company record was removed during cleanup: `WHOOP` / `Whoop` existed twice. The stronger `C0854` hardware/wearables record with real recruiters was kept.
 
@@ -35,19 +35,20 @@ For every existing company in a sector:
 ### 2. Bolster
 
 After a sector has no empty recruiter arrays and no missing descriptions:
-- Deepen existing companies up to 10 contacts total.
+- Deepen existing companies up to their contact target: 5 for smaller Miami / South Florida startup teams, 10 for medium/larger companies elsewhere.
 - Prefer recruiters and talent partners first.
 - Then add technical hiring managers, founders, CTOs, VPs of Engineering, engineering managers, and team leads who are publicly hiring interns or early-career SWE/AI/ML/data/infrastructure talent.
-- Stop at 10 contacts per company.
+- Stop at the company target.
 
 ### 3. Expansion
 
 After existing companies are covered and deepened:
 - Add new companies in the same sector.
-- Prioritize Miami, Fort Lauderdale, Boca Raton, West Palm Beach, San Jose, Santa Clara, Sunnyvale, Mountain View, Palo Alto, and nearby tech/startup hubs.
+- Prioritize Miami, Fort Lauderdale, Boca Raton, West Palm Beach, Coral Gables, Doral, Wynwood, Brickell, and nearby South Florida startup/industrial hubs.
+- After South Florida, add medium-sized companies around the United States that fit the sector.
 - Search all existing sector files before adding a company.
 - Reserve IDs with `node job/scripts/allocate-company-ids.js <count>`.
-- Add descriptions and 1-3 contacts where possible.
+- Add descriptions and 1-3 contacts initially, then bolster South Florida startups to 5 good contacts and medium-sized companies to 10 max.
 
 ## Commands
 

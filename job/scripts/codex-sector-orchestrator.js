@@ -4,7 +4,7 @@
  *
  * Codex workers are one-batch exec jobs. The monitor starts the next batch
  * after a worker exits and merges centrally. Sectors progress through coverage,
- * bolster-to-10, then expansion.
+ * bolster to target, then expansion.
  */
 
 const fs = require("fs");
@@ -65,12 +65,22 @@ function fileForSector(sector) {
   return path.join(ROOT, sector.file);
 }
 
+function isSouthFloridaCompany(company) {
+  return /miami|fort lauderdale|boca raton|west palm beach|coral gables|doral|wynwood|brickell|aventura|hollywood|pompano|delray|south florida/i.test(
+    `${company.hq_location || ""} ${company.notes || ""}`
+  );
+}
+
+function contactTargetForCompany(company) {
+  return isSouthFloridaCompany(company) ? 5 : 10;
+}
+
 function getStats(sector) {
   const data = loadJson(fileForSector(sector));
   const companies = data.companies || [];
   const unpopulated = companies.filter((company) => !(company.recruiters || []).length);
   const missingDescriptions = companies.filter((company) => !String(company.description || "").trim());
-  const belowContactTarget = companies.filter((company) => (company.recruiters || []).length < 10);
+  const belowContactTarget = companies.filter((company) => (company.recruiters || []).length < contactTargetForCompany(company));
   const totalRecruiters = companies.reduce((sum, company) => sum + (company.recruiters || []).length, 0);
   const phase = unpopulated.length || missingDescriptions.length
     ? "coverage"
@@ -237,19 +247,20 @@ Live state for this sector:
 - Populated companies: ${stats.populated}
 - Empty recruiter arrays remaining: ${stats.unpopulated}
 - Missing company descriptions remaining: ${stats.missingDescriptions}
-- Existing companies below 10 contacts: ${stats.belowContactTarget}
+- Existing companies below contact target: ${stats.belowContactTarget}
 - Total recruiters in this sector file: ${stats.totalRecruiters}
 
 Do exactly one batch, then stop. Edit only ${sector.file}. Do not edit canonical JSON, UI copies, other sector files, or shared docs. Do not run the merge script; the orchestrator will merge after you exit.
 
 Phase behavior:
 - coverage: finish missing descriptions first, then fill any empty recruiters[] arrays, preserving existing recruiter data.
-- bolster: add recruiters or technical hiring members to companies with fewer than 10 contacts. Stop at 10 contacts per company. If recruiter searches are thin, use founders, CTOs, VPs/Heads of Engineering, engineering managers, product/AI/data/security leads, or other technical staff who are visibly hiring or leading teams.
+- bolster: add recruiters or technical hiring members to companies below their contact target. Stop at 5 contacts for smaller Miami / South Florida startup teams, and 10 contacts for medium/larger companies elsewhere. If recruiter searches are thin, use founders, CTOs, VPs/Heads of Engineering, engineering managers, product/AI/data/security leads, or other technical staff who are visibly hiring or leading teams.
 - expand: when descriptions are complete and bolstering is no longer yielding easy net-new contacts, add 3-8 new ${sector.label} companies. Prioritize smaller Miami / South Florida companies and startups in this sector, then San Jose / Silicon Valley startups. Reserve IDs with node job/scripts/allocate-company-ids.js before adding.
 
 Expansion focus:
 - Prefer Miami, Fort Lauderdale, Boca Raton, West Palm Beach, Coral Gables, Doral, Wynwood, Brickell, and nearby South Florida startup/industrial hubs.
 - For construction, industrial, logistics, energy, proptech, hardware, defense, healthcare, fintech, AI, cloud, and cybersecurity sectors, look for small local operators with real software, data, engineering, operations, product, or technical hiring needs.
+- For those smaller Miami / South Florida startup entries, 5 good contacts is enough. For medium-sized companies elsewhere in the United States, keep the 10-contact maximum target.
 - Avoid duplicating companies already present in any sector file or canonical JSON. Search exact names and LinkedIn company URLs before adding.
 
 Use live web search for public verification. Preserve existing good data. When the batch is done, run the status command from ${instructionFile}, print the marker exactly on its own line:
@@ -292,7 +303,7 @@ function launchSector(sector, state, stats = getStats(sector)) {
     lastError: "",
     lastWarning: "",
   };
-  console.log(`  launched ${sector.key.padEnd(10)} pid ${child.pid} | phase:${stats.phase} unpop:${stats.unpopulated} desc:${stats.missingDescriptions} under10:${stats.belowContactTarget}`);
+  console.log(`  launched ${sector.key.padEnd(10)} pid ${child.pid} | phase:${stats.phase} unpop:${stats.unpopulated} desc:${stats.missingDescriptions} underTarget:${stats.belowContactTarget}`);
   return true;
 }
 
@@ -317,7 +328,7 @@ function workNeed(stats) {
 function priorityLabel(stats) {
   if (stats.unpopulated > 0) return "empty";
   if (stats.missingDescriptions > 0) return "desc";
-  if (stats.belowContactTarget > 0) return "under10";
+  if (stats.belowContactTarget > 0) return "underTarget";
   return "expand";
 }
 
@@ -489,12 +500,12 @@ function printStatus(sectors, state) {
     console.log(
       `${sector.key.padEnd(10)} ${String(stats.populated).padStart(4)}/${String(stats.total).padEnd(4)} (${pct.padStart(5)}%) phase:${stats.phase.padEnd(8)} ` +
       `unpop:${String(stats.unpopulated).padStart(4)} desc:${String(stats.missingDescriptions).padStart(4)} ` +
-      `under10:${String(stats.belowContactTarget).padStart(4)} recs:${String(stats.totalRecruiters).padStart(5)} ` +
+      `underTarget:${String(stats.belowContactTarget).padStart(4)} recs:${String(stats.totalRecruiters).padStart(5)} ` +
       `alive:${alive ? "yes" : "no "} batch:${String(info.batchNumber || 0).padStart(3)} next:${priorityLabel(stats).padEnd(7)}${issueText}`
     );
   }
 
-  console.log(`\nTotals: ${total} companies | ${unpop} empty recruiter arrays | ${missing} missing descriptions | ${below10} below 10 contacts | ${recruiters} recruiters`);
+  console.log(`\nTotals: ${total} companies | ${unpop} empty recruiter arrays | ${missing} missing descriptions | ${below10} below contact target | ${recruiters} recruiters`);
 
   const next = launchCandidates(sectors, state).slice(0, sectors.length).map(({ sector, stats }) => (
     `${sector.key}:${priorityLabel(stats)}(${workNeed(stats)})`
@@ -596,13 +607,13 @@ function cmdMonitor(args) {
       const stats = getStats(sector);
       acc.unpop += stats.unpopulated;
       acc.missing += stats.missingDescriptions;
-      acc.under10 += stats.belowContactTarget;
+      acc.underTarget += stats.belowContactTarget;
       acc.expand += stats.phase === "expand" ? 1 : 0;
       return acc;
-    }, { unpop: 0, missing: 0, under10: 0, expand: 0 });
+    }, { unpop: 0, missing: 0, underTarget: 0, expand: 0 });
 
     process.stdout.write(
-      `\r[${new Date().toISOString().slice(11, 19)}] alive:${countAlive(state, sectors)} expand:${totals.expand}/${sectors.length} unpop:${totals.unpop} desc:${totals.missing} under10:${totals.under10}   `
+      `\r[${new Date().toISOString().slice(11, 19)}] alive:${countAlive(state, sectors)} expand:${totals.expand}/${sectors.length} unpop:${totals.unpop} desc:${totals.missing} underTarget:${totals.underTarget}   `
     );
 
     if (changed) saveState(state);
