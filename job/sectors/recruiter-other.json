@@ -1,0 +1,164 @@
+{
+  "meta": {
+    "description": "US-based tech companies large enough to run dedicated recruiting + internship programs. Target for LinkedIn outreach to recruiters. Populate each company's 'recruiters' array over time with the recruiter object schema below.",
+    "version": "2.1",
+    "last_updated": "2026-06-08",
+    "owner": "Pablo Valdes",
+    "use_case": "Connect with recruiters at top US tech companies on LinkedIn to source SWE / AI internship opportunities.",
+    "recruiter_object_schema": {
+      "name": "",
+      "title": "",
+      "linkedin_url": "",
+      "email": "",
+      "location": "",
+      "focus_area": "e.g. University Recruiting / SWE Intern / New Grad",
+      "connected": false,
+      "messaged": false,
+      "responded": false,
+      "date_contacted": "",
+      "notes": ""
+    },
+    "company_field_legend": {
+      "name": "Company name",
+      "category": "Primary tech sector",
+      "hq_location": "US headquarters",
+      "linkedin_company_url": "Company LinkedIn page. Curated entries are hand-verified; bulk entries are auto-derived from the name.",
+      "careers_url": "Internship / careers landing page (fill later)",
+      "size_estimate": "Rough US/global headcount band",
+      "has_intern_program": "Known to run structured internships",
+      "priority": "1 = top target, 2 = strong, 3 = stretch/large-but-niche",
+      "recruiters": "Array of recruiter objects (populate later)",
+      "recruiter_search_url": "LinkedIn People-tab link filtered to recruiters at this company (open & harvest profiles)",
+      "id": "Unique sequential ID (C0001...) for counting & tracking",
+      "linkedin_url_verified": "true = hand-verified slug; false = auto-derived from name (may 404 / hit wrong page — spot-check before trusting)",
+      "sector": "Primary sector partition key used by Codex sector workers and UI filtering",
+      "description": "Concise company description for search, semantic matching, and outreach context"
+    },
+    "recruiter_links_note": "recruiter_search_url is a name-based LinkedIn People search ('<company> recruiter') that works for every company without needing the exact company page slug — open it to see current recruiters, then paste individual profile URLs into recruiters[]. Each company has a unique 'id' (C0001...) so the list is countable/verifiable. NOTE: the first ~263 entries are curated with HQ/size/company-slug; the bulk entries carry verified real names + working recruiter links, with HQ/slug left blank to enrich.",
+    "total_companies": 2,
+    "notes": "Sector working file for Other / Mixed. Codex agents edit only this file; the orchestrator merges sector files back into canonical recruiter.json.",
+    "ui_directory": "recruiter-directory/ (Next.js searchable UI with direct LinkedIn links + CSV export)",
+    "population_progress": "Codex sector split. 873 companies populated with 1937 total recruiters; 1250 company descriptions missing. Merge run: 2026-06-01",
+    "partition_type": "sector",
+    "sector": {
+      "key": "other",
+      "label": "Other / Mixed"
+    },
+    "source_file": "job/recruiter.json",
+    "last_partition_build": "2026-06-01T00:45:06.200Z"
+  },
+  "companies": [
+    {
+      "id": "C0147",
+      "name": "Honeywell",
+      "category": "Industrial Tech",
+      "sector": "other",
+      "description": "Honeywell provides industrial automation, aerospace, building automation, and energy-transition technologies, including software, controls, sensors, and systems for manufacturers, buildings, and aviation customers.",
+      "hq_location": "Charlotte, NC",
+      "priority": 3,
+      "size_estimate": "95k+",
+      "has_intern_program": true,
+      "linkedin_company_url": "https://www.linkedin.com/company/honeywell/",
+      "linkedin_url_verified": true,
+      "recruiter_search_url": "https://www.linkedin.com/search/results/people/?keywords=Honeywell%20recruiter",
+      "careers_url": "",
+      "recruiters": [
+        {
+          "name": "Sherry Karr",
+          "title": "University Relations",
+          "linkedin_url": "https://www.linkedin.com/in/sherrykarr",
+          "email": "",
+          "location": "Dallas-Fort Worth Metroplex",
+          "focus_area": "Internships, new grad roles, early career (Aerospace software engineering and other engineering)",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Part of Honeywell University Relations team. Focuses on internships, new grads, and early career positions including Aerospace SWE."
+        },
+        {
+          "name": "Alyson Davis",
+          "title": "University Recruiting Leader",
+          "linkedin_url": "https://www.linkedin.com/in/davisalyson",
+          "email": "",
+          "location": "Apex, North Carolina",
+          "focus_area": "University Recruiting / Early Career Talent / DEI programs (partners with Korn Ferry)",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Oversees teams of recruiters/coordinators for diverse intern and early career talent across disciplines at Honeywell. Previously expanded University Relations programs."
+        },
+        {
+          "name": "Sherley Rodriguez",
+          "title": "Talent Acquisition Manager – University Relations",
+          "linkedin_url": "https://www.linkedin.com/in/sherley-rc",
+          "email": "",
+          "location": "Atlanta, Georgia",
+          "focus_area": "University Relations strategy, campus recruitment programs, early career talent",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Builds and executes university relations strategies and campus recruitment programs at Honeywell. Global university relations focal for certain units."
+        }
+      ]
+    },
+    {
+      "id": "C0148",
+      "name": "Rockwell Automation",
+      "category": "Industrial Tech",
+      "sector": "other",
+      "description": "Rockwell Automation provides industrial automation and digital transformation hardware, software, controls, and services that help manufacturers connect, monitor, and optimize production operations.",
+      "hq_location": "Milwaukee, WI",
+      "priority": 3,
+      "size_estimate": "28k+",
+      "has_intern_program": true,
+      "linkedin_company_url": "https://www.linkedin.com/company/rockwell-automation/",
+      "linkedin_url_verified": true,
+      "recruiter_search_url": "https://www.linkedin.com/search/results/people/?keywords=Rockwell%20Automation%20recruiter",
+      "careers_url": "",
+      "recruiters": [
+        {
+          "name": "Jaimie Thomas",
+          "title": "Early Career Workforce Manager",
+          "linkedin_url": "https://www.linkedin.com/in/jaimie-thomas",
+          "email": "",
+          "location": "Milwaukee, WI area",
+          "focus_area": "Early Career / Interns / Co-ops / University Relations strategy",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Leads strategy and programs for interns, co-ops, and early career talent development at Rockwell Automation. Team recognized with Campus Forward awards."
+        },
+        {
+          "name": "Liz Harbour",
+          "title": "Early Career Talent Advisor / Early Careers Recruiter",
+          "linkedin_url": "https://www.linkedin.com/in/e-harbour",
+          "email": "",
+          "location": "San Francisco Bay Area",
+          "focus_area": "Early Careers recruiting, interns, co-ops, next-generation talent",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Actively recruits for early career roles and posts frequently about interns, co-ops, and early career hires at Rockwell. Award-winning profile."
+        },
+        {
+          "name": "Nina Unger",
+          "title": "Early Careers Recruiter",
+          "linkedin_url": "https://www.linkedin.com/in/nina-unger-324b8b232",
+          "email": "",
+          "location": "Eagle / Milwaukee, WI area",
+          "focus_area": "Technical recruiting for early careers including Embedded Software Engineer co-ops and interns",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Handles technical recruiting for early career roles at Rockwell Automation, including resume advice for students and university events. Strong SWE match."
+        }
+      ]
+    }
+  ]
+}

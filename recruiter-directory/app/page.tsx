@@ -133,7 +133,7 @@ export default function RecruiterDirectory() {
     () =>
       allCompanies.map((c) => {
         const sectors = sectorsForCompany(c);
-        const parts = [c.name, c.category, c.hq_location || ""];
+        const parts = [c.name, c.category, c.sector || "", c.description || "", c.hq_location || ""];
         for (const r of c.recruiters || []) {
           parts.push(r.name, r.title, r.location || "", r.focus_area || "", r.notes || "");
         }
@@ -370,7 +370,7 @@ export default function RecruiterDirectory() {
   // Export all current recruiters as CSV
   const exportCSV = () => {
     const rows: string[][] = [
-      ["Company", "Company ID", "Priority", "Category", "HQ", "Recruiter Name", "Title", "LinkedIn URL", "Location", "Focus Area", "Connected", "Notes"]
+      ["Company", "Company ID", "Priority", "Category", "Sector", "Description", "HQ", "Recruiter Name", "Title", "LinkedIn URL", "Location", "Focus Area", "Connected", "Notes"]
     ];
 
     allCompanies.forEach(company => {
@@ -381,6 +381,8 @@ export default function RecruiterDirectory() {
           company.id,
           String(company.priority),
           company.category,
+          company.sector || "",
+          company.description || "",
           company.hq_location || "",
           r.name,
           r.title,
@@ -506,7 +508,7 @@ export default function RecruiterDirectory() {
               type="text"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
-              placeholder="Search by company, recruiter, or industry — “insurance”, “defense”, “big tech”, “fintech”…"
+              placeholder="Search by company, description, recruiter, or industry — “insurance”, “defense”, “big tech”, “fintech”…"
               className="w-full pl-9 pr-9 h-8 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-sm placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-black/5 dark:focus:ring-white/10"
             />
             {searchInput && (
@@ -906,6 +908,11 @@ const CompanyCard = React.memo(function CompanyCard({
             {company.size_estimate && <span>{company.size_estimate}</span>}
             {company.has_intern_program && <span className="text-emerald-600 dark:text-emerald-400">✓ Intern program</span>}
           </div>
+          {company.description && (
+            <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-2 max-w-3xl leading-relaxed">
+              {company.description}
+            </p>
+          )}
         </div>
 
         {/* Action buttons */}
@@ -1035,7 +1042,7 @@ const CompactRow = React.memo(function CompactRow({
         <button
           onClick={() => onOpen(company.linkedin_company_url)}
           className="font-semibold text-sm truncate hover:underline inline-flex items-center gap-1"
-          title="Open company LinkedIn page"
+          title={company.description || "Open company LinkedIn page"}
         >
           {company.name}
           <ExternalLink className="h-3 w-3 opacity-50 shrink-0" />

@@ -35,9 +35,9 @@ export const SECTORS: Sector[] = [
     aliases: ["defense","defence","military","aerospace","space","aviation","weapons","govtech","national security"] },
   { key: "health", label: "Healthcare / Bio", catKeywords: ["healthcare","health","healthtech","medtech","biotech","medical","bio"],
     aliases: ["healthcare","health","medical","medtech","biotech","bio","pharma","pharmaceutical","life sciences","medicine","clinical","wellness"] },
-  { key: "consulting", label: "Consulting / IT Services", catKeywords: ["consulting","it services"],
+  { key: "consulting", label: "Consulting / IT Services", catKeywords: ["consulting","it services","msp","tech services","cx"],
     aliases: ["consulting","consultancy","advisory","professional services","it services","systems integrator","staffing"] },
-  { key: "media", label: "Gaming / Media", catKeywords: ["gaming","media","entertainment","streaming","audio"],
+  { key: "media", label: "Gaming / Media", catKeywords: ["gaming","media","entertainment","streaming","audio","social"],
     // sub-verticals (music, film, audio) are left to literal matching to avoid
     // tagging every gaming co as "music"; sector-level synonyms only.
     aliases: ["gaming","game","games","video games","esports","media","entertainment","streaming"] },
@@ -47,9 +47,9 @@ export const SECTORS: Sector[] = [
     aliases: ["retail","consumer","cpg","ecommerce","e-commerce","commerce","shopping","dtc"] },
   { key: "cyber", label: "Cybersecurity", catKeywords: ["cybersecurity","security","cyber","identity"],
     aliases: ["cybersecurity","cyber","security","infosec","appsec","threat","identity","zero trust","privacy"] },
-  { key: "cloud", label: "Cloud / DevTools", catKeywords: ["cloud","infrastructure","devtools","devops","saas","developer","database","storage","observability","networking","cdn","enterprise"],
+  { key: "cloud", label: "Cloud / DevTools", catKeywords: ["cloud","infrastructure","devtools","devops","saas","developer","database","storage","observability","networking","cdn","enterprise","software","no-code","web","telecom","design"],
     aliases: ["cloud","infrastructure","infra","devtools","devops","saas","developer tools","platform","database","storage","networking","observability","backend","enterprise software","b2b"] },
-  { key: "hardware", label: "Semiconductors / Hardware", catKeywords: ["semiconductors","semiconductor","hardware","iot","eda","gps"],
+  { key: "hardware", label: "Semiconductors / Hardware", catKeywords: ["semiconductors","semiconductor","hardware","iot","eda","gps","electronics","manufacturing","measurement","test"],
     aliases: ["semiconductors","semiconductor","chips","chip","silicon","hardware","iot","embedded","electronics","wafer","fabless"] },
   { key: "ai", label: "AI / Data", catKeywords: ["ai","ml","data","analytics","autonomous","robotics","drones","lidar","vision"],
     aliases: ["ai","artificial intelligence","ml","machine learning","deep learning","data","analytics","data science","autonomous","self-driving","robotics","robots","drones","computer vision","llm","genai"] },
@@ -57,7 +57,7 @@ export const SECTORS: Sector[] = [
     aliases: ["edtech","education","learning","e-learning","hr","hr tech","human resources","recruiting","talent","people ops","workforce"] },
   { key: "proptech", label: "PropTech / Real Estate", catKeywords: ["proptech","construction","homebuilding","real estate"],
     aliases: ["proptech","real estate","property","construction","housing","homebuilding","mortgage"] },
-  { key: "logistics", label: "Logistics / Mobility", catKeywords: ["logistics","mobility","marketplaces","marketplace","transportation","delivery","distribution"],
+  { key: "logistics", label: "Logistics / Mobility", catKeywords: ["logistics","mobility","marketplaces","marketplace","transportation","delivery","distribution","travel"],
     aliases: ["logistics","supply chain","shipping","freight","mobility","transportation","transit","delivery","marketplace","fulfillment","last mile"] },
   { key: "energy", label: "EV / Energy", catKeywords: ["ev","energy","auto","automotive"],
     aliases: ["ev","electric vehicle","energy","cleantech","climate","solar","battery","auto","automotive","cars","vehicles"] },
@@ -98,6 +98,7 @@ export function sectorsForCompany(c: Company): Set<string> {
   const nameToks = tokenize(c.name);
   const out = new Set<string>();
   for (const s of SECTORS) {
+    if (c.sector === s.key) out.add(s.key);
     let hit = s.catKeywords.some((k) =>
       /[\s-]/.test(k) ? catLow.includes(k) : catToks.includes(k),
     );
@@ -125,6 +126,7 @@ export function companyToText(c: Company): string {
   // only inflate the similarity baseline, so they're left out of the embedding.
   const parts = [
     `${c.name} is a ${c.category} company.`,
+    c.description || "",
     // lead with "what they do / how they're perceived" so conceptual & reputation
     // queries ("company that blows people up" → defense) dominate the vector.
     glossBits.join(". "),

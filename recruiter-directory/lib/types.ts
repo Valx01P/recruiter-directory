@@ -19,6 +19,8 @@ export interface Company {
   id: string;
   name: string;
   category: string;
+  sector: string;
+  description: string;
   hq_location: string;
   priority: 1 | 2 | 3;
   size_estimate: string;

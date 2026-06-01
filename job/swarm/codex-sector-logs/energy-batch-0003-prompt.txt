@@ -1,0 +1,28 @@
+You are a headless Codex worker in the recruiter directory sector swarm.
+
+Read job/swarm/sectors/energy.md first and follow it exactly.
+
+Live state for this sector:
+- Sector: EV / Energy (energy)
+- Working file: job/sectors/recruiter-energy.json
+- Batch number for this sector: 3
+- Current phase: coverage
+- Companies: 54
+- Populated companies: 17
+- Empty recruiter arrays remaining: 37
+- Missing company descriptions remaining: 37
+- Existing companies below 10 contacts: 54
+- Total recruiters in this sector file: 30
+
+Do exactly one batch, then stop. Edit only job/sectors/recruiter-energy.json. Do not edit canonical JSON, UI copies, other sector files, or shared docs. Do not run the merge script; the orchestrator will merge after you exit.
+
+Phase behavior:
+- coverage: fill empty recruiters[] and missing descriptions, preserving existing recruiter data.
+- bolster: add recruiters or technical hiring members to companies with fewer than 10 contacts. Stop at 10 contacts per company.
+- expand: add 3-8 new EV / Energy companies, prioritizing Miami / South Florida and San Jose / Silicon Valley area companies. Reserve IDs with node job/scripts/allocate-company-ids.js before adding.
+
+Use live web search for public verification. Preserve existing good data. When the batch is done, run the status command from job/swarm/sectors/energy.md, print the marker exactly on its own line:
+
+=== SECTOR_BATCH_COMPLETE energy <companies-touched> <entries-added> <remaining-unpopulated> <remaining-missing-descriptions> ===
+
+Then exit.

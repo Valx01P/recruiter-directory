@@ -1,0 +1,586 @@
+{
+  "sectors": {
+    "bigtech": {
+      "pid": null,
+      "batchNumber": 8,
+      "launchedAt": "2026-06-01T01:55:38.314Z",
+      "promptFile": "job/swarm/codex-sector-logs/bigtech-batch-0008-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/bigtech.jsonl",
+      "current": {
+        "total": 22,
+        "populated": 22,
+        "unpopulated": 0,
+        "missingDescriptions": 8,
+        "belowContactTarget": 22,
+        "totalRecruiters": 73,
+        "phase": "coverage"
+      },
+      "fingerprint": {
+        "size": 60726,
+        "mtimeMs": 1780278817771
+      },
+      "lastError": "",
+      "lastWarning": "",
+      "lastExitAt": "2026-06-01T01:59:38.238Z",
+      "lastStats": {
+        "total": 22,
+        "populated": 22,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 22,
+        "totalRecruiters": 73,
+        "phase": "bolster"
+      },
+      "lastCompletedAt": "2026-06-01T01:59:38.238Z",
+      "lastProgressAt": "2026-06-01T01:59:38.238Z",
+      "noProgressCount": 0
+    },
+    "fintech": {
+      "pid": null,
+      "batchNumber": 19,
+      "launchedAt": "2026-06-01T02:32:38.330Z",
+      "promptFile": "job/swarm/codex-sector-logs/fintech-batch-0019-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/fintech.jsonl",
+      "current": {
+        "total": 154,
+        "populated": 154,
+        "unpopulated": 0,
+        "missingDescriptions": 34,
+        "belowContactTarget": 154,
+        "totalRecruiters": 323,
+        "phase": "coverage"
+      },
+      "fingerprint": {
+        "size": 324264,
+        "mtimeMs": 1780281060186
+      },
+      "lastError": "",
+      "lastWarning": "No file/stat progress detected for batch 19",
+      "lastExitAt": "2026-06-01T02:34:05.129Z",
+      "lastStats": {
+        "total": 154,
+        "populated": 154,
+        "unpopulated": 0,
+        "missingDescriptions": 34,
+        "belowContactTarget": 154,
+        "totalRecruiters": 323,
+        "phase": "coverage"
+      },
+      "lastCompletedAt": "2026-06-01T02:34:05.129Z",
+      "noProgressCount": 1
+    },
+    "insurance": {
+      "pid": null,
+      "batchNumber": 13,
+      "launchedAt": "2026-06-01T02:31:38.326Z",
+      "promptFile": "job/swarm/codex-sector-logs/insurance-batch-0013-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/insurance.jsonl",
+      "current": {
+        "total": 51,
+        "populated": 51,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 50,
+        "totalRecruiters": 160,
+        "phase": "bolster"
+      },
+      "fingerprint": {
+        "size": 140181,
+        "mtimeMs": 1780281004471
+      },
+      "lastError": "",
+      "lastWarning": "No file/stat progress detected for batch 13",
+      "lastExitAt": "2026-06-01T02:34:05.137Z",
+      "lastStats": {
+        "total": 51,
+        "populated": 51,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 50,
+        "totalRecruiters": 160,
+        "phase": "bolster"
+      },
+      "lastCompletedAt": "2026-06-01T02:34:05.137Z",
+      "noProgressCount": 1
+    },
+    "defense": {
+      "pid": null,
+      "batchNumber": 18,
+      "launchedAt": "2026-06-01T02:32:38.332Z",
+      "promptFile": "job/swarm/codex-sector-logs/defense-batch-0018-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/defense.jsonl",
+      "current": {
+        "total": 66,
+        "populated": 66,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 51,
+        "totalRecruiters": 304,
+        "phase": "bolster"
+      },
+      "fingerprint": {
+        "size": 244013,
+        "mtimeMs": 1780281073381
+      },
+      "lastError": "",
+      "lastWarning": "No file/stat progress detected for batch 18",
+      "lastExitAt": "2026-06-01T02:34:05.138Z",
+      "lastStats": {
+        "total": 66,
+        "populated": 66,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 51,
+        "totalRecruiters": 304,
+        "phase": "bolster"
+      },
+      "lastCompletedAt": "2026-06-01T02:34:05.138Z",
+      "noProgressCount": 1
+    },
+    "health": {
+      "pid": null,
+      "batchNumber": 18,
+      "launchedAt": "2026-06-01T02:27:38.334Z",
+      "promptFile": "job/swarm/codex-sector-logs/health-batch-0018-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/health.jsonl",
+      "current": {
+        "total": 86,
+        "populated": 86,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 78,
+        "totalRecruiters": 242,
+        "phase": "bolster"
+      },
+      "fingerprint": {
+        "size": 217020,
+        "mtimeMs": 1780280756041
+      },
+      "lastError": "{\"type\":\"item.completed\",\"item\":{\"id\":\"item_27\",\"type\":\"command_execution\",\"command\":\"/bin/zsh -lc \\\"node -e '\\nconst fs=require(\\\\\\\"fs\\\\\\\");\\nconst path=\\\\\\\"job/sectors/recruiter-",
+      "lastWarning": "No file/stat progress detected for batch 18",
+      "lastExitAt": "2026-06-01T02:34:05.140Z",
+      "lastStats": {
+        "total": 86,
+        "populated": 86,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 78,
+        "totalRecruiters": 242,
+        "phase": "bolster"
+      },
+      "noProgressCount": 1
+    },
+    "consulting": {
+      "pid": null,
+      "batchNumber": 9,
+      "launchedAt": "2026-06-01T01:55:38.316Z",
+      "promptFile": "job/swarm/codex-sector-logs/consulting-batch-0009-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/consulting.jsonl",
+      "current": {
+        "total": 36,
+        "populated": 36,
+        "unpopulated": 0,
+        "missingDescriptions": 8,
+        "belowContactTarget": 36,
+        "totalRecruiters": 93,
+        "phase": "coverage"
+      },
+      "fingerprint": {
+        "size": 84260,
+        "mtimeMs": 1780277664521
+      },
+      "lastError": "",
+      "lastWarning": "",
+      "lastExitAt": "2026-06-01T01:58:38.240Z",
+      "lastStats": {
+        "total": 36,
+        "populated": 36,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 36,
+        "totalRecruiters": 93,
+        "phase": "bolster"
+      },
+      "lastCompletedAt": "2026-06-01T01:58:38.240Z",
+      "lastProgressAt": "2026-06-01T01:58:38.240Z",
+      "noProgressCount": 0
+    },
+    "media": {
+      "pid": null,
+      "batchNumber": 18,
+      "launchedAt": "2026-06-01T02:32:38.331Z",
+      "promptFile": "job/swarm/codex-sector-logs/media-batch-0018-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/media.jsonl",
+      "current": {
+        "total": 73,
+        "populated": 73,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 65,
+        "totalRecruiters": 248,
+        "phase": "bolster"
+      },
+      "fingerprint": {
+        "size": 235211,
+        "mtimeMs": 1780281103423
+      },
+      "lastError": "",
+      "lastWarning": "No file/stat progress detected for batch 18",
+      "lastExitAt": "2026-06-01T02:34:05.141Z",
+      "lastStats": {
+        "total": 73,
+        "populated": 73,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 65,
+        "totalRecruiters": 248,
+        "phase": "bolster"
+      },
+      "lastCompletedAt": "2026-06-01T02:34:05.141Z",
+      "noProgressCount": 1
+    },
+    "retail": {
+      "pid": null,
+      "batchNumber": 19,
+      "launchedAt": "2026-06-01T02:30:38.327Z",
+      "promptFile": "job/swarm/codex-sector-logs/retail-batch-0019-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/retail.jsonl",
+      "current": {
+        "total": 101,
+        "populated": 101,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 93,
+        "totalRecruiters": 298,
+        "phase": "bolster"
+      },
+      "fingerprint": {
+        "size": 264886,
+        "mtimeMs": 1780280969396
+      },
+      "lastError": "",
+      "lastWarning": "No file/stat progress detected for batch 19",
+      "lastExitAt": "2026-06-01T02:34:05.142Z",
+      "lastStats": {
+        "total": 101,
+        "populated": 101,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 93,
+        "totalRecruiters": 298,
+        "phase": "bolster"
+      },
+      "lastCompletedAt": "2026-06-01T02:34:05.142Z",
+      "noProgressCount": 1
+    },
+    "cyber": {
+      "pid": null,
+      "batchNumber": 16,
+      "launchedAt": "2026-06-01T02:27:38.336Z",
+      "promptFile": "job/swarm/codex-sector-logs/cyber-batch-0016-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/cyber.jsonl",
+      "current": {
+        "total": 72,
+        "populated": 72,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 63,
+        "totalRecruiters": 264,
+        "phase": "bolster"
+      },
+      "fingerprint": {
+        "size": 217900,
+        "mtimeMs": 1780280800697
+      },
+      "lastError": "",
+      "lastWarning": "",
+      "lastExitAt": "2026-06-01T02:34:05.143Z",
+      "lastStats": {
+        "total": 72,
+        "populated": 72,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 59,
+        "totalRecruiters": 290,
+        "phase": "bolster"
+      },
+      "lastProgressAt": "2026-06-01T02:34:05.143Z",
+      "noProgressCount": 0
+    },
+    "cloud": {
+      "pid": null,
+      "batchNumber": 16,
+      "launchedAt": "2026-06-01T02:28:38.329Z",
+      "promptFile": "job/swarm/codex-sector-logs/cloud-batch-0016-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/cloud.jsonl",
+      "current": {
+        "total": 206,
+        "populated": 197,
+        "unpopulated": 9,
+        "missingDescriptions": 119,
+        "belowContactTarget": 206,
+        "totalRecruiters": 369,
+        "phase": "coverage"
+      },
+      "fingerprint": {
+        "size": 343247,
+        "mtimeMs": 1780280844932
+      },
+      "lastError": "{\"type\":\"item.completed\",\"item\":{\"id\":\"item_24\",\"type\":\"command_execution\",\"command\":\"/bin/zsh -lc \\\"node <<'NODE'\\nconst fs = require('fs');\\nconst path = 'job/sectors/recruiter-c",
+      "lastWarning": "",
+      "lastExitAt": "2026-06-01T02:34:05.144Z",
+      "lastStats": {
+        "total": 206,
+        "populated": 206,
+        "unpopulated": 0,
+        "missingDescriptions": 110,
+        "belowContactTarget": 206,
+        "totalRecruiters": 389,
+        "phase": "coverage"
+      },
+      "lastProgressAt": "2026-06-01T02:34:05.144Z",
+      "noProgressCount": 0
+    },
+    "hardware": {
+      "pid": null,
+      "batchNumber": 18,
+      "launchedAt": "2026-06-01T02:33:38.332Z",
+      "promptFile": "job/swarm/codex-sector-logs/hardware-batch-0018-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/hardware.jsonl",
+      "current": {
+        "total": 90,
+        "populated": 90,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 78,
+        "totalRecruiters": 321,
+        "phase": "bolster"
+      },
+      "fingerprint": {
+        "size": 251142,
+        "mtimeMs": 1780281162398
+      },
+      "lastError": "",
+      "lastWarning": "No file/stat progress detected for batch 18",
+      "lastExitAt": "2026-06-01T02:34:05.145Z",
+      "lastStats": {
+        "total": 90,
+        "populated": 90,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 78,
+        "totalRecruiters": 321,
+        "phase": "bolster"
+      },
+      "lastCompletedAt": "2026-06-01T02:34:05.145Z",
+      "noProgressCount": 1
+    },
+    "ai": {
+      "pid": null,
+      "batchNumber": 15,
+      "launchedAt": "2026-06-01T02:30:38.326Z",
+      "promptFile": "job/swarm/codex-sector-logs/ai-batch-0015-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/ai.jsonl",
+      "current": {
+        "total": 98,
+        "populated": 98,
+        "unpopulated": 0,
+        "missingDescriptions": 29,
+        "belowContactTarget": 98,
+        "totalRecruiters": 163,
+        "phase": "coverage"
+      },
+      "fingerprint": {
+        "size": 166114,
+        "mtimeMs": 1780280974993
+      },
+      "lastError": "",
+      "lastWarning": "",
+      "lastExitAt": "2026-06-01T02:34:05.146Z",
+      "lastStats": {
+        "total": 98,
+        "populated": 98,
+        "unpopulated": 0,
+        "missingDescriptions": 15,
+        "belowContactTarget": 98,
+        "totalRecruiters": 163,
+        "phase": "coverage"
+      },
+      "lastCompletedAt": "2026-06-01T02:34:05.146Z",
+      "lastProgressAt": "2026-06-01T02:34:05.146Z",
+      "noProgressCount": 0
+    },
+    "energy": {
+      "pid": null,
+      "batchNumber": 11,
+      "launchedAt": "2026-06-01T02:33:38.333Z",
+      "promptFile": "job/swarm/codex-sector-logs/energy-batch-0011-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/energy.jsonl",
+      "current": {
+        "total": 54,
+        "populated": 54,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 48,
+        "totalRecruiters": 168,
+        "phase": "bolster"
+      },
+      "fingerprint": {
+        "size": 149344,
+        "mtimeMs": 1780280774116
+      },
+      "lastError": "",
+      "lastWarning": "No file/stat progress detected for batch 11",
+      "lastExitAt": "2026-06-01T02:34:05.147Z",
+      "lastStats": {
+        "total": 54,
+        "populated": 54,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 48,
+        "totalRecruiters": 168,
+        "phase": "bolster"
+      },
+      "lastCompletedAt": "2026-06-01T02:34:05.147Z",
+      "noProgressCount": 1
+    },
+    "edhr": {
+      "pid": null,
+      "batchNumber": 11,
+      "launchedAt": "2026-06-01T02:28:38.331Z",
+      "promptFile": "job/swarm/codex-sector-logs/edhr-batch-0011-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/edhr.jsonl",
+      "current": {
+        "total": 58,
+        "populated": 58,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 55,
+        "totalRecruiters": 170,
+        "phase": "bolster"
+      },
+      "fingerprint": {
+        "size": 155827,
+        "mtimeMs": 1780280839274
+      },
+      "lastError": "",
+      "lastWarning": "No file/stat progress detected for batch 11",
+      "lastExitAt": "2026-06-01T02:34:05.146Z",
+      "lastStats": {
+        "total": 58,
+        "populated": 58,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 55,
+        "totalRecruiters": 170,
+        "phase": "bolster"
+      },
+      "noProgressCount": 1
+    },
+    "logistics": {
+      "pid": null,
+      "batchNumber": 10,
+      "launchedAt": "2026-06-01T02:27:38.337Z",
+      "promptFile": "job/swarm/codex-sector-logs/logistics-batch-0010-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/logistics.jsonl",
+      "current": {
+        "total": 53,
+        "populated": 53,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 48,
+        "totalRecruiters": 192,
+        "phase": "bolster"
+      },
+      "fingerprint": {
+        "size": 169586,
+        "mtimeMs": 1780280715214
+      },
+      "lastError": "",
+      "lastWarning": "",
+      "lastExitAt": "2026-06-01T02:33:38.252Z",
+      "lastStats": {
+        "total": 53,
+        "populated": 53,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 46,
+        "totalRecruiters": 206,
+        "phase": "bolster"
+      },
+      "lastCompletedAt": "2026-06-01T02:33:38.252Z",
+      "lastProgressAt": "2026-06-01T02:33:38.252Z",
+      "noProgressCount": 0
+    },
+    "proptech": {
+      "pid": null,
+      "batchNumber": 2,
+      "launchedAt": "2026-06-01T01:53:38.311Z",
+      "promptFile": "job/swarm/codex-sector-logs/proptech-batch-0002-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/proptech.jsonl",
+      "current": {
+        "total": 28,
+        "populated": 28,
+        "unpopulated": 0,
+        "missingDescriptions": 14,
+        "belowContactTarget": 28,
+        "totalRecruiters": 64,
+        "phase": "coverage"
+      },
+      "fingerprint": {
+        "size": 63357,
+        "mtimeMs": 1780277344943
+      },
+      "lastError": "",
+      "lastWarning": "",
+      "lastExitAt": "2026-06-01T01:57:38.238Z",
+      "lastStats": {
+        "total": 28,
+        "populated": 28,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 28,
+        "totalRecruiters": 64,
+        "phase": "bolster"
+      },
+      "lastCompletedAt": "2026-06-01T01:57:38.238Z",
+      "lastProgressAt": "2026-06-01T01:57:38.238Z",
+      "noProgressCount": 0
+    },
+    "other": {
+      "pid": null,
+      "batchNumber": 1,
+      "launchedAt": "2026-06-01T01:31:38.310Z",
+      "promptFile": "job/swarm/codex-sector-logs/other-batch-0001-prompt.txt",
+      "logFile": "job/swarm/codex-sector-logs/other.jsonl",
+      "current": {
+        "total": 2,
+        "populated": 2,
+        "unpopulated": 0,
+        "missingDescriptions": 2,
+        "belowContactTarget": 2,
+        "totalRecruiters": 6,
+        "phase": "coverage"
+      },
+      "fingerprint": {
+        "size": 8255,
+        "mtimeMs": 1780274706201
+      },
+      "lastError": "",
+      "lastWarning": "",
+      "lastExitAt": "2026-06-01T01:34:38.238Z",
+      "lastStats": {
+        "total": 2,
+        "populated": 2,
+        "unpopulated": 0,
+        "missingDescriptions": 0,
+        "belowContactTarget": 2,
+        "totalRecruiters": 6,
+        "phase": "bolster"
+      },
+      "lastCompletedAt": "2026-06-01T01:34:38.238Z",
+      "lastProgressAt": "2026-06-01T01:34:38.238Z",
+      "noProgressCount": 0
+    }
+  }
+}

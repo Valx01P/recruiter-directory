@@ -1,0 +1,28 @@
+You are a headless Codex worker in the recruiter directory sector swarm.
+
+Read job/swarm/sectors/hardware.md first and follow it exactly.
+
+Live state for this sector:
+- Sector: Semiconductors / Hardware (hardware)
+- Working file: job/sectors/recruiter-hardware.json
+- Batch number for this sector: 11
+- Current phase: coverage
+- Companies: 90
+- Populated companies: 90
+- Empty recruiter arrays remaining: 0
+- Missing company descriptions remaining: 20
+- Existing companies below 10 contacts: 90
+- Total recruiters in this sector file: 195
+
+Do exactly one batch, then stop. Edit only job/sectors/recruiter-hardware.json. Do not edit canonical JSON, UI copies, other sector files, or shared docs. Do not run the merge script; the orchestrator will merge after you exit.
+
+Phase behavior:
+- coverage: fill empty recruiters[] and missing descriptions, preserving existing recruiter data.
+- bolster: add recruiters or technical hiring members to companies with fewer than 10 contacts. Stop at 10 contacts per company.
+- expand: add 3-8 new Semiconductors / Hardware companies, prioritizing Miami / South Florida and San Jose / Silicon Valley area companies. Reserve IDs with node job/scripts/allocate-company-ids.js before adding.
+
+Use live web search for public verification. Preserve existing good data. When the batch is done, run the status command from job/swarm/sectors/hardware.md, print the marker exactly on its own line:
+
+=== SECTOR_BATCH_COMPLETE hardware <companies-touched> <entries-added> <remaining-unpopulated> <remaining-missing-descriptions> ===
+
+Then exit.

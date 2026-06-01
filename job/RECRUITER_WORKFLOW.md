@@ -3,7 +3,9 @@
 ## Goal
 Populate `job/recruiter.json` `companies[].recruiters[]` arrays with real, verified LinkedIn recruiter profiles for US tech companies (focus on those with internship programs). This powers outreach for SWE/AI internships.
 
-**Current state**: 1251 companies, 39 priority-1, 93 priority-2, rest priority-3. All `recruiters: []` empty as of 2026-05-30.
+Current scalable workflow: sector-owned Codex workers edit `job/sectors/recruiter-*.json`; the orchestrator centrally merges back to `job/recruiter.json` and the UI copies. Start with `job/HUMAN_START.md`. The default start launches 12 parallel workers and assigns slots to never-started or empty recruiter partitions before already-covered partitions.
+
+**Current sector baseline**: 1,250 companies, 873 populated companies, 377 empty recruiter arrays, 1,250 missing descriptions, and 1,937 recruiter / hiring contacts.
 
 ## Recruiter Object Schema
 ```json
@@ -21,6 +23,27 @@ Populate `job/recruiter.json` `companies[].recruiters[]` arrays with real, verif
   "notes": "Posted about 2026 internships on 2025-10-01. Prefers InMail."
 }
 ```
+
+## Company Description Field
+
+Each company also carries:
+
+```json
+{
+  "sector": "cloud",
+  "description": "One concise sentence describing what the company does and where it fits technically."
+}
+```
+
+Descriptions should be 18-35 words, concrete, and conservative. Codex sector workers should backfill descriptions for existing populated companies as well as new companies they touch.
+
+When adding new companies during sector expansion, reserve IDs with:
+
+```bash
+node job/scripts/allocate-company-ids.js 5
+```
+
+Search all sector files first to avoid duplicating a company that is already present.
 
 ## Recommended Workflow (Manual + Tool Assisted)
 
@@ -154,10 +177,10 @@ See `recruiter-directory/README.md` for details.
 - This is for personal outreach, not commercial scraping.
 - LinkedIn ToS: manual research is generally fine; bulk automation is not.
 
-Last workflow update: 2026-06-05
+Last workflow update: 2026-06-01
 Owner: Pablo Valdes
 
-**Current operating mode (see job/AGENT.md)**: 8-agent parallel with dedicated partition files (`job/recruiter-alpha.json` through `job/recruiter-theta.json`). After edits to a partition file, run `node job/scripts/merge-recruiter-partitions.js` to update the canonical `job/recruiter.json` + UI copies. All agent work now happens exclusively in the per-agent partition files. Minimum batch size is 10 companies.
+**Current operating mode**: Codex sector swarm. Workers edit only `job/sectors/recruiter-*.json`; the orchestrator runs `node job/scripts/merge-recruiter-partitions.js --source sectors` centrally to update canonical `job/recruiter.json` and UI copies. `stop` merges by default after active workers exit.
 ```
 
 Now, update the todo and start populating some using tools.
