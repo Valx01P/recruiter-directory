@@ -68,14 +68,18 @@ npm run semantic:reindex   # = db:setup && embed
 
 ## Keeping data in sync
 
-The canonical dataset is `job/recruiter.json`, merged from the 8 agent partition files. From the repo root:
+The canonical dataset is `job/recruiter.json`. The frontend imports the bundled copy at `recruiter-directory/data/recruiter.json`.
 
 ```bash
-node job/scripts/merge-recruiter-partitions.js      # rebuilds recruiter.json + syncs both UI copies
+cp job/recruiter.json recruiter-directory/data/recruiter.json
 cd recruiter-directory && npm run semantic:reindex   # refresh the vector index (optional)
 ```
 
-The merge script writes `recruiter-directory/data/recruiter.json` (what the UI imports) and `public/data/recruiter.json`.
+The sector-swarm workflow scripts/docs remain under `job/`. Large generated run artifacts
+(`job/sectors/recruiter-*.json`, `job/swarm/codex-sector-logs`, and
+`job/swarm/codex-sector-state.json`) are intentionally not kept because they can be recreated
+from the aggregate JSON and workflow scripts. The app imports `recruiter-directory/data/recruiter.json`,
+so it does not also need a duplicate `public/data/recruiter.json`.
 
 ## Deployment
 
@@ -95,6 +99,6 @@ Two pieces:
 
 ## Notes
 
-- JSON schema and the 1251 companies curated by Pablo Valdes.
+- JSON schema and the 2040 companies curated by Pablo Valdes.
 - Always double-check a profile is current before sending InMail; respect LinkedIn limits.
 - Data freshness: see `job/recruiter.json` → `meta.last_updated`.

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Merge recruiter partition files into the canonical job/recruiter.json
- * and sync the recruiter-directory UI copies.
+ * and sync the recruiter-directory bundled UI data.
  *
  * Usage:
  *   node job/scripts/merge-recruiter-partitions.js
@@ -19,7 +19,6 @@ const ROOT = path.resolve(__dirname, "../..");
 const PARTS_DIR = path.join(ROOT, "job");
 const OUT_FILE = path.join(ROOT, "job/recruiter.json");
 const UI_DATA = path.join(ROOT, "recruiter-directory/data/recruiter.json");
-const UI_PUBLIC = path.join(ROOT, "recruiter-directory/public/data/recruiter.json");
 const SECTOR_MANIFEST = path.join(ROOT, "job/sectors/manifest.json");
 
 // Canonical schemas. The UI (recruiter-directory/app/page.tsx) reads exactly
@@ -375,12 +374,10 @@ fs.writeFileSync(tmpOut, JSON.stringify(merged, null, 2) + "\n");
 fs.renameSync(tmpOut, OUT_FILE);
 console.log(`\nWrote merged: ${OUT_FILE}`);
 
-// Sync UI copies
+// Sync the UI data copy imported by the Next.js app.
 fs.mkdirSync(path.dirname(UI_DATA), { recursive: true });
-fs.mkdirSync(path.dirname(UI_PUBLIC), { recursive: true });
 fs.copyFileSync(OUT_FILE, UI_DATA);
-fs.copyFileSync(OUT_FILE, UI_PUBLIC);
-console.log(`Synced UI copies:\n  ${UI_DATA}\n  ${UI_PUBLIC}`);
+console.log(`Synced UI data:\n  ${UI_DATA}`);
 
 if (partitionConfig.manifest) {
   const refreshedManifest = {
@@ -397,4 +394,4 @@ if (partitionConfig.manifest) {
 console.log("\n=== Partition summary ===");
 partitionSummaries.forEach(s => console.log("  " + s));
 
-console.log("\nMerge complete. Commit the updated recruiter.json + partition files together.");
+console.log("\nMerge complete. Commit the updated recruiter.json + bundled UI data. Sector partitions can be regenerated from the aggregate JSON.");

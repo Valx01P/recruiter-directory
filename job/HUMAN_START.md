@@ -35,7 +35,6 @@ Stop sends SIGTERM to active workers, waits briefly, then merges `job/sectors/re
 
 - `job/recruiter.json`
 - `recruiter-directory/data/recruiter.json`
-- `recruiter-directory/public/data/recruiter.json`
 
 Use this only if you intentionally want to stop without merging:
 

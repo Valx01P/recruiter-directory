@@ -167,7 +167,6 @@ A simple Next.js search UI lives at `recruiter-directory/`. It consumes the JSON
 After editing `job/recruiter.json`, run:
 ```bash
 cp job/recruiter.json recruiter-directory/data/recruiter.json
-cp job/recruiter.json recruiter-directory/public/data/recruiter.json
 ```
 Then `cd recruiter-directory && npm run dev` (or rebuild for deploy).
 
@@ -182,7 +181,7 @@ See `recruiter-directory/README.md` for details.
 Last workflow update: 2026-06-01
 Owner: Pablo Valdes
 
-**Current operating mode**: Codex sector swarm. Workers edit only `job/sectors/recruiter-*.json`; the orchestrator runs `node job/scripts/merge-recruiter-partitions.js --source sectors` centrally to update canonical `job/recruiter.json` and UI copies. `stop` merges by default after active workers exit.
+**Current operating mode**: Codex sector swarm. Workers edit only `job/sectors/recruiter-*.json`; the orchestrator runs `node job/scripts/merge-recruiter-partitions.js --source sectors` centrally to update canonical `job/recruiter.json` and the bundled UI data copy. `stop` merges by default after active workers exit.
 ```
 
 Now, update the todo and start populating some using tools.

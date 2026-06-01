@@ -9,7 +9,7 @@ import type { JsonData, Company } from "../lib/types";
 // Reads data/recruiter.json, builds an industry/profile text per *populated*
 // company, embeds it via gte-server's /embed endpoint (so the index and the
 // live query path share one model), and upserts the vectors into Supabase.
-// Re-run any time the dataset changes (e.g. after a partition merge).
+// Re-run any time the bundled dataset changes.
 const here = path.dirname(fileURLToPath(import.meta.url));
 const dataPath = path.resolve(here, "../data/recruiter.json");
 const GTE_SERVER = process.env.NEXT_PUBLIC_GTE_SERVER_URL || process.env.GTE_SERVER_URL || "http://localhost:8787";
