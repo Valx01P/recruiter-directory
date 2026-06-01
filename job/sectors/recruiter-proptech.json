@@ -10739,6 +10739,260 @@
           "notes": "Batch 56 live search on 2026-06-01: HITEC exhibitor listing places Dharma at a Miami address and categorizes it under business intelligence, guest CRM, guest service, AI hotel chatbot, and Open API. Sources: https://hitec2024.smallworldlabs.com/exhibitors/exhibitor/354 and https://apps.apple.com/fr/app/dharmaops/id6648335316?l=en-GB"
         }
       ]
+    },
+    {
+      "id": "C2020",
+      "name": "Automation Atlas",
+      "category": "PropTech / Real Estate",
+      "sector": "proptech",
+      "description": "Automation Atlas builds AI workflow and property-data automation tools, including Acquisition Atlas for distress filings, owner matching, and investor deal sourcing.",
+      "hq_location": "Miami, FL",
+      "priority": 3,
+      "size_estimate": "2-10",
+      "has_intern_program": true,
+      "linkedin_company_url": "https://www.linkedin.com/company/automationatlas",
+      "linkedin_url_verified": true,
+      "recruiter_search_url": "https://www.linkedin.com/search/results/people/?keywords=Automation%20Atlas%20recruiter",
+      "careers_url": "https://automationatlas.co",
+      "recruiters": [
+        {
+          "name": "Joshua Guttilla",
+          "title": "Founder & CEO",
+          "linkedin_url": "https://www.linkedin.com/in/joshua-guttilla",
+          "email": "",
+          "location": "Greater Phoenix Area / Automation Atlas Miami company",
+          "focus_area": "Founder outreach / AI automation, Acquisition Atlas property data, API and MCP platform, and technical hiring referrals",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 live search on 2026-06-01: Automation Atlas LinkedIn lists Joshua Guttilla as an employee and recent updates identify him shipping Acquisition Atlas API and MCP support for live county distress filings; his public LinkedIn profile says Founder & CEO at Automation Atlas. Sources: https://www.linkedin.com/company/automationatlas and https://www.linkedin.com/in/joshua-guttilla"
+        },
+        {
+          "name": "Zack Beraznik",
+          "title": "Head of Sales",
+          "linkedin_url": "https://www.linkedin.com/in/zackberaznik",
+          "email": "",
+          "location": "Phoenix, AZ / Automation Atlas sales route",
+          "focus_area": "Sales and market feedback route / real estate investors, brokers, Acquisition Atlas deal-flow workflows, and customer-driven product signals",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 live search on 2026-06-01: Automation Atlas LinkedIn lists Zack Beraznik among employees and a company update says he joined Acquisition Atlas as Head of Sales for outbound strategy and investor/broker workflows. Source: https://www.linkedin.com/company/automationatlas"
+        },
+        {
+          "name": "Dillon Jenkins",
+          "title": "Head of Marketing",
+          "linkedin_url": "https://www.linkedin.com/in/dillon-jenkins-12b587264",
+          "email": "",
+          "location": "Austin, TX / Automation Atlas marketing route",
+          "focus_area": "Marketing and product positioning route / distress-signal data, demand generation, product messaging, and proptech startup growth",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 live search on 2026-06-01: Automation Atlas LinkedIn lists Dillon Jenkins among employees and a company update says he joined Acquisition Atlas as Head of Marketing, working with product and sales on brand strategy and demand generation. Sources: https://www.linkedin.com/company/automationatlas and https://www.linkedin.com/in/dillon-jenkins-12b587264"
+        },
+        {
+          "name": "Kingsley Ji",
+          "title": "Data Intelligence and Market Research Intern",
+          "linkedin_url": "",
+          "email": "",
+          "location": "Northern Arizona University / Automation Atlas remote team",
+          "focus_area": "Intern and early-career route / property-data validation, market research, foreclosure signals, and data intelligence workflows",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 live search on 2026-06-01: Automation Atlas LinkedIn update welcomes Kingsley Ji as an intern from Northern Arizona University focused on data intelligence, market research, data validation, and distress-signal research. Source: https://www.linkedin.com/company/automationatlas"
+        },
+        {
+          "name": "Jayla Cotton",
+          "title": "Acquisition Atlas Team Member",
+          "linkedin_url": "https://www.linkedin.com/in/jayla-cotton-311034367",
+          "email": "",
+          "location": "Chandler, AZ / Automation Atlas team",
+          "focus_area": "Operations and early-career route / Acquisition Atlas team connection, business operations, and real estate data workflow support",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 live search on 2026-06-01: Automation Atlas LinkedIn lists Jayla Cotton among employees, and her public LinkedIn profile lists Acquisition Atlas with an Automation Atlas introduction path. Sources: https://www.linkedin.com/company/automationatlas and https://www.linkedin.com/in/jayla-cotton-311034367"
+        }
+      ]
+    },
+    {
+      "id": "C2021",
+      "name": "atlasnotion",
+      "category": "PropTech / Real Estate",
+      "sector": "proptech",
+      "description": "atlasnotion is building an all-in-one property search platform combining real estate software, property profiles, property data, and proptech search workflows.",
+      "hq_location": "Miami, FL",
+      "priority": 3,
+      "size_estimate": "2-10",
+      "has_intern_program": false,
+      "linkedin_company_url": "https://www.linkedin.com/company/atlas-notion",
+      "linkedin_url_verified": true,
+      "recruiter_search_url": "https://www.linkedin.com/search/results/people/?keywords=atlasnotion%20recruiter",
+      "careers_url": "https://atlasnotion.com",
+      "recruiters": [
+        {
+          "name": "Zakaria Barazzouq",
+          "title": "atlasnotion Team Member",
+          "linkedin_url": "",
+          "email": "",
+          "location": "Miami, FL / Casablanca-Settat network",
+          "focus_area": "Product and data route / property search, property profiles, real estate data, and small-team hiring referrals",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 live search on 2026-06-01: atlasnotion LinkedIn lists Zakaria Barazzouq among the company's visible employees; the company page describes a Miami all-in-one property search platform with real estate software and property-data specialties. Source: https://www.linkedin.com/company/atlas-notion"
+        },
+        {
+          "name": "issam zouiten",
+          "title": "atlasnotion Team Member",
+          "linkedin_url": "",
+          "email": "",
+          "location": "Casablanca, Morocco / atlasnotion Miami company",
+          "focus_area": "Engineering and product route / property-search platform, real estate software, and distributed technical team referrals",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 live search on 2026-06-01: atlasnotion LinkedIn lists issam zouiten among visible employees; LinkedIn people-search snippets also associate Issam Zouiten with Atlasnotion in Casablanca. Sources: https://www.linkedin.com/company/atlas-notion and https://www.linkedin.com/pub/dir/%2B/Zouiten"
+        }
+      ]
+    },
+    {
+      "id": "C2022",
+      "name": "wowdesign.io",
+      "category": "PropTech / Real Estate",
+      "sector": "proptech",
+      "description": "wowdesign.io builds interactive 3D digital sales centers for luxury real estate developers, connecting visualization, CRM sync, lead tracking, and sales automation.",
+      "hq_location": "Miami Beach, FL",
+      "priority": 3,
+      "size_estimate": "2-10",
+      "has_intern_program": false,
+      "linkedin_company_url": "https://www.linkedin.com/company/wowdesign-io/",
+      "linkedin_url_verified": true,
+      "recruiter_search_url": "https://www.linkedin.com/search/results/people/?keywords=wowdesign.io%20recruiter",
+      "careers_url": "https://www.wowdesign.io/",
+      "recruiters": [
+        {
+          "name": "Andy Bittner",
+          "title": "wowdesign.io Team Member",
+          "linkedin_url": "https://www.linkedin.com/in/andy-bittner-wowdesign",
+          "email": "",
+          "location": "Miami Beach, FL / United States",
+          "focus_area": "Founder or product route / 3D digital sales centers, Webflow, CRM integrations, lead routing, and real estate developer sales tools",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 live search on 2026-06-01: wowdesign.io LinkedIn lists Andy Bittner as its visible employee and describes Miami Beach software for 3D digital sales centers, CRM sync, lead tracking, and automated sales pipelines for luxury real estate developers. Sources: https://www.linkedin.com/company/wowdesign-io/ and https://www.linkedin.com/in/andy-bittner-wowdesign"
+        }
+      ]
+    },
+    {
+      "id": "C2023",
+      "name": "Getfloorplan / #gfp_ai",
+      "category": "PropTech / Real Estate",
+      "sector": "proptech",
+      "description": "Getfloorplan uses AI to convert 2D floor plans into 3D layouts, renders, and virtual tours for real estate marketing teams.",
+      "hq_location": "Boca Raton, FL",
+      "priority": 3,
+      "size_estimate": "11-50",
+      "has_intern_program": false,
+      "linkedin_company_url": "https://www.linkedin.com/company/getfloorplan",
+      "linkedin_url_verified": true,
+      "recruiter_search_url": "https://www.linkedin.com/search/results/people/?keywords=Getfloorplan%20recruiter",
+      "careers_url": "https://getfloorplan.com/",
+      "recruiters": [
+        {
+          "name": "George Kogan",
+          "title": "Co-Founder / Getfloorplan Lead",
+          "linkedin_url": "https://www.linkedin.com/in/george-kogan-520b404b",
+          "email": "",
+          "location": "Miami-Fort Lauderdale Area",
+          "focus_area": "Founder outreach / AI floor-plan conversion, 3D visualization, virtual tours, and real estate marketing product referrals",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 live search on 2026-06-01: Getfloorplan LinkedIn lists George Kogan among employees and recent product posts; his public LinkedIn profile lists Getfloorplan in Boca Raton and focuses on AI-powered real estate visualization. Sources: https://www.linkedin.com/company/getfloorplan and https://www.linkedin.com/in/george-kogan-520b404b"
+        },
+        {
+          "name": "Kirill Mardashov",
+          "title": "Getfloorplan Team Member",
+          "linkedin_url": "https://ge.linkedin.com/in/kirill-mardashov-32957a62",
+          "email": "",
+          "location": "Batumi, Georgia / Getfloorplan Boca Raton company",
+          "focus_area": "Product and digital-solutions route / interactive floor-plan tooling, 3D tour workflows, and distributed product team referrals",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 live search on 2026-06-01: Getfloorplan LinkedIn lists Kirill Mardashov among employees, and his public LinkedIn profile lists Getfloorplan with Boca Raton location information. Sources: https://www.linkedin.com/company/getfloorplan and https://ge.linkedin.com/in/kirill-mardashov-32957a62"
+        },
+        {
+          "name": "Aleksey Grishin",
+          "title": "Getfloorplan Team Member",
+          "linkedin_url": "https://www.linkedin.com/in/alekseygrishin",
+          "email": "",
+          "location": "Boca Raton, FL",
+          "focus_area": "Technical and product route / AI 3D layouts, web development, cloud applications, UX, and property-marketing software",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 live search on 2026-06-01: Getfloorplan LinkedIn lists Aleksey Grishin among employees; his public LinkedIn profile lists Getfloorplan and services including web development, cloud applications, UX, and business analytics. Sources: https://www.linkedin.com/company/getfloorplan and https://www.linkedin.com/in/alekseygrishin"
+        }
+      ]
+    },
+    {
+      "id": "C2024",
+      "name": "REQpay Inc",
+      "category": "PropTech / Real Estate",
+      "sector": "proptech",
+      "description": "REQpay automates AIA pay applications, bank draw packages, compliance checks, and construction payment workflows for subcontractors, general contractors, developers, and lenders.",
+      "hq_location": "West Palm Beach, FL",
+      "priority": 3,
+      "size_estimate": "2-10",
+      "has_intern_program": false,
+      "linkedin_company_url": "https://www.linkedin.com/company/reqpay-inc",
+      "linkedin_url_verified": true,
+      "recruiter_search_url": "https://www.linkedin.com/search/results/people/?keywords=REQpay%20recruiter",
+      "careers_url": "https://www.reqpay.com/",
+      "recruiters": [
+        {
+          "name": "Dr. Jessica Barnes",
+          "title": "CEO",
+          "linkedin_url": "",
+          "email": "",
+          "location": "West Palm Beach, FL / REQpay company route",
+          "focus_area": "Executive outreach / construction payment automation, G702/G703 workflows, lender compliance, and fintech-for-construction platform hiring referrals",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 live search on 2026-06-01: REQpay LinkedIn describes its West Palm Beach construction payment automation platform and recent updates identify CEO Dr. Jessica Barnes introducing REQpay and launching The Pay App Problem newsletter. Source: https://www.linkedin.com/company/reqpay-inc"
+        },
+        {
+          "name": "Adam Yellin",
+          "title": "Founder / President",
+          "linkedin_url": "",
+          "email": "",
+          "location": "West Palm Beach, FL / New York, NY",
+          "focus_area": "Founder outreach / construction finance workflow design, bank draw automation, AIA billing, and stakeholder-payment platform referrals",
+          "connected": false,
+          "messaged": false,
+          "responded": false,
+          "date_contacted": "",
+          "notes": "Batch 59 live search on 2026-06-01: REQpay LinkedIn updates name Adam Y. as founder, and Florida filing/profile pages list Adam Yellin as REQpay Inc president and registered agent for the West Palm Beach entity. Sources: https://www.linkedin.com/company/reqpay-inc and https://bisprofiles.com/fl/reqpay-f25000005271"
+        }
+      ]
     }
   ]
 }
