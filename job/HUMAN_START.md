@@ -6,8 +6,8 @@
 node job/scripts/codex-sector-orchestrator.js start
 ```
 
-This starts up to 12 parallel Codex workers by default and prints live status.
-Workers are assigned to the best available sector partition: never-started and empty recruiter partitions first, then missing descriptions, then under-10-contact sectors, then expansion.
+This starts one parallel Codex worker per selected sector by default and prints live status.
+With no sector arguments, all sectors are worked at the same time.
 
 ## Watch It Keep Working
 

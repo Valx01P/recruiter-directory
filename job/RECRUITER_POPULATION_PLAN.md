@@ -59,4 +59,4 @@ node job/scripts/codex-sector-orchestrator.js stop
 node job/scripts/validate-sector-partitions.js
 ```
 
-Default concurrency is 12. The scheduler gives worker slots to never-started and empty recruiter partitions first, then missing descriptions, then companies below 10 contacts, then expansion. `stop` merges sector files back into canonical/UI JSON by default.
+Default concurrency is one worker per selected sector, so running `start` with no sector arguments works all sectors at the same time. `stop` merges sector files back into canonical/UI JSON by default.

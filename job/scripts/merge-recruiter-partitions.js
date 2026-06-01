@@ -38,6 +38,7 @@ const RECRUITER_DEFAULTS = {
 };
 
 const droppedKeys = new Map(); // unexpected key -> count, for a single summary line
+const duplicateCompanyMerges = [];
 
 function normalizeRecruiter(r) {
   const out = {};
@@ -45,6 +46,129 @@ function normalizeRecruiter(r) {
     out[k] = r[k] !== undefined ? r[k] : def;
   }
   return out;
+}
+
+function normalizeLookup(s) {
+  return String(s || "")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/\b(incorporated|inc|llc|l\.l\.c|ltd|limited|corp|corporation|company|co|plc)\b/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+    .replace(/\s+/g, " ");
+}
+
+function normalizedCompanyName(company) {
+  return normalizeLookup(company.name);
+}
+
+function normalizeUrl(url) {
+  return String(url || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[?#].*$/, "")
+    .replace(/\/+$/, "");
+}
+
+function isPresent(value) {
+  return value !== undefined && value !== null && String(value).trim() !== "";
+}
+
+function recruiterKey(recruiter) {
+  const url = normalizeUrl(recruiter.linkedin_url);
+  if (url) return `url:${url}`;
+  const name = normalizeLookup(recruiter.name);
+  if (!name) return "";
+  return `name:${name}|title:${normalizeLookup(recruiter.title)}`;
+}
+
+function mergeRecruiter(existing, incoming) {
+  const merged = { ...existing };
+  for (const [key, defaultValue] of Object.entries(RECRUITER_DEFAULTS)) {
+    if (typeof defaultValue === "boolean") {
+      merged[key] = Boolean(existing[key]) || Boolean(incoming[key]);
+      continue;
+    }
+    if (!isPresent(merged[key]) && isPresent(incoming[key])) {
+      merged[key] = incoming[key];
+    }
+  }
+
+  const existingNotes = String(existing.notes || "").trim();
+  const incomingNotes = String(incoming.notes || "").trim();
+  if (existingNotes && incomingNotes && existingNotes !== incomingNotes && !existingNotes.includes(incomingNotes)) {
+    merged.notes = `${existingNotes} ${incomingNotes}`;
+  }
+
+  return normalizeRecruiter(merged);
+}
+
+function mergeRecruiterLists(a = [], b = []) {
+  const out = [];
+  const byKey = new Map();
+
+  for (const raw of [...a, ...b]) {
+    const recruiter = normalizeRecruiter(raw || {});
+    const key = recruiterKey(recruiter);
+    if (!key) {
+      out.push(recruiter);
+      continue;
+    }
+    if (byKey.has(key)) {
+      const idx = byKey.get(key);
+      out[idx] = mergeRecruiter(out[idx], recruiter);
+    } else {
+      byKey.set(key, out.length);
+      out.push(recruiter);
+    }
+  }
+
+  return out;
+}
+
+function descriptionScore(description) {
+  const text = String(description || "").trim();
+  if (!text) return 0;
+  const words = text.split(/\s+/).filter(Boolean).length;
+  let score = Math.min(text.length, 260);
+  if (words >= 18 && words <= 35) score += 80;
+  if (words < 8) score -= 80;
+  if (/^(software|technology|company|platform)$/i.test(text)) score -= 100;
+  return score;
+}
+
+function bestDescription(a, b) {
+  const left = String(a || "").trim();
+  const right = String(b || "").trim();
+  if (!left) return right;
+  if (!right) return left;
+  return descriptionScore(right) > descriptionScore(left) ? right : left;
+}
+
+function mergeCompany(existing, incoming) {
+  const merged = { ...existing };
+
+  for (const field of COMPANY_FIELDS) {
+    if (field === "recruiters" || field === "description") continue;
+    if (field === "priority") {
+      const a = Number(merged.priority);
+      const b = Number(incoming.priority);
+      if (Number.isFinite(a) && Number.isFinite(b)) merged.priority = Math.min(a, b);
+      else if (!Number.isFinite(a) && Number.isFinite(b)) merged.priority = incoming.priority;
+      continue;
+    }
+    if (field === "has_intern_program" || field === "linkedin_url_verified") {
+      merged[field] = Boolean(merged[field]) || Boolean(incoming[field]);
+      continue;
+    }
+    if (!isPresent(merged[field]) && isPresent(incoming[field])) {
+      merged[field] = incoming[field];
+    }
+  }
+
+  merged.description = bestDescription(merged.description, incoming.description);
+  merged.recruiters = mergeRecruiterLists(merged.recruiters, incoming.recruiters);
+  return normalizeCompany(merged);
 }
 
 function normalizeCompany(c) {
@@ -108,7 +232,6 @@ partitionConfig.files.forEach(({ fname, agentLabel: fallbackAgentLabel, range: f
   }
   const data = JSON.parse(fs.readFileSync(fpath, "utf8"));
   const partCos = data.companies || [];
-  allCompanies.push(...partCos);
 
   if (data.meta && data.meta.last_updated && data.meta.last_updated > latestUpdated) {
     latestUpdated = data.meta.last_updated;
@@ -142,23 +265,64 @@ partitionConfig.files.forEach(({ fname, agentLabel: fallbackAgentLabel, range: f
       company_ids: partCos.map(c => c.id),
     });
   }
+  partCos.forEach(company => {
+    allCompanies.push({
+      company,
+      sourceFile: `job/${fname}`,
+      sourceSector: range,
+    });
+  });
   console.log(`  + ${fname}: ${partCos.length} companies (${pop} populated, ${missingDescriptions} missing descriptions, ${recs} recruiters)`);
 });
 
 // Sort by id (lexical works because C0001 style)
-allCompanies.sort((a,b) => a.id.localeCompare(b.id));
+allCompanies.sort((a,b) => String(a.company.id || "").localeCompare(String(b.company.id || "")));
 
-// Dedupe just in case (should not happen)
-const seen = new Set();
+// Dedupe by stable ID or normalized company name. Expansion workers can
+// independently discover the same company in different sectors; canonical JSON
+// keeps one company row and merges the recruiter/contact evidence from all copies.
+const byId = new Map();
+const byName = new Map();
 const deduped = [];
-allCompanies.forEach(c => {
-  if (seen.has(c.id)) {
-    console.warn(`  WARNING: duplicate id ${c.id} found during merge — keeping first`);
+allCompanies.forEach(({ company, sourceFile, sourceSector }) => {
+  const normalized = normalizeCompany(company);
+  const nameKey = normalizedCompanyName(normalized);
+  const existingIdx =
+    byId.has(normalized.id) ? byId.get(normalized.id) :
+    nameKey && byName.has(nameKey) ? byName.get(nameKey) :
+    -1;
+
+  if (existingIdx !== -1) {
+    const before = deduped[existingIdx];
+    deduped[existingIdx] = mergeCompany(before, normalized);
+    byId.set(normalized.id, existingIdx);
+    if (nameKey) byName.set(nameKey, existingIdx);
+    duplicateCompanyMerges.push({
+      kept_id: deduped[existingIdx].id,
+      merged_id: normalized.id,
+      name: deduped[existingIdx].name || normalized.name,
+      sector: sourceSector,
+      file: sourceFile,
+    });
     return;
   }
-  seen.add(c.id);
-  deduped.push(normalizeCompany(c));
+
+  const idx = deduped.length;
+  deduped.push(normalized);
+  byId.set(normalized.id, idx);
+  if (nameKey) byName.set(nameKey, idx);
 });
+
+if (duplicateCompanyMerges.length) {
+  console.log(`  Merged duplicate company discoveries: ${duplicateCompanyMerges.length}`);
+  duplicateCompanyMerges.slice(0, 25).forEach((dup) => {
+    const idText = dup.kept_id === dup.merged_id ? dup.kept_id : `${dup.kept_id} <= ${dup.merged_id}`;
+    console.log(`    - ${idText} ${dup.name} (${dup.sector}, ${dup.file})`);
+  });
+  if (duplicateCompanyMerges.length > 25) {
+    console.log(`    ... ${duplicateCompanyMerges.length - 25} more`);
+  }
+}
 
 if (droppedKeys.size) {
   const summary = [...droppedKeys.entries()].map(([k, n]) => `${k} (${n})`).join(", ");

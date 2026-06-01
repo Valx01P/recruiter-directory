@@ -14,6 +14,16 @@ function fail(message) {
   process.exitCode = 1;
 }
 
+function normalizeCompanyName(s) {
+  return String(s || "")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/\b(incorporated|inc|llc|l\.l\.c|ltd|limited|corp|corporation|company|co|plc)\b/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+    .replace(/\s+/g, " ");
+}
+
 function main() {
   if (!fs.existsSync(MANIFEST_FILE)) {
     fail("Missing job/sectors/manifest.json");
@@ -23,6 +33,7 @@ function main() {
   const manifest = JSON.parse(fs.readFileSync(MANIFEST_FILE, "utf8"));
   const seenIds = new Map();
   const seenNames = new Map();
+  const duplicateNames = [];
   let total = 0;
   let populated = 0;
   let missingDescriptions = 0;
@@ -48,12 +59,13 @@ function main() {
       }
       seenIds.set(company.id, sector.file);
 
-      const nameKey = String(company.name || "").trim().toLowerCase();
+      const nameKey = normalizeCompanyName(company.name);
       if (nameKey) {
         if (seenNames.has(nameKey)) {
-          fail(`Duplicate company name "${company.name}" in ${sector.file} and ${seenNames.get(nameKey)}`);
+          duplicateNames.push(`Duplicate company name "${company.name}" in ${sector.file} and ${seenNames.get(nameKey)}`);
+        } else {
+          seenNames.set(nameKey, sector.file);
         }
-        seenNames.set(nameKey, sector.file);
       }
 
       const recCount = (company.recruiters || []).length;
@@ -78,6 +90,12 @@ function main() {
   }
   if (seenIds.size !== total) {
     fail(`Unique ID count ${seenIds.size} does not match company count ${total}`);
+  }
+
+  if (duplicateNames.length) {
+    console.warn(`WARN: ${duplicateNames.length} duplicate company name(s) found across or within sector files; merge will collapse them by normalized name.`);
+    duplicateNames.slice(0, 20).forEach(message => console.warn(`  ${message}`));
+    if (duplicateNames.length > 20) console.warn(`  ... ${duplicateNames.length - 20} more`);
   }
 
   if (!process.exitCode) console.log("OK");

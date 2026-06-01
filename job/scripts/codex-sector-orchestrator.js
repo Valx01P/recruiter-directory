@@ -19,7 +19,6 @@ const LOG_DIR = path.join(SWARM_DIR, "codex-sector-logs");
 const STATE_FILE = path.join(SWARM_DIR, "codex-sector-state.json");
 const CODEX_BIN = process.env.CODEX_BIN || "codex";
 const CODEX_MODEL = process.env.CODEX_SWARM_MODEL || "";
-const DEFAULT_CONCURRENCY = 12;
 const STARTUP_GRACE_MS = 1200;
 const RAW_STOP_WAIT_MS = Number(process.env.CODEX_SECTOR_SWARM_STOP_WAIT_MS || "15000");
 const STOP_WAIT_MS = Number.isFinite(RAW_STOP_WAIT_MS) && RAW_STOP_WAIT_MS >= 0 ? RAW_STOP_WAIT_MS : 15000;
@@ -115,11 +114,11 @@ function selectedSectors(manifest, args) {
   return out;
 }
 
-function getConcurrency(args) {
+function getConcurrency(args, defaultConcurrency) {
   const idx = args.indexOf("--concurrency");
   const raw = idx === -1 ? process.env.CODEX_SECTOR_SWARM_CONCURRENCY : args[idx + 1];
-  const n = Number(raw || DEFAULT_CONCURRENCY);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : DEFAULT_CONCURRENCY;
+  const n = Number(raw || defaultConcurrency);
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : defaultConcurrency;
 }
 
 function getWaitMs(args) {
@@ -194,9 +193,6 @@ function summarizeLogIssue(logFile) {
   const lines = text.split(/\r?\n/).filter(Boolean).slice(-80).reverse();
   for (const line of lines) {
     const trimmed = line.trim();
-    if (/^(error|fatal):/i.test(trimmed) || /unexpected argument|permission denied|approval|sandbox|failed/i.test(trimmed)) {
-      return trimmed.slice(0, 180);
-    }
     if (trimmed.startsWith("{")) {
       try {
         const event = JSON.parse(trimmed);
@@ -204,9 +200,13 @@ function summarizeLogIssue(logFile) {
         if (message && /error|fatal|failed|permission|approval|sandbox/i.test(String(message))) {
           return String(message).slice(0, 180);
         }
+        continue;
       } catch {
         // Ignore partial JSONL lines from an active writer.
       }
+    }
+    if (/^(error|fatal):/i.test(trimmed) || /unexpected argument|permission denied|approval|sandbox|failed/i.test(trimmed)) {
+      return trimmed.slice(0, 180);
     }
   }
   return "";
@@ -243,9 +243,14 @@ Live state for this sector:
 Do exactly one batch, then stop. Edit only ${sector.file}. Do not edit canonical JSON, UI copies, other sector files, or shared docs. Do not run the merge script; the orchestrator will merge after you exit.
 
 Phase behavior:
-- coverage: fill empty recruiters[] and missing descriptions, preserving existing recruiter data.
-- bolster: add recruiters or technical hiring members to companies with fewer than 10 contacts. Stop at 10 contacts per company.
-- expand: add 3-8 new ${sector.label} companies, prioritizing Miami / South Florida and San Jose / Silicon Valley area companies. Reserve IDs with node job/scripts/allocate-company-ids.js before adding.
+- coverage: finish missing descriptions first, then fill any empty recruiters[] arrays, preserving existing recruiter data.
+- bolster: add recruiters or technical hiring members to companies with fewer than 10 contacts. Stop at 10 contacts per company. If recruiter searches are thin, use founders, CTOs, VPs/Heads of Engineering, engineering managers, product/AI/data/security leads, or other technical staff who are visibly hiring or leading teams.
+- expand: when descriptions are complete and bolstering is no longer yielding easy net-new contacts, add 3-8 new ${sector.label} companies. Prioritize smaller Miami / South Florida companies and startups in this sector, then San Jose / Silicon Valley startups. Reserve IDs with node job/scripts/allocate-company-ids.js before adding.
+
+Expansion focus:
+- Prefer Miami, Fort Lauderdale, Boca Raton, West Palm Beach, Coral Gables, Doral, Wynwood, Brickell, and nearby South Florida startup/industrial hubs.
+- For construction, industrial, logistics, energy, proptech, hardware, defense, healthcare, fintech, AI, cloud, and cybersecurity sectors, look for small local operators with real software, data, engineering, operations, product, or technical hiring needs.
+- Avoid duplicating companies already present in any sector file or canonical JSON. Search exact names and LinkedIn company URLs before adding.
 
 Use live web search for public verification. Preserve existing good data. When the batch is done, run the status command from ${instructionFile}, print the marker exactly on its own line:
 
@@ -431,12 +436,12 @@ function cmdInit() {
 function cmdStart(args) {
   const manifest = loadManifest();
   const sectors = selectedSectors(manifest, args);
-  const concurrency = getConcurrency(args);
+  const concurrency = getConcurrency(args, sectors.length);
   const state = loadState();
   assertCodexLaunchSupported();
 
   console.log(`=== Starting Codex sector swarm (${sectors.length} sectors, concurrency ${concurrency}) ===`);
-  console.log("Launch order prioritizes never-started and empty recruiter partitions.\n");
+  console.log("Default behavior is one worker per selected sector.\n");
 
   const refreshed = refreshExitedWorkers(sectors, state, { log: true });
   const launched = launchToConcurrency(sectors, state, concurrency);
@@ -475,7 +480,11 @@ function printStatus(sectors, state) {
     below10 += stats.belowContactTarget;
     recruiters += stats.totalRecruiters;
     const pct = stats.total ? ((stats.populated / stats.total) * 100).toFixed(1) : "0.0";
-    const lastIssue = info.lastError || info.lastWarning || (!alive ? summarizeLogIssue(info.logFile ? path.join(ROOT, info.logFile) : "") : "");
+    const logIssue = !alive ? summarizeLogIssue(info.logFile ? path.join(ROOT, info.logFile) : "") : "";
+    let lastIssue = info.lastError || info.lastWarning || logIssue;
+    if (String(lastIssue || "").trim().startsWith("{") && !logIssue) {
+      lastIssue = info.lastWarning || "";
+    }
     const issueText = lastIssue ? ` issue:${truncate(lastIssue, 80)}` : "";
     console.log(
       `${sector.key.padEnd(10)} ${String(stats.populated).padStart(4)}/${String(stats.total).padEnd(4)} (${pct.padStart(5)}%) phase:${stats.phase.padEnd(8)} ` +
@@ -487,7 +496,7 @@ function printStatus(sectors, state) {
 
   console.log(`\nTotals: ${total} companies | ${unpop} empty recruiter arrays | ${missing} missing descriptions | ${below10} below 10 contacts | ${recruiters} recruiters`);
 
-  const next = launchCandidates(sectors, state).slice(0, DEFAULT_CONCURRENCY).map(({ sector, stats }) => (
+  const next = launchCandidates(sectors, state).slice(0, sectors.length).map(({ sector, stats }) => (
     `${sector.key}:${priorityLabel(stats)}(${workNeed(stats)})`
   ));
   if (next.length) console.log(`Next launch order: ${next.join(", ")}`);
@@ -559,7 +568,7 @@ function cmdStop(args) {
 function cmdMonitor(args) {
   const manifest = loadManifest();
   const sectors = selectedSectors(manifest, args);
-  const concurrency = getConcurrency(args);
+  const concurrency = getConcurrency(args, sectors.length);
   const state = loadState();
   assertCodexLaunchSupported();
 
@@ -621,7 +630,7 @@ Commands:
   merge                        Merge sector files into canonical/UI JSON
 
 Options:
-  --concurrency N              Max simultaneous Codex workers (default: 12)
+  --concurrency N              Max simultaneous Codex workers (default: one per selected sector)
   --wait-ms N                  Stop wait before merge (default: 15000)
   --no-merge                   Stop workers without the default merge
 
@@ -635,7 +644,7 @@ Examples:
 Environment:
   CODEX_BIN=/path/to/codex
   CODEX_SWARM_MODEL=<model>
-  CODEX_SECTOR_SWARM_CONCURRENCY=12
+  CODEX_SECTOR_SWARM_CONCURRENCY=<override default concurrency>
   CODEX_SECTOR_SWARM_STOP_WAIT_MS=15000
 `);
 }

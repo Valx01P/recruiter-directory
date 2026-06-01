@@ -37,7 +37,7 @@ Populate this sector with useful outreach data without repeating completed work:
 2. Populate empty \`recruiters[]\` arrays where credible public LinkedIn/web evidence exists.
 3. Keep existing recruiter entries unless you can clearly tell they are stale or wrong.
 4. After coverage is complete, deepen companies to a maximum of 10 contacts each.
-5. After existing companies are deepened, add more companies in this sector, prioritizing Miami / South Florida and San Jose / Silicon Valley.
+5. If a sector is fully covered and bolstering is no longer yielding easy net-new contacts, add more companies in this sector, prioritizing smaller Miami / South Florida companies and startups.
 
 ## Company Description Standard
 
@@ -83,9 +83,12 @@ Recruiter object schema:
 
 - Do exactly one batch per Codex invocation, then exit after printing the marker.
 - Batch size: 8-14 companies.
-- Phase 1 Coverage: prioritize companies with empty \`recruiters[]\`; then companies missing \`description\`.
-- Phase 2 Bolster: once every existing company has a description and at least one contact, improve companies with fewer than 10 contacts. Add recruiters first, then technical hiring managers / founders / team leads who are visibly hiring interns or early-career technical talent.
-- Phase 3 Expansion: once the existing sector list is reasonably deepened, add 3-8 new companies in this sector per batch. Prioritize Miami, Fort Lauderdale, Boca Raton, West Palm Beach, San Jose, Santa Clara, Sunnyvale, Mountain View, Palo Alto, and nearby startup/tech hubs. Add descriptions and at least 1-3 contacts for new companies where possible.
+- Phase 1 Coverage: finish missing \`description\` fields first, then fill any empty \`recruiters[]\` arrays.
+- Phase 2 Bolster: once every existing company has a description and at least one contact, improve companies with fewer than 10 contacts. Add recruiters first, then technical hiring managers, founders, CTOs, VPs/Heads of Engineering, engineering managers, product/AI/data/security leads, or team leads who are visibly hiring or leading technical teams.
+- Bolster timebox: do not stall on a small company. If 2-3 focused searches do not find credible net-new contacts, keep any useful technical lead you found, note the search path in the contact notes, and move on.
+- Phase 3 Expansion: if descriptions are complete and bolster work is no longer producing easy net-new contacts, add 3-8 new companies in this sector per batch. Prioritize smaller Miami / South Florida companies and startups, then San Jose / Silicon Valley startups. Add descriptions and at least 1-3 contacts for new companies where possible.
+- Expansion geography: Miami, Fort Lauderdale, Boca Raton, West Palm Beach, Coral Gables, Doral, Wynwood, Brickell, and nearby South Florida startup/industrial hubs first; then San Jose, Santa Clara, Sunnyvale, Mountain View, Palo Alto, and nearby Silicon Valley startup hubs.
+- Expansion sector fit: for construction, industrial, logistics, energy, proptech, hardware, defense, healthcare, fintech, AI, cloud, and cybersecurity sectors, prefer smaller local operators with real software, data, engineering, operations, product, or technical hiring needs.
 - Spend roughly 5-8 minutes per company on average.
 - Use web search in parallel where possible:
   - \`"<Company>" ("university recruiter" OR "campus recruiter" OR "early career recruiter" OR "talent acquisition") (intern OR "new grad" OR SWE OR software) LinkedIn -inurl:jobs\`
@@ -123,7 +126,8 @@ Before adding a recruiter/contact:
 - Keep current useful entries; append only net-new contacts.
 
 Before adding a new company:
-- Search all sector files and canonical JSON by exact company name so you do not duplicate existing work.
+- Search all sector files and canonical JSON by exact company name, normalized company name, and LinkedIn company URL so you do not duplicate existing work.
+- If the company already exists in another sector, do not add a second copy unless it is a genuinely distinct subsidiary, product group, or acquired entity with separate hiring. Pick a different new company instead.
 - Reserve IDs with \`node job/scripts/allocate-company-ids.js <count>\`.
 - Use this company shape:
 

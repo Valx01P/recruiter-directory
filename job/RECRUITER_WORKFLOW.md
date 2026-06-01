@@ -3,7 +3,7 @@
 ## Goal
 Populate `job/recruiter.json` `companies[].recruiters[]` arrays with real, verified LinkedIn recruiter profiles for US tech companies (focus on those with internship programs). This powers outreach for SWE/AI internships.
 
-Current scalable workflow: sector-owned Codex workers edit `job/sectors/recruiter-*.json`; the orchestrator centrally merges back to `job/recruiter.json` and the UI copies. Start with `job/HUMAN_START.md`. The default start launches 12 parallel workers and assigns slots to never-started or empty recruiter partitions before already-covered partitions.
+Current scalable workflow: sector-owned Codex workers edit `job/sectors/recruiter-*.json`; the orchestrator centrally merges back to `job/recruiter.json` and the UI copies. Start with `job/HUMAN_START.md`. The default start launches one parallel worker per selected sector, so all sectors run at the same time when no sector subset is provided.
 
 **Current sector baseline**: 1,250 companies, 873 populated companies, 377 empty recruiter arrays, 1,250 missing descriptions, and 1,937 recruiter / hiring contacts.
 
