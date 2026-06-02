@@ -9,10 +9,30 @@ The flow is:
 1. Start from the canonical aggregate dataset: `job/recruiter.json`.
 2. Build temporary sector work files: `job/sectors/recruiter-*.json`.
 3. Launch one worker per sector file.
-4. Monitor batches until enough recruiter data is populated.
-5. Stop workers and merge sector files back into:
+4. Monitor batches while workers clean broken contacts, enrich opportunity fields, bolster contact lists, and add new companies.
+5. Gracefully stop workers, then merge sector files back into:
    - `job/recruiter.json`
    - `recruiter-directory/data/recruiter.json`
+
+## Worker Priorities
+
+Each worker decides what to do inside its own sector partition in this order:
+
+1. Coverage: add missing descriptions and populate empty `recruiters[]` arrays.
+2. Link cleanup: repair contacts whose `linkedin_url` is missing or is not a person profile URL. Workers should fill verified profile URLs and preserve existing contacts when a URL cannot be found. Cleanup must not shrink `recruiters[]`; questionable pruning belongs in a separate human-reviewed pass.
+3. Opportunity enrichment: fill company-level fields that improve internship/job search.
+4. Bolster: add verified recruiters, university recruiters, technical hiring managers, founders, CTOs, VPs/Heads of Engineering, engineering managers, or team leads until the contact target is met.
+5. Expansion: add more Miami / South Florida startups and small businesses with technical hiring signals, then other high-signal companies.
+
+Opportunity enrichment fields:
+
+- `company_url`: company homepage.
+- `careers_url`: careers, jobs, students, or internships page.
+- `early_career_programs`: named internship, university, new-grad, co-op, apprenticeship, fellowship, or rotational programs.
+- `application_timeline`: public timing notes for internship/new-grad applications.
+- `visa_sponsorship`: public sponsorship/work-authorization evidence; use unknown/varies when evidence is thin.
+- `recent_internship_signal`: evidence of recent interns, student roles, or new-grad hiring.
+- `opportunity_notes`: concise search/outreach summary.
 
 ## File Map
 
@@ -22,6 +42,7 @@ The flow is:
 - `job/sectors/manifest.json`: small sector map used by the orchestrator.
 - `job/swarm/sectors/*.md`: reusable per-sector worker instructions.
 - `job/swarm/codex-sector-state.json`: generated runtime state; safe to delete after a run.
+- `job/swarm/codex-sector-stop.json`: generated stop request; safe to delete when no workers are active.
 - `job/swarm/codex-sector-logs/*`: generated prompts/logs; safe to delete after a run.
 
 ## Rebuild Sector Files
@@ -65,15 +86,54 @@ Status shows running workers, batch counts, next launch order, and the latest wo
 node job/scripts/codex-sector-orchestrator.js stop
 ```
 
-Stop sends SIGTERM to active workers, waits briefly, then merges `job/sectors/recruiter-*.json` into:
+Stop is graceful by default. It writes `job/swarm/codex-sector-stop.json`, stops new launches, and waits for active workers to finish their current batch/checkpoint before merging `job/sectors/recruiter-*.json` into:
 
 - `job/recruiter.json`
 - `recruiter-directory/data/recruiter.json`
+
+Use force only when you intentionally want to interrupt active searches immediately:
+
+```bash
+node job/scripts/codex-sector-orchestrator.js stop --force
+```
+
+Force stop does not merge because interrupted workers may leave partial sector files. Run `status` and merge manually only after the sector files look right.
 
 Use this only if you intentionally want to stop without merging:
 
 ```bash
 node job/scripts/codex-sector-orchestrator.js stop --no-merge
+```
+
+If a graceful stop times out, active workers are left alive so they can finish without half-written contacts. Run `status`, then run `stop` again after they exit.
+
+## Check Contact Links
+
+New swarm output should not add a saved recruiter/contact without a verified LinkedIn profile URL. To report existing legacy gaps:
+
+```bash
+node job/scripts/report-missing-recruiter-links.js
+```
+
+To check only one file:
+
+```bash
+node job/scripts/report-missing-recruiter-links.js job/sectors/recruiter-cloud.json
+```
+
+## Recover Dropped Contacts
+
+If a bad cleanup pass accidentally removes useful contacts, stop the swarm first, then restore missing contacts from the committed canonical JSON into the current sector files:
+
+```bash
+node job/scripts/restore-recruiters-from-source.js
+node job/scripts/codex-sector-orchestrator.js merge
+```
+
+By default, the restore source is `HEAD:job/recruiter.json`. To restore from another local JSON file:
+
+```bash
+node job/scripts/restore-recruiters-from-source.js --source path/to/recruiter.json
 ```
 
 ## Refresh Smart Search
@@ -112,4 +172,4 @@ If the frontend says smart search is offline, check these in order:
 For a lean app/repo commit, keep the canonical aggregate JSON and workflow code, but do not keep generated run artifacts:
 
 - Keep: `job/recruiter.json`, `recruiter-directory/data/recruiter.json`, `job/scripts`, `job/swarm/sectors`, `job/sectors/manifest.json`.
-- Delete/regenerate when needed: `job/sectors/recruiter-*.json`, `job/swarm/codex-sector-state.json`, `job/swarm/codex-sector-logs/*`.
+- Delete/regenerate when needed: `job/sectors/recruiter-*.json`, `job/swarm/codex-sector-state.json`, `job/swarm/codex-sector-stop.json`, `job/swarm/codex-sector-logs/*`.

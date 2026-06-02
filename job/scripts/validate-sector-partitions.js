@@ -24,6 +24,14 @@ function normalizeCompanyName(s) {
     .replace(/\s+/g, " ");
 }
 
+function normalizeUrl(url) {
+  return String(url || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[?#].*$/, "")
+    .replace(/\/+$/, "");
+}
+
 function isSouthFloridaCompany(company) {
   return /miami|fort lauderdale|boca raton|west palm beach|coral gables|doral|wynwood|brickell|aventura|hollywood|pompano|delray|south florida/i.test(
     String(company.hq_location || "")
@@ -32,6 +40,35 @@ function isSouthFloridaCompany(company) {
 
 function contactTargetForCompany(company) {
   return isSouthFloridaCompany(company) ? 5 : 10;
+}
+
+function hasLinkedInProfileUrl(url) {
+  return /(^|\.)linkedin\.com\/(in|pub)\//i.test(String(url || ""));
+}
+
+function recruiterNeedsLinkCleanup(recruiter) {
+  return String(recruiter.name || "").trim() && !hasLinkedInProfileUrl(recruiter.linkedin_url);
+}
+
+function recruiterKey(recruiter) {
+  const name = normalizeCompanyName(recruiter.name);
+  if (name) return `name:${name}`;
+  const url = normalizeUrl(recruiter.linkedin_url);
+  if (url) return `url:${url}`;
+  const title = normalizeCompanyName(recruiter.title);
+  return title ? `title:${title}|location:${normalizeCompanyName(recruiter.location)}` : "";
+}
+
+function hasOpportunityResearch(company) {
+  return [
+    company.company_url,
+    company.careers_url,
+    company.early_career_programs,
+    company.application_timeline,
+    company.visa_sponsorship,
+    company.recent_internship_signal,
+    company.opportunity_notes,
+  ].some((value) => String(value || "").trim()) || Boolean(company.has_intern_program);
 }
 
 function main() {
@@ -49,6 +86,10 @@ function main() {
   let missingDescriptions = 0;
   let underTen = 0;
   let recruiters = 0;
+  let recruiterLinkCleanup = 0;
+  let duplicateRecruiterRows = 0;
+  const duplicateRecruiterExamples = [];
+  let missingOpportunityResearch = 0;
 
   for (const sector of manifest.sectors || []) {
     const file = path.join(ROOT, sector.file);
@@ -83,6 +124,21 @@ function main() {
       if (recCount < contactTargetForCompany(company)) underTen++;
       if (!String(company.description || "").trim()) missingDescriptions++;
       recruiters += recCount;
+      recruiterLinkCleanup += (company.recruiters || []).filter(recruiterNeedsLinkCleanup).length;
+      const seenRecruiters = new Map();
+      for (const recruiter of company.recruiters || []) {
+        const key = recruiterKey(recruiter);
+        if (!key) continue;
+        if (seenRecruiters.has(key)) {
+          duplicateRecruiterRows++;
+          if (duplicateRecruiterExamples.length < 20) {
+            duplicateRecruiterExamples.push(`${company.id} ${company.name}: duplicate recruiter "${recruiter.name || recruiter.linkedin_url || recruiter.title}" in ${sector.file}`);
+          }
+        } else {
+          seenRecruiters.set(key, true);
+        }
+      }
+      if (!hasOpportunityResearch(company)) missingOpportunityResearch++;
     }
   }
 
@@ -94,6 +150,9 @@ function main() {
   console.log(`Missing descriptions: ${missingDescriptions}`);
   console.log(`Companies below contact target: ${underTen}`);
   console.log(`Recruiters / contacts: ${recruiters}`);
+  console.log(`Contacts needing profile URL cleanup: ${recruiterLinkCleanup}`);
+  console.log(`Duplicate recruiter rows: ${duplicateRecruiterRows}`);
+  console.log(`Companies missing opportunity research: ${missingOpportunityResearch}`);
 
   if (manifest.total_companies !== total) {
     fail(`Manifest total_companies=${manifest.total_companies}, actual=${total}`);
@@ -106,6 +165,13 @@ function main() {
     console.warn(`WARN: ${duplicateNames.length} duplicate company name(s) found across or within sector files; merge will collapse them by normalized name.`);
     duplicateNames.slice(0, 20).forEach(message => console.warn(`  ${message}`));
     if (duplicateNames.length > 20) console.warn(`  ... ${duplicateNames.length - 20} more`);
+  }
+
+  if (duplicateRecruiterRows) {
+    duplicateRecruiterExamples.forEach(message => fail(message));
+    if (duplicateRecruiterRows > duplicateRecruiterExamples.length) {
+      fail(`${duplicateRecruiterRows - duplicateRecruiterExamples.length} additional duplicate recruiter row(s) found`);
+    }
   }
 
   if (!process.exitCode) console.log("OK");

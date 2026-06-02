@@ -6,8 +6,11 @@
  * Usage:
  *   node job/scripts/merge-recruiter-partitions.js
  *   node job/scripts/merge-recruiter-partitions.js --source sectors
+ *   node job/scripts/merge-recruiter-partitions.js --normalize-current
  *
  * Sector partitions are the only supported source.
+ * --normalize-current rewrites the canonical/UI JSON through the same schema
+ * and recruiter dedupe logic without requiring sector partition files.
  *
  * This script is generic for any research/AI agent assisting with recruiter population.
  */
@@ -27,9 +30,18 @@ const SECTOR_MANIFEST = path.join(ROOT, "job/sectors/manifest.json");
 // tracking fields are backfilled with defaults. Keeps the bundled JSON uniform.
 const COMPANY_FIELDS = [
   "id", "name", "category", "sector", "description", "hq_location", "priority", "size_estimate",
+  "company_url", "early_career_programs", "application_timeline", "visa_sponsorship",
+  "recent_internship_signal", "opportunity_notes",
   "has_intern_program", "linkedin_company_url", "linkedin_url_verified",
   "recruiter_search_url", "careers_url", "recruiters"
 ];
+const COMPANY_NOTE_FIELDS = new Set([
+  "early_career_programs",
+  "application_timeline",
+  "visa_sponsorship",
+  "recent_internship_signal",
+  "opportunity_notes",
+]);
 const RECRUITER_DEFAULTS = {
   name: "", title: "", linkedin_url: "", email: "", location: "",
   focus_area: "", connected: false, messaged: false, responded: false,
@@ -38,6 +50,7 @@ const RECRUITER_DEFAULTS = {
 
 const droppedKeys = new Map(); // unexpected key -> count, for a single summary line
 const duplicateCompanyMerges = [];
+let duplicateRecruiterRowsMerged = 0;
 
 function normalizeRecruiter(r) {
   const out = {};
@@ -69,6 +82,30 @@ function normalizeUrl(url) {
     .replace(/\/+$/, "");
 }
 
+function isLinkedInProfileUrl(url) {
+  return /(^|\.)linkedin\.com\/(in|pub)\//i.test(String(url || ""));
+}
+
+function recruiterUrlScore(url) {
+  const value = String(url || "").trim();
+  if (!value) return 0;
+  if (isLinkedInProfileUrl(value)) return 3;
+  if (/linkedin\.com/i.test(value)) return 2;
+  return 1;
+}
+
+function bestRecruiterUrl(a, b) {
+  const left = String(a || "").trim();
+  const right = String(b || "").trim();
+  const leftScore = recruiterUrlScore(left);
+  const rightScore = recruiterUrlScore(right);
+  if (!leftScore) return right;
+  if (!rightScore) return left;
+  if (rightScore > leftScore) return right;
+  if (leftScore > rightScore) return left;
+  return right.length > left.length ? right : left;
+}
+
 function isPresent(value) {
   return value !== undefined && value !== null && String(value).trim() !== "";
 }
@@ -84,16 +121,21 @@ function contactTargetForCompany(company) {
 }
 
 function recruiterKey(recruiter) {
+  const name = normalizeLookup(recruiter.name);
+  if (name) return `name:${name}`;
   const url = normalizeUrl(recruiter.linkedin_url);
   if (url) return `url:${url}`;
-  const name = normalizeLookup(recruiter.name);
-  if (!name) return "";
-  return `name:${name}|title:${normalizeLookup(recruiter.title)}`;
+  const title = normalizeLookup(recruiter.title);
+  return title ? `title:${title}|location:${normalizeLookup(recruiter.location)}` : "";
 }
 
 function mergeRecruiter(existing, incoming) {
   const merged = { ...existing };
   for (const [key, defaultValue] of Object.entries(RECRUITER_DEFAULTS)) {
+    if (key === "linkedin_url") {
+      merged[key] = bestRecruiterUrl(existing[key], incoming[key]);
+      continue;
+    }
     if (typeof defaultValue === "boolean") {
       merged[key] = Boolean(existing[key]) || Boolean(incoming[key]);
       continue;
@@ -124,6 +166,7 @@ function mergeRecruiterLists(a = [], b = []) {
       continue;
     }
     if (byKey.has(key)) {
+      duplicateRecruiterRowsMerged++;
       const idx = byKey.get(key);
       out[idx] = mergeRecruiter(out[idx], recruiter);
     } else {
@@ -154,11 +197,25 @@ function bestDescription(a, b) {
   return descriptionScore(right) > descriptionScore(left) ? right : left;
 }
 
+function bestResearchText(a, b) {
+  const left = String(a || "").trim();
+  const right = String(b || "").trim();
+  if (!left) return right;
+  if (!right) return left;
+  if (left.includes(right)) return left;
+  if (right.includes(left)) return right;
+  return right.length > left.length ? right : left;
+}
+
 function mergeCompany(existing, incoming) {
   const merged = { ...existing };
 
   for (const field of COMPANY_FIELDS) {
     if (field === "recruiters" || field === "description") continue;
+    if (COMPANY_NOTE_FIELDS.has(field)) {
+      merged[field] = bestResearchText(merged[field], incoming[field]);
+      continue;
+    }
     if (field === "priority") {
       const a = Number(merged.priority);
       const b = Number(incoming.priority);
@@ -188,7 +245,7 @@ function normalizeCompany(c) {
     else if (f === "sector") out[f] = typeof c[f] === "string" ? c[f] : "";
     else out[f] = c[f];
   }
-  out.recruiters = (c.recruiters || []).map(normalizeRecruiter);
+  out.recruiters = mergeRecruiterLists(c.recruiters || []);
   for (const k of Object.keys(c)) {
     if (!COMPANY_FIELDS.includes(k)) droppedKeys.set(k, (droppedKeys.get(k) || 0) + 1);
   }
@@ -201,6 +258,23 @@ function getArg(name) {
 }
 
 function loadPartitionConfig() {
+  if (process.argv.includes("--normalize-current")) {
+    if (!fs.existsSync(OUT_FILE)) {
+      console.error(`ERROR: Missing canonical file: ${OUT_FILE}`);
+      process.exit(1);
+    }
+    return {
+      mode: "current",
+      label: "current canonical recruiter JSON",
+      manifest: null,
+      files: [{
+        fname: "recruiter.json",
+        agentLabel: "Canonical",
+        range: "all",
+      }],
+    };
+  }
+
   const source = getArg("--source") || process.env.RECRUITER_PARTITION_SOURCE || "";
   if (source && source !== "sectors") {
     console.error(`ERROR: Unknown --source ${source}. Sector partitions are the only supported source.`);
@@ -337,6 +411,9 @@ if (droppedKeys.size) {
   const summary = [...droppedKeys.entries()].map(([k, n]) => `${k} (${n})`).join(", ");
   console.log(`  Normalized: dropped non-schema company keys → ${summary}`);
 }
+if (duplicateRecruiterRowsMerged) {
+  console.log(`  Merged duplicate recruiter rows: ${duplicateRecruiterRowsMerged}`);
+}
 
 const totalPop = deduped.filter(c => c.recruiters && c.recruiters.length > 0).length;
 const totalRecs = deduped.reduce((s,c)=>s+(c.recruiters||[]).length,0);
@@ -346,7 +423,7 @@ console.log(`\nTotal after merge: ${deduped.length} companies, ${totalPop} popul
 
 // Build merged meta (base from first part, override aggregates)
 const baseMeta = JSON.parse(fs.readFileSync(path.join(PARTS_DIR, partitionConfig.files[0].fname), "utf8")).meta || {};
-const mergedMeta = {
+  const mergedMeta = {
   ...baseMeta,
   total_companies: deduped.length,
   last_updated: latestUpdated,
@@ -354,6 +431,12 @@ const mergedMeta = {
     ...(baseMeta.company_field_legend || {}),
     sector: "Primary sector partition key used by Codex sector workers and UI filtering",
     description: "Concise company description for search, semantic matching, and outreach context",
+    company_url: "Company homepage used for outreach context and search filtering",
+    early_career_programs: "Named internship, university, new-grad, apprenticeship, or fellowship programs when public evidence exists",
+    application_timeline: "Publicly observed application timing/window notes for internships, new-grad roles, or early-career programs",
+    visa_sponsorship: "Public evidence about US work authorization or sponsorship availability; may be unknown, varies, or role-specific",
+    recent_internship_signal: "Evidence that the company recently hired interns/new grads or posted relevant student roles",
+    opportunity_notes: "Concise company-level outreach/search notes for internship and early-career fit",
   },
   population_progress: `Codex sector split. ${totalPop} companies populated with ${totalRecs} total recruiters; ${totalMissingDescriptions} company descriptions missing. Merge run: ${new Date().toISOString().slice(0,10)}`,
   partition: undefined, // remove per-partition marker on the merged canonical

@@ -30,9 +30,30 @@ const PRIORITY_LABELS = {
 const CONNECTED_KEY = "rd-connected-v1";
 const VIEW_KEY = "rd-view-v2";
 const SIM_KEY = "rd-sim-threshold-v1";
-const recKey = (companyId: string, idx: number) => `${companyId}#${idx}`;
+const legacyRecKey = (companyId: string, idx: number) => `${companyId}#${idx}`;
+const normalizeKeyPart = (value: string | undefined) =>
+  String(value || "")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+    .replace(/\s+/g, "-");
+const normalizeUrlKey = (value: string | undefined) =>
+  String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[?#].*$/, "")
+    .replace(/\/+$/, "");
+const recKey = (companyId: string, recruiter: { name?: string; linkedin_url?: string }, idx: number) => {
+  const name = normalizeKeyPart(recruiter.name);
+  if (name) return `${companyId}#name:${name}`;
+  const url = normalizeUrlKey(recruiter.linkedin_url);
+  if (url) return `${companyId}#url:${url}`;
+  return legacyRecKey(companyId, idx);
+};
 
-type ConnectionFilter = "all" | "incomplete" | "complete" | "untouched";
+type ConnectionFilter = "all" | "incomplete" | "complete" | "untouched" | "connected";
+type RecruiterVisibility = "all" | "unconnected" | "connected";
 type ViewMode = "cards" | "compact";
 
 export default function RecruiterDirectory() {
@@ -48,6 +69,8 @@ export default function RecruiterDirectory() {
   const [connectionFilter, setConnectionFilter] = useState<ConnectionFilter>("all");
   const [hideConnected, setHideConnected] = useState(false);
   const [view, setView] = useState<ViewMode>("compact");
+  const recruiterVisibility: RecruiterVisibility =
+    connectionFilter === "connected" ? "connected" : hideConnected ? "unconnected" : "all";
   useEffect(() => {
     try {
       const v = localStorage.getItem(VIEW_KEY);
@@ -95,28 +118,38 @@ export default function RecruiterDirectory() {
     return () => { cancelled = true; };
   }, [user?.id]);
 
-  const toggleRecruiter = useCallback((key: string) => {
-    const nowOn = !connectedRef.current.has(key);
+  const toggleRecruiter = useCallback((key: string, aliases: string[] = []) => {
+    const wasOn = connectedRef.current.has(key) || aliases.some((alias) => connectedRef.current.has(alias));
+    const nowOn = !wasOn;
     setConnected(prev => {
       const next = new Set(prev);
+      aliases.forEach((alias) => next.delete(alias));
       if (nowOn) next.add(key); else next.delete(key);
       persist(next);
       return next;
     });
-    if (userRef.current) api.setConnection(key, nowOn).catch(() => {});
+    if (userRef.current) {
+      api.setConnection(key, nowOn).catch(() => {});
+      aliases.forEach((alias) => api.setConnection(alias, false).catch(() => {}));
+    }
   }, []);
 
   // Clicking a recruiter's name/Message link opens their LinkedIn to connect, so
   // auto-mark them connected (idempotent — never un-marks).
-  const markConnected = useCallback((key: string) => {
-    if (connectedRef.current.has(key)) return;
+  const markConnected = useCallback((key: string, aliases: string[] = []) => {
+    const aliasOn = aliases.some((alias) => connectedRef.current.has(alias));
+    if (connectedRef.current.has(key) && !aliasOn) return;
     setConnected(prev => {
       const next = new Set(prev);
       next.add(key);
+      aliases.forEach((alias) => next.delete(alias));
       persist(next);
       return next;
     });
-    if (userRef.current) api.setConnection(key, true).catch(() => {});
+    if (userRef.current) {
+      api.setConnection(key, true).catch(() => {});
+      aliases.forEach((alias) => api.setConnection(alias, false).catch(() => {}));
+    }
   }, []);
 
   // Debounce the search input (180ms). Clearing is applied immediately.
@@ -133,7 +166,20 @@ export default function RecruiterDirectory() {
     () =>
       allCompanies.map((c) => {
         const sectors = sectorsForCompany(c);
-        const parts = [c.name, c.category, c.sector || "", c.description || "", c.hq_location || ""];
+        const parts = [
+          c.name,
+          c.category,
+          c.sector || "",
+          c.description || "",
+          c.hq_location || "",
+          c.company_url || "",
+          c.careers_url || "",
+          c.early_career_programs || "",
+          c.application_timeline || "",
+          c.visa_sponsorship || "",
+          c.recent_internship_signal || "",
+          c.opportunity_notes || "",
+        ];
         for (const r of c.recruiters || []) {
           parts.push(r.name, r.title, r.location || "", r.focus_area || "", r.notes || "");
         }
@@ -157,7 +203,8 @@ export default function RecruiterDirectory() {
       let count = 0;
       let sig = "";
       for (let i = 0; i < total; i++) {
-        const on = connected.has(recKey(c.id, i));
+        const recruiter = c.recruiters[i];
+        const on = connected.has(recKey(c.id, recruiter, i)) || connected.has(legacyRecKey(c.id, i));
         if (on) count++;
         sig += on ? "1" : "0";
       }
@@ -189,7 +236,10 @@ export default function RecruiterDirectory() {
     allCompanies.filter(c => (c.recruiters?.length || 0) > 0).length
   , []);
 
-  const connectedCount = connected.size;
+  const connectedCount = useMemo(
+    () => [...connByCompany.values()].reduce((sum, cc) => sum + cc.count, 0),
+    [connByCompany],
+  );
 
   // id → company, for resolving semantic-search matches back to full records.
   const companyById = useMemo(() => {
@@ -220,6 +270,7 @@ export default function RecruiterDirectory() {
         if (connectionFilter === "complete" && cc.count !== cc.total) return false;
         if (connectionFilter === "incomplete" && cc.count >= cc.total) return false;
         if (connectionFilter === "untouched" && cc.count !== 0) return false;
+        if (connectionFilter === "connected" && cc.count === 0) return false;
 
         // "Only unconnected people" — drop companies with nothing left to show
         if (hideConnected && cc.count >= cc.total) return false;
@@ -257,7 +308,17 @@ export default function RecruiterDirectory() {
   }, [searchQuery, selectedPriorities, sortMode, sortReversed, selectedSectors, connectionFilter, hideConnected]);
 
   const visibleCompanies = filteredCompanies.slice(0, visibleCount);
-  const recruitersVisible = filteredCompanies.reduce((s, c) => s + (c.recruiters?.length || 0), 0);
+  const recruitersVisible = useMemo(
+    () =>
+      filteredCompanies.reduce((sum, company) => {
+        const cc = connByCompany.get(company.id);
+        if (!cc) return sum;
+        if (recruiterVisibility === "connected") return sum + cc.count;
+        if (recruiterVisibility === "unconnected") return sum + Math.max(0, cc.total - cc.count);
+        return sum + cc.total;
+      }, 0),
+    [filteredCompanies, connByCompany, recruiterVisibility],
+  );
 
   // --- Semantic fallback -----------------------------------------------------
   // When a typed query yields zero keyword/sector hits, ask gte-server for the
@@ -315,8 +376,19 @@ export default function RecruiterDirectory() {
 
   // Slider-filtered view of the semantic matches.
   const shownSuggestions = useMemo(
-    () => suggestions.filter((s) => s.similarity >= simThreshold),
-    [suggestions, simThreshold],
+    () =>
+      suggestions.filter((s) => {
+        if (s.similarity < simThreshold) return false;
+        const cc = connByCompany.get(s.company.id);
+        if (!cc) return false;
+        if (connectionFilter === "complete") return cc.count === cc.total;
+        if (connectionFilter === "incomplete") return cc.count < cc.total;
+        if (connectionFilter === "untouched") return cc.count === 0;
+        if (connectionFilter === "connected") return cc.count > 0;
+        if (hideConnected) return cc.count < cc.total;
+        return true;
+      }),
+    [suggestions, simThreshold, connByCompany, connectionFilter, hideConnected],
   );
 
   const togglePriority = (p: number) => {
@@ -371,12 +443,36 @@ export default function RecruiterDirectory() {
   // Export all current recruiters as CSV
   const exportCSV = () => {
     const rows: string[][] = [
-      ["Company", "Company ID", "Priority", "Category", "Sector", "Description", "HQ", "Recruiter Name", "Title", "LinkedIn URL", "Location", "Focus Area", "Connected", "Notes"]
+      [
+        "Company",
+        "Company ID",
+        "Priority",
+        "Category",
+        "Sector",
+        "Description",
+        "HQ",
+        "Company URL",
+        "Careers URL",
+        "Early Career Programs",
+        "Application Timeline",
+        "Visa Sponsorship",
+        "Recent Internship Signal",
+        "Opportunity Notes",
+        "Recruiter Name",
+        "Title",
+        "LinkedIn URL",
+        "Location",
+        "Focus Area",
+        "Connected",
+        "Notes",
+      ]
     ];
 
     allCompanies.forEach(company => {
       if (!company.recruiters || company.recruiters.length === 0) return;
       company.recruiters.forEach((r, idx) => {
+        const connectedKey = recKey(company.id, r, idx);
+        const legacyKey = legacyRecKey(company.id, idx);
         rows.push([
           company.name,
           company.id,
@@ -385,12 +481,19 @@ export default function RecruiterDirectory() {
           company.sector || "",
           company.description || "",
           company.hq_location || "",
+          company.company_url || "",
+          company.careers_url || "",
+          company.early_career_programs || "",
+          company.application_timeline || "",
+          company.visa_sponsorship || "",
+          company.recent_internship_signal || "",
+          company.opportunity_notes || "",
           r.name,
           r.title,
           r.linkedin_url,
           r.location || "",
           r.focus_area || "",
-          connected.has(recKey(company.id, idx)) ? "yes" : "",
+          connected.has(connectedKey) || connected.has(legacyKey) ? "yes" : "",
           (r.notes || "").replace(/"/g, '""')
         ]);
       });
@@ -550,7 +653,13 @@ export default function RecruiterDirectory() {
 
             {/* Only unconnected people */}
             <button
-              onClick={() => setHideConnected(!hideConnected)}
+              onClick={() => {
+                const next = !hideConnected;
+                setHideConnected(next);
+                if (next && (connectionFilter === "connected" || connectionFilter === "complete")) {
+                  setConnectionFilter("all");
+                }
+              }}
               className={`inline-flex items-center gap-1.5 rounded-full px-3 h-8 text-xs font-medium border ${hideConnected
                 ? 'bg-blue-100 dark:bg-blue-950 border-blue-200 dark:border-blue-900 text-blue-700 dark:text-blue-400'
                 : 'border-zinc-200 dark:border-zinc-800'}`}
@@ -561,10 +670,15 @@ export default function RecruiterDirectory() {
             {/* Connection filter */}
             <select
               value={connectionFilter}
-              onChange={(e) => setConnectionFilter(e.target.value as ConnectionFilter)}
+              onChange={(e) => {
+                const next = e.target.value as ConnectionFilter;
+                setConnectionFilter(next);
+                if (next === "connected") setHideConnected(false);
+              }}
               className="h-8 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 text-xs font-medium"
             >
               <option value="all">Connection: all</option>
+              <option value="connected">Connected recruiters</option>
               <option value="incomplete">Not fully connected</option>
               <option value="complete">Fully connected</option>
               <option value="untouched">None connected</option>
@@ -702,7 +816,7 @@ export default function RecruiterDirectory() {
                                 sig={cc.sig}
                                 count={cc.count}
                                 total={cc.total}
-                                hideConnected={false}
+                                recruiterVisibility={recruiterVisibility}
                                 onToggleRecruiter={toggleRecruiter}
                                 onMarkConnected={markConnected}
                                 onOpen={openNewTab}
@@ -748,7 +862,7 @@ export default function RecruiterDirectory() {
                   sig={cc.sig}
                   count={cc.count}
                   total={cc.total}
-                  hideConnected={hideConnected}
+                  recruiterVisibility={recruiterVisibility}
                   onToggleRecruiter={toggleRecruiter}
                   onMarkConnected={markConnected}
                   onOpen={openNewTab}
@@ -768,7 +882,7 @@ export default function RecruiterDirectory() {
                   count={cc.count}
                   total={cc.total}
                   isExpanded={expandedCards.has(company.id)}
-                  hideConnected={hideConnected}
+                  recruiterVisibility={recruiterVisibility}
                   onToggleCard={toggleCard}
                   onToggleRecruiter={toggleRecruiter}
                   onMarkConnected={markConnected}
@@ -881,26 +995,48 @@ interface CardProps {
   count: number;
   total: number;
   isExpanded: boolean;
-  hideConnected: boolean;
+  recruiterVisibility: RecruiterVisibility;
   onToggleCard: (id: string) => void;
-  onToggleRecruiter: (key: string) => void;
-  onMarkConnected: (key: string) => void;
+  onToggleRecruiter: (key: string, aliases?: string[]) => void;
+  onMarkConnected: (key: string, aliases?: string[]) => void;
   onCopy: (text: string, label: string) => void;
   onOpen: (url: string) => void;
 }
 
 const CompanyCard = React.memo(function CompanyCard({
-  company, sig, count, total, isExpanded, hideConnected,
+  company, sig, count, total, isExpanded, recruiterVisibility,
   onToggleCard, onToggleRecruiter, onMarkConnected, onCopy, onOpen,
 }: CardProps) {
   const recCount = total;
   const allConnected = total > 0 && count === total;
 
-  // Build the list of recruiters to show (respecting "only unconnected").
+  // Build the list of recruiters to show for the selected connection view.
   const withIdx = (company.recruiters || []).map((r, i) => ({ r, i }));
-  const baseList = hideConnected ? withIdx.filter(({ i }) => sig[i] !== "1") : withIdx;
+  const baseList = withIdx.filter(({ i }) => {
+    const on = sig[i] === "1";
+    if (recruiterVisibility === "connected") return on;
+    if (recruiterVisibility === "unconnected") return !on;
+    return true;
+  });
   const displayRecs = isExpanded ? baseList : baseList.slice(0, 3);
   const moreCount = baseList.length - displayRecs.length;
+  const emptyRecruiterText =
+    recruiterVisibility === "connected"
+      ? "No connected recruiters here."
+      : "All recruiters here are marked connected.";
+  const moreRecruiterLabel =
+    recruiterVisibility === "connected"
+      ? "connected "
+      : recruiterVisibility === "unconnected"
+        ? "unconnected "
+        : "";
+  const opportunityRows = [
+    ["Programs", company.early_career_programs],
+    ["Timeline", company.application_timeline],
+    ["Visa", company.visa_sponsorship],
+    ["Intern signal", company.recent_internship_signal],
+    ["Notes", company.opportunity_notes],
+  ].filter((row): row is [string, string] => Boolean(row[1]));
 
   return (
     <div className="rd-row company-card border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 overflow-hidden">
@@ -932,13 +1068,34 @@ const CompanyCard = React.memo(function CompanyCard({
               {company.description}
             </p>
           )}
+          {opportunityRows.length > 0 && (
+            <div className="mt-3 max-w-3xl space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+              {opportunityRows.map(([label, value]) => (
+                <p key={label} className="leading-relaxed">
+                  <span className="font-medium text-zinc-700 dark:text-zinc-300">{label}:</span> {value}
+                </p>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Action buttons */}
         <div className="flex flex-wrap items-center gap-2">
-          <button onClick={() => onOpen(company.linkedin_company_url)} className="link-btn" title="Open company LinkedIn page">
-            Company <ExternalLink className="h-3.5 w-3.5" />
-          </button>
+          {company.linkedin_company_url && (
+            <button onClick={() => onOpen(company.linkedin_company_url)} className="link-btn" title="Open company LinkedIn page">
+              Company <ExternalLink className="h-3.5 w-3.5" />
+            </button>
+          )}
+          {company.company_url && (
+            <button onClick={() => onOpen(company.company_url || "")} className="link-btn" title="Open company website">
+              Website <ExternalLink className="h-3.5 w-3.5" />
+            </button>
+          )}
+          {company.careers_url && (
+            <button onClick={() => onOpen(company.careers_url)} className="link-btn" title="Open careers page">
+              Careers <ExternalLink className="h-3.5 w-3.5" />
+            </button>
+          )}
           <button
             onClick={() => onOpen(company.recruiter_search_url)}
             className="link-btn bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-900 text-blue-700 dark:text-blue-300"
@@ -957,10 +1114,11 @@ const CompanyCard = React.memo(function CompanyCard({
       {recCount > 0 && (
         <div className="divide-y divide-zinc-100 dark:divide-zinc-800 text-sm">
           {displayRecs.length === 0 && (
-            <div className="px-5 py-3 text-xs text-zinc-500">All recruiters here are marked connected.</div>
+            <div className="px-5 py-3 text-xs text-zinc-500">{emptyRecruiterText}</div>
           )}
           {displayRecs.map(({ r: rec, i: idx }) => {
-            const key = recKey(company.id, idx);
+            const key = recKey(company.id, rec, idx);
+            const legacyKey = legacyRecKey(company.id, idx);
             const on = sig[idx] === "1";
             return (
               <div
@@ -970,7 +1128,7 @@ const CompanyCard = React.memo(function CompanyCard({
               >
                 <div className="flex items-start gap-3 flex-1 min-w-0">
                   <div className="pt-0.5">
-                    <ConnCheckbox checked={on} onChange={() => onToggleRecruiter(key)} title={on ? "Connected — click to undo" : "Mark connected"} />
+                    <ConnCheckbox checked={on} onChange={() => onToggleRecruiter(key, [legacyKey])} title={on ? "Connected — click to undo" : "Mark connected"} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
@@ -978,7 +1136,7 @@ const CompanyCard = React.memo(function CompanyCard({
                         href={rec.linkedin_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => onMarkConnected(key)}
+                        onClick={() => onMarkConnected(key, [legacyKey])}
                         className="font-medium hover:underline flex items-center gap-1"
                       >
                         {rec.name}
@@ -1008,7 +1166,7 @@ const CompanyCard = React.memo(function CompanyCard({
                     href={rec.linkedin_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => onMarkConnected(key)}
+                    onClick={() => onMarkConnected(key, [legacyKey])}
                     className="text-xs px-3 h-7 rounded bg-black text-white dark:bg-white dark:text-black inline-flex items-center gap-1 hover:opacity-90"
                   >
                     Message <ExternalLink className="h-3 w-3" />
@@ -1023,7 +1181,7 @@ const CompanyCard = React.memo(function CompanyCard({
               onClick={() => onToggleCard(company.id)}
               className="w-full py-2 text-xs text-center text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300"
             >
-              + {moreCount} more {hideConnected ? "unconnected " : ""}recruiter{moreCount > 1 ? "s" : ""} (click to expand)
+              + {moreCount} more {moreRecruiterLabel}recruiter{moreCount > 1 ? "s" : ""} (click to expand)
             </button>
           )}
         </div>
@@ -1039,19 +1197,24 @@ interface CompactProps {
   sig: string;
   count: number;
   total: number;
-  hideConnected: boolean;
-  onToggleRecruiter: (key: string) => void;
-  onMarkConnected: (key: string) => void;
+  recruiterVisibility: RecruiterVisibility;
+  onToggleRecruiter: (key: string, aliases?: string[]) => void;
+  onMarkConnected: (key: string, aliases?: string[]) => void;
   onOpen: (url: string) => void;
 }
 
 const CompactRow = React.memo(function CompactRow({
-  company, sig, count, total, hideConnected, onToggleRecruiter, onMarkConnected, onOpen,
+  company, sig, count, total, recruiterVisibility, onToggleRecruiter, onMarkConnected, onOpen,
 }: CompactProps) {
   const allConnected = total > 0 && count === total;
 
   const withIdx = (company.recruiters || []).map((r, i) => ({ r, i }));
-  const recs = hideConnected ? withIdx.filter(({ i }) => sig[i] !== "1") : withIdx;
+  const recs = withIdx.filter(({ i }) => {
+    const on = sig[i] === "1";
+    if (recruiterVisibility === "connected") return on;
+    if (recruiterVisibility === "unconnected") return !on;
+    return true;
+  });
 
   return (
     <div className="rd-row px-3 py-1.5 bg-white dark:bg-zinc-900">
@@ -1076,12 +1239,14 @@ const CompactRow = React.memo(function CompactRow({
       {recs.length > 0 && (
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-0.5 pl-8 text-xs">
           {recs.map(({ r: rec, i: idx }) => {
+            const key = recKey(company.id, rec, idx);
+            const legacyKey = legacyRecKey(company.id, idx);
             const on = sig[idx] === "1";
             return (
               <span key={idx} className="inline-flex items-center gap-1 min-w-0">
                 <ConnCheckbox
                   checked={on}
-                  onChange={() => onToggleRecruiter(recKey(company.id, idx))}
+                  onChange={() => onToggleRecruiter(key, [legacyKey])}
                   title={on ? "Connected — click to undo" : "Mark connected"}
                   size={13}
                 />
@@ -1089,7 +1254,7 @@ const CompactRow = React.memo(function CompactRow({
                   href={rec.linkedin_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => onMarkConnected(recKey(company.id, idx))}
+                  onClick={() => onMarkConnected(key, [legacyKey])}
                   className={`inline-flex items-center gap-0.5 hover:underline truncate ${on ? "text-emerald-600 dark:text-emerald-400" : "text-zinc-700 dark:text-zinc-300"}`}
                   title={`${rec.name} — ${rec.title}`}
                 >

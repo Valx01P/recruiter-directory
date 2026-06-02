@@ -24,6 +24,12 @@ export interface Company {
   hq_location: string;
   priority: 1 | 2 | 3;
   size_estimate: string;
+  company_url?: string;
+  early_career_programs?: string;
+  application_timeline?: string;
+  visa_sponsorship?: string;
+  recent_internship_signal?: string;
+  opportunity_notes?: string;
   has_intern_program: boolean;
   linkedin_company_url: string;
   linkedin_url_verified: boolean;

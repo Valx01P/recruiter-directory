@@ -133,6 +133,11 @@ export function companyToText(c: Company): string {
     sectorBits.join(", "),
     [c.hq_location, c.size_estimate].filter(Boolean).join(", "),
     c.has_intern_program ? "offers an internship / early-career program" : "",
+    c.early_career_programs || "",
+    c.application_timeline || "",
+    c.visa_sponsorship || "",
+    c.recent_internship_signal || "",
+    c.opportunity_notes || "",
   ].filter(Boolean);
   return parts.join(". ").replace(/\s+/g, " ").trim().slice(0, 1600);
 }

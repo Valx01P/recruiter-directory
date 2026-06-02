@@ -5,7 +5,7 @@ Populate `job/recruiter.json` `companies[].recruiters[]` arrays with real, verif
 
 Current scalable workflow: sector-owned Codex workers edit `job/sectors/recruiter-*.json`; the orchestrator centrally merges back to `job/recruiter.json` and the UI copies. Start with `job/HUMAN_START.md`. The default start launches one parallel worker per selected sector, so all sectors run at the same time when no sector subset is provided.
 
-**Current sector baseline**: 1,250 companies, 873 populated companies, 377 empty recruiter arrays, 1,250 missing descriptions, and 1,937 recruiter / hiring contacts.
+**Current merged baseline**: 2,095 companies, 2,095 populated companies, 0 missing descriptions, and 18,566 recruiter / hiring contacts. Some legacy contacts still need profile-level LinkedIn URLs; use `node job/scripts/report-missing-recruiter-links.js`.
 
 ## Recruiter Object Schema
 ```json
@@ -31,11 +31,22 @@ Each company also carries:
 ```json
 {
   "sector": "cloud",
-  "description": "One concise sentence describing what the company does and where it fits technically."
+  "description": "One concise sentence describing what the company does and where it fits technically.",
+  "company_url": "https://example.com",
+  "careers_url": "https://example.com/careers",
+  "early_career_programs": "Named internships, university, new-grad, apprenticeship, fellowship, co-op, or rotational programs.",
+  "application_timeline": "Public timing notes for internship/new-grad applications.",
+  "visa_sponsorship": "Public sponsorship/work-authorization evidence, or unknown/varies when evidence is thin.",
+  "recent_internship_signal": "Evidence of recent interns, student roles, or new-grad hiring.",
+  "opportunity_notes": "Concise outreach/search summary."
 }
 ```
 
 Descriptions should be 18-35 words, concrete, and conservative. Codex sector workers should backfill descriptions for existing populated companies as well as new companies they touch.
+
+Opportunity fields should be filled before expansion whenever possible. If public evidence is thin, write a concise "not found in public search" note rather than leaving the research ambiguous.
+
+Before adding new contacts, repair existing contacts whose `linkedin_url` is blank or is not a LinkedIn person profile URL. If a profile cannot be verified, preserve the contact and add a short verification-pending note. Cleanup must not shrink `recruiters[]`; questionable pruning belongs in a separate human-reviewed pass.
 
 Contact targets are intentionally different by company type: smaller Miami / South Florida startup teams only need 5 good recruiter or technical hiring contacts, while medium/larger companies elsewhere in the United States remain capped at 10.
 
@@ -86,6 +97,7 @@ Also search X/Twitter: `NVIDIA recruiter hiring intern` (use x_keyword_search to
 
 ### 4. Tertiary: Company Career Pages + Known Sources
 - Visit company's careers/internship page (add to `careers_url` when found).
+- Add `company_url`, named programs, application timing, visa/work-authorization notes, and recent internship signals when public evidence exists.
 - Look for "Meet the Team" or recruiting blog posts.
 - Check Levels.fyi, TeamBlind, Reddit (r/cscareerquestions, r/internships) for recent "who to contact at <company>" threads.
 - Follow company university recruiting Twitter/LinkedIn posts.

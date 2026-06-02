@@ -30,8 +30,12 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# generated swarm prompts
-job/swarm/codex-sector-logs/*-prompt.txt
+# generated recruiter swarm artifacts
+job/sectors/recruiter-*.json
+job/swarm/codex-sector-logs/
+job/swarm/codex-sector-snapshots/
+job/swarm/codex-sector-state.json
+job/swarm/codex-sector-stop.json
 
 # env files (can opt-in for committing if needed)
 .env*
