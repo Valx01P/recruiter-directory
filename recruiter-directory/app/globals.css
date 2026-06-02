@@ -66,3 +66,10 @@ button:disabled,
   color: #e4e4e7;
   border-color: #3f3f46;
 }
+
+[data-sonner-toast].rd-export-toast {
+  left: 50% !important;
+  right: auto !important;
+  width: 132px !important;
+  transform: var(--y) translateX(-50%) !important;
+}

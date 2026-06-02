@@ -523,7 +523,7 @@ export default function RecruiterDirectory() {
         duration: 900,
         closeButton: false,
         dismissible: false,
-        className: "!min-h-0 !h-7 !w-[132px] !px-2 !py-0 !rounded-md !items-center !justify-center text-[11px] leading-none",
+        className: "rd-export-toast !min-h-0 !h-7 !w-[132px] !px-2 !py-0 !rounded-md !items-center !justify-center text-[11px] leading-none",
         classNames: {
           content: "!m-0 !gap-0 items-center justify-center text-center",
           title: "!m-0 text-center leading-none whitespace-nowrap",
