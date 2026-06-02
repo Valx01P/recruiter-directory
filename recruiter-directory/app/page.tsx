@@ -519,12 +519,14 @@ export default function RecruiterDirectory() {
   const handleExportClick = () => {
     if (!user) {
       setExportArmed(false);
-      toast("Sign in to export CSV", {
-        duration: 1200,
-        className: "text-xs !w-[180px] !px-3 justify-center",
+      toast("Sign in required", {
+        duration: 900,
+        closeButton: false,
+        dismissible: false,
+        className: "!min-h-0 !h-7 !w-[132px] !px-2 !py-0 !rounded-md !items-center !justify-center text-[11px] leading-none",
         classNames: {
-          content: "items-center text-center",
-          title: "text-center",
+          content: "!m-0 !gap-0 items-center justify-center text-center",
+          title: "!m-0 text-center leading-none whitespace-nowrap",
         },
       });
       return;
