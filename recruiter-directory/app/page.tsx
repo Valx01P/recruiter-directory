@@ -924,6 +924,24 @@ export default function RecruiterDirectory() {
           <div className="mt-3 text-[10px]">
             Tip: open each company’s “Find more recruiters” link while logged into LinkedIn and harvest 5–8 strong university/early-career profiles per target. Tick recruiters off as you connect — it saves to this browser.
           </div>
+          <div className="mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-900 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between text-[11px]">
+            <div>
+              All recruiter info is from public sources.{" "}
+              <a href="/privacy" className="underline hover:text-zinc-700 dark:hover:text-zinc-300">
+                Privacy &amp; opt-out policy
+              </a>
+              .
+            </div>
+            <div>
+              Listed and want your name removed? Email{" "}
+              <a
+                href="mailto:pablovaldes0925@gmail.com?subject=Opt-out%20request%20%E2%80%94%20Tech%20Recruiter%20Directory"
+                className="font-medium underline hover:text-zinc-700 dark:hover:text-zinc-300"
+              >
+                pablovaldes0925@gmail.com
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
